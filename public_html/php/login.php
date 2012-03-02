@@ -1,9 +1,17 @@
 <?php
 	// MySQL info
+	/*
 	$host = "pluto.cse.msstate.edu";
 	$sqlusername = "dcspg33";
 	$sqlpassword = "licepill47";
 	$db_name = "dcspg33";
+	$tbl_name = "users";
+	*/
+	
+	$host = "localhost";
+	$sqlusername = "root";
+	$sqlpassword = "root";
+	$db_name = "esquire";
 	$tbl_name = "users";
 	
 	// Connect to server and database
