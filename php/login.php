@@ -11,7 +11,7 @@
 	$host = "localhost";
 	$sqlusername = "root";
 	$sqlpassword = "root";
-	$db_name = "esquire";
+	$db_name = "Esquire";
 	$tbl_name = "users";
 	
 	// Connect to server and database
