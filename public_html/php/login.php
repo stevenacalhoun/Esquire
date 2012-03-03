@@ -45,6 +45,6 @@
 	// Otherwise redirect to login
 	else
 	{
-		header("location:http://pluto.cse.msstate.edu/~dcspg33/");
+		header("index.html");
 	}
 ?>
