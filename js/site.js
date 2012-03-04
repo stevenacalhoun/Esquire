@@ -12,9 +12,14 @@ function login(event)
 	
 	$.post(url, data,
 		function(data) {
-		    console.log(data);
-		    window.location.replace("groups.html");			
-		}
+	        console.log(data);
+            if (data=="success"){
+                window.location.replace("groups.html");
+		    }
+		    else {
+		        document.getElementById("loginResult").innerHTML = "Wrong Username or Password";
+		    }
+	    }
 	);
 }
 

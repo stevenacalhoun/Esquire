@@ -39,7 +39,7 @@
 	{
 		session_register("email");
 		session_register("password");
-		header("location:groups.html");
+        echo "success";
 	}
 	
 	// Otherwise redirect to login
