@@ -12,14 +12,15 @@
 <body>
 	<div id="loginBox">
 		<form action="php/login.php" method="post" id="loginForm">
-			<input type="text" name="email" placeholder="   email" />
-			<input type="password" name="password" placeholder="   password" />
+			<input type="text" name="email" placeholder="email" />
+			<input type="password" name="password" placeholder="password" />
 			
 			<input type="submit" value="Login" id="login" class="button" />
 		</form>
-		<a href="join.html"><div id="join" class="button">Join</div></a>
-		<p>Forgot password?</p>
+		<a href="join.html"><div id="join" class="buttonG"><p>Join</p></div></a>
+		<div id="reset">Forgot password?</div>
 	</div>
-	<footer></footer>
+	<div id="loginError"><p>Wrong Username/Password Combination.</p></div>
+	<footer>&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
 </body>
 </html>
