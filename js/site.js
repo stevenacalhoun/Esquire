@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('#login').submit(function() {
+	$('#loginForm').submit(function() {
 		login(event);
 	});
 });
@@ -7,8 +7,8 @@ $(document).ready(function() {
 function login(event)
 {
 	event.preventDefault();
-	var data = $("form#login").serialize();
-	var url = $('form#login').attr('action');
+	var data = $("form#loginForm").serialize();
+	var url = $('form#loginForm').attr('action');
 	
 	$.post(url, data,
 		function(data) {
