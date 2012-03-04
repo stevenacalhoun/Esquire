@@ -20,7 +20,7 @@
 	
 	// Get email and password from form
 	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$password = $_POST[	'password'];
 	
 	// Strip inputs and query database
 	$email = stripslashes($email);
@@ -46,6 +46,6 @@
 	else
 	{
 		//header("index.html");
-		echo "It works!";
+		echo "Wrong username or password";
 	}
 ?>

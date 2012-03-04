@@ -13,8 +13,7 @@ function login(event)
 	$.post(url, data,
 		function(data) {
 		    console.log(data);
-			$('#txtHint').html("woop");
-			getDashboard();
+		    window.location.replace("groups.html");			
 		}
 	);
 }
