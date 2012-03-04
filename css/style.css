@@ -4,6 +4,24 @@ body{
 	height: 100%;
 	background: url('../images/bodyBG.png');
 }
+.button{
+	width: 108px;
+	height: 27px;
+	background: url('../images/button.png') no-repeat;
+	color: #fff;
+	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
+	font-size: 0.9em;
+	cursor: pointer;
+}
+.buttonG{
+	width: 108px;
+	height: 27px;
+	background: url('../images/buttonG.png');
+	color: #fff;
+	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
+	font-size: 0.9em;
+	cursor: pointer;
+}
 
 /* Login */
 #loginBox{
@@ -19,31 +37,46 @@ input[type="text"]{
 	height: 33px;
 	background: url('../images/loginInput.png') no-repeat;
 	margin: 100px 0 0 45px;
-	border: none;
+	padding-left: 10px;
 }
 input[type="password"]{
 	width: 360px;
 	height: 33px;
 	background: url('../images/loginInput.png') no-repeat;
 	margin: 5px 0 0 45px;
+	padding-left: 10px;
 }
-.button{
-	width: 108px;
-	height: 27px;
-	background: url('../images/button.png') no-repeat;
-	color: #fff;
-	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
-	font-size: 0.9em;
-	cursor: pointer;
+input[type="text"]:focus,
+input[type="password"]:focus{
+	outline: none;
 }
 #login{
 	margin: 15px 0 0 45px;
 }
 #join{
-	width: 108px;
-	height: 27px;
-	background: url('../images/buttonG.png');
 	text-align: center;
 	margin: -26px 170px 0 0;
 	float: right;
+}
+#join p{
+	margin-top: 5px;
+	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
+}
+#reset{
+	font-size: 0.7em;
+	color: #787878;
+	margin: -19px 0 0 315px;
+}
+#loginError{
+	display: none;
+	width: 420px;
+	height: 20px;
+	background: #ff8787;
+	border: 1px solid #830000;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	margin: auto;
 }
