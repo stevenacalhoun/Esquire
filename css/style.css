@@ -83,6 +83,7 @@ footer{
 	font-size: 0.7em;
 	color: #fff;
 	position: relative;
-	margin-top: 400px;
+	top: 50%;
+	margin-top: 5px;
 	text-align: center;
 }
