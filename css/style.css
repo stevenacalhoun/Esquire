@@ -50,9 +50,7 @@ input[type="text"]:focus,
 input[type="password"]:focus{
 	outline: none;
 }
-#login{
-	margin: 15px 0 0 45px;
-}
+#login{margin: 15px 0 0 45px;}
 #join{
 	text-align: center;
 	margin: -26px 170px 0 0;
@@ -70,13 +68,21 @@ input[type="password"]:focus{
 #loginError{
 	display: none;
 	width: 420px;
-	height: 20px;
+	height: 15px;
 	background: #ff8787;
 	border: 1px solid #830000;
 	border-radius: 10px;
 	padding: 10px;
 	text-align: center;
+	font-size: 0.8em;
 	position: relative;
 	top: 50%;
 	margin: auto;
+}
+footer{
+	font-size: 0.7em;
+	color: #fff;
+	position: relative;
+	margin-top: 400px;
+	text-align: center;
 }
