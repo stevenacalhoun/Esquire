@@ -4,19 +4,14 @@
 	<meta charset="utf-8" />
 	<title>Welcome to Esquire</title>
 	<link rel="stylesheet" href="style.css" />
-	
-	<script src="js/jquery.js" type="text/javascript"></script>
-	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
-	<div id="container">
-		<div id="logo"></div>
-		
-		<form id="login" action="php/login.php" method="post">
-			<input type="text" name="email" placeholder="email" />
-			<input type="password" name="password" placeholder="password" />
+	<div id="loginBox">
+		<form action="php/login.php" method="post">
+			<input type="text" name="email" placeholder="   email" />
+			<input type="password" name="password" placeholder="   password" />
 			
-			<input type="submit" value="login" class="button" />
+			<input type="submit" value="Login" id="login" class="button" />
 		</form>
 		<a href="join.html"><div id="join" class="button">Join</div></a>
 		<p>Forgot password?</p>
