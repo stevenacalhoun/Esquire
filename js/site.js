@@ -17,18 +17,8 @@ function login(event)
                 window.location.replace("groups.html");
 		    }
 		    else {
-		        document.getElementById("loginResult").innerHTML = "Wrong Username or Password";
+                $('#loginError').fadeIn('slow', function(){});
 		    }
 	    }
 	);
 }
-
-//function getDashboard() {
-//    $.getJSON(
-//        function(data) {
-//            for (var i = 0; i < count; i++) {
-//                $('body').append(i.name);
-//            }
-//        }
-//    );
-//}
