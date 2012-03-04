@@ -17,7 +17,7 @@ function login(event)
                 window.location.replace("groups.html");
 		    }
 		    else {
-                $('#loginError').fadeIn('slow', function(){});
+                $('#loginError').fadeIn('fast', function(){});
 		    }
 	    }
 	);
