@@ -45,6 +45,7 @@
 	// Otherwise redirect to login
 	else
 	{
-		header("index.html");
+		//header("index.html");
+		echo "It works!";
 	}
 ?>
