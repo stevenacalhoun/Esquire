@@ -8,6 +8,8 @@
 	$tbl_name = "users";
 	*/
 	
+	session.start();
+	
 	$host = "localhost";
 	$sqlusername = "root";
 	$sqlpassword = "root";
@@ -37,8 +39,8 @@
 	// If count is 1 then the pair is correct
 	if ($count == 1)
 	{
-		session_register("email");
-		session_register("password");
+            $_SESSION["email"] = $email;
+    		$_SESSION["password"] = $password;
         echo "success";
 	}
 	
