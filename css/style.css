@@ -58,7 +58,7 @@ input[type="password"]:focus{
 }
 #join p{
 	margin-top: 5px;
-	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
+	text-shadow: 1px 0 3px rgb(0,0,0);
 }
 #reset{
 	font-size: 0.7em;
