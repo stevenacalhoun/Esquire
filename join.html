@@ -3,9 +3,12 @@
 <html>
 <head>
 <h2>New Account</h2>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/site.js" type="text/javascript"></script>
+
 </head>
 	<body>
-		<form action = "php/newAccount.php" method = "post">
+		<form id="joinForm" action = "php/newAccount.php" method = "post">
 		<label>First name </label>
 		<input type = 'text' name = 'firstName'>
 		<br>
@@ -27,17 +30,15 @@
 		<br>
 		
 		<label>Carrier</label>
-		<select name="Carrier">
-		<option value="Verizon">Verizon</option>
+		<select name="carrier">
+		<option value="Not Availablen">Verizon</option>
 		<option value="AT&T">AT&T</option>
 		<option value="T-Mobile">T-Mobile</option>
-		<option value="">Not Available</option>
+		<option value="Verizon"></option>
 		<br>
-		
-		<?php 
-		
-		?>
-		
 		<input type = "submit" value = "Submit">
+
+        <div id="creationError" style="display:none">Account with that email already exists</div>
+		
 	</body>
 </html>

@@ -25,8 +25,8 @@
 	$password = $_POST['password'];
 	$phoneNum = $_POST['phoneNum'];
 	$carrier = $_POST['carrier'];
-	$textUpdates = $_POST['textUpdates'];
-	$emailUpdates = $_POST['emailUpdates'];
+	//$textUpdates = $_POST['textUpdates'];
+	//$emailUpdates = $_POST['emailUpdates'];
 	
 	$textUpdates = ' ';
 	$emailUpdates = ' ';
@@ -61,12 +61,21 @@
 	$textUpdates = mysql_real_escape_string($textUpdates);
 	$emailUpdates = mysql_real_escape_string($emailUpdates);
 	
-	// Construct SQL query to add new user
-	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates) VALUES ('$email', '$firstName', '$lastName', '$password', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates')";
-		
-	// Add user to database
-	mysql_query($sql) or die("Could not query: " . mysql_error());
+	// Check if email already exists in DB
+	$result = mysql_query("SELECT * FROM $tbl_name WHERE email = '$email'") or die("could not query" . mysql_error());
 	
-	// Direct to account created notification
-	header("location:created.html");
+	if (mysql_num_rows($result) > 0){
+	    echo "exists";
+	}
+	
+    else {
+    	// Construct SQL query to add new user
+    	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates) VALUES ('$email', '$firstName', '$lastName', '$password', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates')";
+    		
+    	// Add user to database
+    	mysql_query($sql) or die("Could not query: " . mysql_error());
+    	
+    	// Direct to account created notification
+    	//header("location:created.html");
+	}
 ?>
