@@ -9,22 +9,25 @@
 </head>
 	<body>
 		
-		<form id="joinForm" action = "php/newAccount.php" method = "post">
-			<input type="text" name="firstName" placeholder="first name" />
-			<input type="text" name="lastName" placeholder="last name" />
-			<input type="text" name="email" placeholder="email" />
-			<input type="password" name="password" placeholder="password" />
-			<input type="password" name="confirmPassword" placeholder="confirm password" />
-			<input type="text" name="phoneNum" placeholder="phone number" />
-			<select name="carrier">
-				<option value="default">Select a Carrier</option>
-				<option value="AT&T">AT&amp;T</option>
-				<option value="T-Mobile">T-Mobile</option>
-				<option value="Verizon">Verizon</option>
-			</select>
-			<input type="submit" value="submit" />
-			<input type="reset" value="cancel" />
-		</form>
+		<!-- Box -->
+		<div id="newAccountBox">
+			<form id="joinForm" action = "php/newAccount.php" method = "post">
+				<input type="text" name="firstName" placeholder="first name" />
+				<input type="text" name="lastName" placeholder="last name" />
+				<input type="text" name="email" placeholder="email" />
+				<input type="password" name="password" placeholder="password" />
+				<input type="password" name="confirmPassword" placeholder="confirm password" />
+				<input type="text" name="phoneNum" placeholder="phone number" />
+				<select name="carrier">
+					<option value="default">Select a Carrier</option>
+					<option value="AT&T">AT&amp;T</option>
+					<option value="T-Mobile">T-Mobile</option>
+					<option value="Verizon">Verizon</option>
+				</select>
+				<input type="submit" value="submit" />
+				<input type="reset" value="cancel" />
+			</form>
+		</div>
 
 		<!-- Error messages -->
         <div id="creationError">Account with that email already exists.</div>
