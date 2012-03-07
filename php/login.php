@@ -8,7 +8,7 @@
 	$tbl_name = "users";
 	*/
 	
-	session.start();
+	session_start();
 	
 	$host = "localhost";
 	$sqlusername = "root";

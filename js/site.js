@@ -5,6 +5,9 @@ $(document).ready(function() {
 	$('#joinForm').submit(function() {
 	    newAccount(event);
 	});
+	$('#email').blur(validateEmail);
+	$('#email').keyup(validateEmail);
+	
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -47,4 +50,30 @@ function newAccount(event)
         }
     );
 }
-            
+
+// Validate email
+function validateEmail()
+{
+    var regex = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{0,4}$/;    
+    if(regex.test(this.value)){
+        $('#creationError').fadeOut('fast');
+        return true;
+    }
+    else {
+        $('#creationError').fadeIn('fast');
+        return false;
+    }
+}
+
+function validatePassword1()
+{
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
