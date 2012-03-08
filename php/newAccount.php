@@ -23,6 +23,7 @@
 	$firstName = $_POST['firstName'];
 	$lastName = $_POST['lastName'];
 	$password = $_POST['password'];
+	$passwordConfirm = $_POST['confirmPassword'];
 	$phoneNum = $_POST['phoneNum'];
 	$carrier = $_POST['carrier'];
 	//$textUpdates = $_POST['textUpdates'];
@@ -30,6 +31,21 @@
 	
 	$textUpdates = ' ';
 	$emailUpdates = ' ';
+	
+	
+	// Functions for validation
+	function validateEmail($email){
+	    return (ereg("^[a-zA-Z0-9]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$", $email));
+	}
+	function validatePassword($password){
+	    return (strlen($password) > 5);
+	}
+	function validatePassword2($password, $password2){
+	    return ($password == $password2);
+    }
+    function emailExistence($email){
+        return (mysql_num_rows(mysql_query("SELECT * FROM users WHERE email = '$email'")) <= 0);
+    }
 
 	
 	// Switch case for different carriers. Phone email is constructed by using the phone
@@ -52,30 +68,48 @@
 		break;
 	}	
 	
-	$email = mysql_real_escape_string($email);
-	$password = mysql_real_escape_string($password);
-	$firstName = mysql_real_escape_string($firstName);
-	$lastName = mysql_real_escape_string($lastName);
-	$phoneNum = mysql_real_escape_string($phoneNum);
-	$phoneEmail = mysql_real_escape_string($phoneEmail);
-	$textUpdates = mysql_real_escape_string($textUpdates);
-	$emailUpdates = mysql_real_escape_string($emailUpdates);
+	// Get fields ready for DB submission
+//	$email = mysql_real_escape_string($email);
+//	$password = mysql_real_escape_string($password);
+//	$passwordConfirm =mysql_escape_string($passwordConfirm);
+//	$firstName = mysql_real_escape_string($firstName);
+//	$lastName = mysql_real_escape_string($lastName);
+//	$phoneNum = mysql_real_escape_string($phoneNum);
+//	
+//	$phoneEmail = mysql_real_escape_string($phoneEmail);
+//	$textUpdates = mysql_real_escape_string($textUpdates);
+//	$emailUpdates = mysql_real_escape_string($emailUpdates);
 	
-	// Check if email already exists in DB
-	$result = mysql_query("SELECT * FROM $tbl_name WHERE email = '$email'") or die("could not query" . mysql_error());
 	
-	if (mysql_num_rows($result) > 0){
-	    echo "exists";
+	// Check if email is a valid email
+	if (!validateEmail($email)){
+	    echo ("emailError");
 	}
 	
-    else {
+	// Check if password is a valid password
+	if (!validatePassword($password)){
+	    echo ("passwordError");
+	}
+	
+	// Check if passwords are the same
+	if (!validatePassword2($password, $passwordConfirm)){
+	    echo ("passwordMatchError");
+	}
+	
+	// Check if email already exists in DB
+	if (!emailExistence($email)){
+	    echo ("exists");
+	}
+	
+	// If all the inputs are valid then they can be submitted to the DB
+    if (validateEmail($email) AND validatePassword($password) AND validatePassword2($password, $passwordConfirm) AND emailExistence($email)){
     	// Construct SQL query to add new user
     	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates) VALUES ('$email', '$firstName', '$lastName', '$password', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates')";
-    		
+
     	// Add user to database
     	mysql_query($sql) or die("Could not query: " . mysql_error());
     	
     	// Direct to account created notification
-    	//header("location:created.html");
+    	header("location:groups.html");
 	}
 ?>
