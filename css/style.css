@@ -22,6 +22,20 @@ body{
 	font-size: 0.9em;
 	cursor: pointer;
 }
+input[type="text"]{
+	
+}
+input[type="password"]{
+	
+}
+footer.alt{
+	font-size: 0.7em;
+	color: #fff;
+	position: relative;
+	top: 50%;
+	margin-top: 5px;
+	text-align: center;
+}
 
 /* Login */
 #loginBox{
@@ -32,31 +46,31 @@ body{
 	margin: -120px auto 0 auto;
 	position: relative;
 }
-input[type="text"]{
+#loginEmail{
 	width: 360px;
 	height: 33px;
 	background: url('../images/loginInput.png') no-repeat;
 	margin: 100px 0 0 45px;
 	padding-left: 10px;
 }
-input[type="password"]{
+#loginPassword{
 	width: 360px;
 	height: 33px;
 	background: url('../images/loginInput.png') no-repeat;
 	margin: 5px 0 0 45px;
 	padding-left: 10px;
 }
-input[type="text"]:focus,
-input[type="password"]:focus{
-	outline: none;
-}
-#login{margin: 15px 0 0 45px;}
-#join{
+	#loginEmail:focus,
+	#loginPassword:focus{
+		outline: none;
+	}
+#loginButton{margin: 15px 0 0 45px;}
+#joinButton{
 	text-align: center;
 	margin: -26px 170px 0 0;
 	float: right;
 }
-#join p{
+#joinButton p{
 	margin-top: 5px;
 	text-shadow: 1px 0 3px rgb(0,0,0);
 }
@@ -79,11 +93,9 @@ input[type="password"]:focus{
 	top: 50%;
 	margin: auto;
 }
-footer{
-	font-size: 0.7em;
-	color: #fff;
-	position: relative;
-	top: 50%;
-	margin-top: 5px;
-	text-align: center;
+
+/* Join */
+#newAccountBox{
+	
 }
+

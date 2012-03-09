@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>New Account</title>
-	<link rel="stylesheet" src="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
@@ -11,19 +11,34 @@
 		
 		<!-- Box -->
 		<div id="newAccountBox">
-			<form id="joinForm" action = "php/newAccount.php" method = "post">
-				<input type="text" name="firstName" placeholder="first name" />
-				<input type="text" name="lastName" placeholder="last name" />
-				<input id="email" type="text" name="email" placeholder="email" />
-				<input id="password" type="password" name="password" placeholder="password" />
-				<input id="confirmPassword" type="password" name="confirmPassword" placeholder="confirm password" />
-				<input type="text" name="phoneNum" placeholder="phone number" />
-				<select name="carrier">
+			<form id="joinForm" action = "php/join.php" method = "post">
+			
+				<!-- Left -->
+				<input type="text" name="firstName" placeholder="first name" class="firstName" />
+				<input type="text" name="lastName" placeholder="last name" class="lastName" />
+				<input type="text" name="email" placeholder="email" class="accountEmail" />
+				<input type="password" name="password" placeholder="password" class="accountPassword" />
+				<input type="password" name="confirmPassword" placeholder="confirm password" class="accountConfirmPassword" />
+				<input type="text" name="phoneNum" placeholder="phone number" class="phoneNumber" />
+				<select name="carrier" class="carrier">
 					<option value="default">Select a Carrier</option>
 					<option value="AT&T">AT&amp;T</option>
 					<option value="T-Mobile">T-Mobile</option>
 					<option value="Verizon">Verizon</option>
 				</select>
+				<h3>texts</h3>
+					<label>Yes</label>
+					<input type="radio" name="texts" value="textYes" checked />
+					<label>No</label>
+					<input type="radio" name="texts" value="textNo" />
+				<h3>emails</h3>
+					<label>Yes</label>
+					<input type="radio" name="emails" value="emailYes" checked />
+					<label>No</label>
+					<input type="radio" name="emails" value="emailNo" />
+					
+				<!-- Right -->
+				<div id="editImage">Edit<div id="overlay"></div></div>
 				<input type="submit" value="submit" />
 				<input type="reset" value="cancel" />
 			</form>
@@ -35,6 +50,6 @@
         <div id="invalidPassError">Password must contain at least 5 characters (letters, numbers, "_").</div>
         <div id="emailError">Email is not valid.</div>
 		
-		<footer>&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
+		<footer class="alt">&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
 	</body>
 </html>

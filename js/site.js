@@ -1,14 +1,18 @@
 $(document).ready(function() {
+    // Sniffer for login submit
 	$('#loginForm').submit(function() {
 		login(event);
 	});
+	
+	// Sniffer for join submit
 	$('#joinForm').submit(function() {
 	    newAccount(event);
 	});
 	
-//	$('#email').blur(validateEmail);
-//    $('#password').blur(validatePass1);
-//    $('#confirmPassword').blur(validatePass2);
+	// Sniffers for blurs on the email, password, and confirm password for create account page
+	$('.accountEmail').blur(validateEmail);
+    $('.accountPassword').blur(validatePass1);
+    $('.accountConfirmPassword').blur(validatePass2);
     	
 	
 });
@@ -17,9 +21,12 @@ $(document).ready(function() {
 function login(event)
 {
 	event.preventDefault();
+	
+	// Create data form form and get action
 	var data = $("form#loginForm").serialize();
 	var url = $('form#loginForm').attr('action');
 	
+	// AJAX function to submit data for login.php, if successful move user to next page, otherwise present error
 	$.post(url, data,
 		function(data) {
 	        console.log(data);
@@ -34,16 +41,21 @@ function login(event)
 }
 
 
-// Function to ensure during account creation the email has not been taken
+// Function that handles the returns of php validation and moving user to next page upon successful account creation
 function newAccount(event)
 {
     event.preventDefault();
+    
+    // Create data form form and get action
     var data = $("form#joinForm").serialize();
     var url = $("form#joinForm").attr('action');
     
+    // Use AJAX post to prevent refresh of page
     $.post (url, data,
         function(data) {
             console.log(data);
+            
+            // Check for each error in the return data and present error windows accordingly
             if (data.indexOf("exists") != -1){
                 $('#creationError').fadeIn('fast');
             }
@@ -62,14 +74,10 @@ function newAccount(event)
             if (data.indexOf("passwordMatchError") != -1){
                 $('#passMatchError').fadeIn('fast');
             }
-            else {
-//                $('#creationError').fadeOut('fast');
-//                $('#emailError').fadeOut('fast');
-//                $('invalidPasswordError').fadeOut('fast');
-                $('#passMatchError').fadeOut('fast');
-                
-                //window.location.replace("groups.html"); 
-            }
+            else {$('#passMatchError').fadeOut('fast');}
+            
+            // If there are no errors then move the user to the next page
+            if (data==''){window.location.replace("groups.html");}
         }
     );
 }
@@ -77,12 +85,16 @@ function newAccount(event)
 // Validate email
 function validateEmail()
 {
+    // Create regular expression to validate an email
     var regEmail = (/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);    
     
+    // If it's valid remove error window
     if(regEmail.test(this.value)){
         $('#emailError').fadeOut('fast');
         return true;
     }
+    
+    // If invalid present the error box
     else {
         $('#emailError').fadeIn('fast');
         return false;
@@ -90,12 +102,14 @@ function validateEmail()
 }
 
 function validatePass1()
-{
-    console.log(this);
+{    
+    // Password must be at least 5 characters, if it's valid remove error window
     if (this.value.length > 4){
         $('#invalidPassError').fadeOut('fast');
         return true;
     }
+    
+    // If invalid present the error box
     else {
         $('#invalidPassError').fadeIn('fast');
         return false;
@@ -104,13 +118,16 @@ function validatePass1()
 
 function validatePass2()
 {
-    var pass = $('#password');
-    console.log(this.value);
-    console.log(pass.val());
+    // Variable for first password
+    var pass = $('.accountPassword');
+    
+    // Passwords must be the same, if it's valid remove error window
     if (pass.val() == this.value){
         $('#passMatchError').fadeOut('fast');
         return true;
     }
+    
+    // If invalid present the error box
     else {
         $('#passMatchError').fadeIn('fast');
         return false;
