@@ -8,7 +8,8 @@
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
-	<div id="loginBox">
+	<div id="loginBox" class="box">
+		<div id="loginTitle"></div>
 		<form action="php/login.php" method="post" id="loginForm">
 			<input type="text" name="email" placeholder="email" id="loginEmail" />
 			<input type="password" name="password" placeholder="password" id="loginPassword" />
@@ -18,7 +19,7 @@
 		<a href="join.html"><div id="joinButton" class="buttonG"><p>Join</p></div></a>
 		<div id="reset">Forgot password?</div>
 	</div>
-	<div id="loginError"><p>Wrong Username/Password Combination.</p></div>
-	<footer class="alt">&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
+	<div id="loginError" class="error">Wrong Username/Password Combination.</div>
+	<footer class="secondary">&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
 </body>
 </html>

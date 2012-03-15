@@ -10,46 +10,55 @@
 	<body>
 		
 		<!-- Box -->
-		<div id="newAccountBox">
-			<form id="joinForm" action = "php/join.php" method = "post">
+		<div id="joinBox" class="box">
+			<form id="joinForm" action="php/join.php" method="post">
 			
 				<!-- Left -->
-				<input type="text" name="firstName" placeholder="first name" class="firstName" />
-				<input type="text" name="lastName" placeholder="last name" class="lastName" />
-				<input type="text" name="email" placeholder="email" class="accountEmail" />
-				<input type="password" name="password" placeholder="password" class="accountPassword" />
-				<input type="password" name="confirmPassword" placeholder="confirm password" class="accountConfirmPassword" />
-				<input type="text" name="phoneNum" placeholder="phone number" class="phoneNumber" />
-				<select name="carrier" class="carrier">
-					<option value="default">Select a Carrier</option>
-					<option value="AT&T">AT&amp;T</option>
-					<option value="T-Mobile">T-Mobile</option>
-					<option value="Verizon">Verizon</option>
-				</select>
-				<h3>texts</h3>
-					<label>Yes</label>
-					<input type="radio" name="texts" value="textYes" checked />
-					<label>No</label>
-					<input type="radio" name="texts" value="textNo" />
-				<h3>emails</h3>
-					<label>Yes</label>
-					<input type="radio" name="emails" value="emailYes" checked />
-					<label>No</label>
-					<input type="radio" name="emails" value="emailNo" />
+				<div id="joinLeft">
+					<input type="text" name="firstName" placeholder="first name" id="joinFirst" />
+					<input type="text" name="lastName" placeholder="last name" id="joinLast" />
+					<input type="text" name="email" placeholder="email" id="joinEmail" />
+					<input type="password" name="password" placeholder="password" id="joinPassword" />
+					<input type="password" name="confirmPassword" placeholder="confirm password" id="joinConfirm" />
+					<input type="text" name="phoneNum" placeholder="phone number" id="joinPhone" />
+					<select name="carrier" id="joinCarrier">
+						<option value="default">Select a Carrier</option>
+						<option value="AT&T">AT&amp;T</option>
+						<option value="T-Mobile">T-Mobile</option>
+						<option value="Verizon">Verizon</option>
+					</select>
+					<div id="joinTexts">
+						<label name="texts">texts:</label>
+							<label>Yes</label>
+							<input type="radio" name="texts" value="textYes" checked />
+							<label>No</label>
+							<input type="radio" name="texts" value="textNo" />
+					</div>
+					<div id="joinEmails">
+						<label name="emails">emails:</label>
+							<label>Yes</label>
+							<input type="radio" name="emails" value="emailYes" checked />
+							<label>No</label>
+							<input type="radio" name="emails" value="emailNo" />
+					</div>
+				</div>
 					
 				<!-- Right -->
-				<div id="editImage">Edit<div id="overlay"></div></div>
-				<input type="submit" value="submit" />
-				<input type="reset" value="cancel" />
+				<div id="joinRight">
+					<!--<div id="editImage">Edit<div id="overlay"></div></div>-->
+					<div id="joinTitle"></div>
+					<input type="submit" value="submit" class="buttonG" id="joinSubmit" />
+					<a href="login.html"><div id="joinCancel" class="button"><p>cancel</p></div></a>
+				</div>
 			</form>
 		</div>
 
 		<!-- Error messages -->
-        <div id="creationError">Account with that email already exists.</div>
-        <div id="passMatchError">Passwords do not match.</div>
-        <div id="invalidPassError">Password must contain at least 5 characters (letters, numbers, "_").</div>
-        <div id="emailError">Email is not valid.</div>
+        <div id="creationError" class="error">Account with that email already exists.</div>
+        <div id="passMatchError" class="error">Passwords do not match.</div>
+        <div id="invalidPassError" class="error">Password must contain at least 5 characters (letters, numbers, "_").</div>
+        <div id="emailError" class="error">Email is not valid.</div>
 		
-		<footer class="alt">&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
+		<footer class="secondary">&copy; Copyright 2012 Esquire. Fake Rights Reserved.</footer>
 	</body>
 </html>

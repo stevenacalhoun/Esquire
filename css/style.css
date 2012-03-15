@@ -4,31 +4,76 @@ body{
 	height: 100%;
 	background: url('../images/bodyBG.png');
 }
+.box{
+	background: url('../images/boxBG.png');
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #000;
+	top: 50%;
+	position: relative;
+}
 .button{
-	width: 108px;
-	height: 27px;
+	width: 75px;
+	height: 23px;
 	background: url('../images/button.png') no-repeat;
 	color: #fff;
-	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
-	font-size: 0.9em;
+	text-shadow: 0 1px 3px rgb(0,66,112);
+	font-size: 0.85em;
 	cursor: pointer;
 }
+	.button:hover{
+		background: url('../images/buttonHover.png') no-repeat;
+	}
 .buttonG{
-	width: 108px;
-	height: 27px;
-	background: url('../images/buttonG.png');
+	width: 75px;
+	height: 23px;
+	background: url('../images/buttonG.png') no-repeat;
 	color: #fff;
-	text-shadow: 1px 0 3px rgba(0,0,0,0.4);
-	font-size: 0.9em;
+	text-shadow: 0 1px 3px rgb(0,99,23);
+	font-size: 0.85em;
 	cursor: pointer;
 }
-input[type="text"]{
-	
-}
+	.buttonG:hover{
+		background: url('../images/buttonGHover.png') no-repeat;	
+	}
+
+input[type="text"],
 input[type="password"]{
+	width: 185px;
+	height: 20px;
+	border-radius: 5px;
+	border: 1px solid rgb(140,140,140);
+	box-shadow: 0px 1px 0px rgb(226,226,226);
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+input[type="radio"]{
+	width: 12px;
+	height: 13px;
+	background: url('../images/radioEmpty.png') no-repeat;
+}
+input[type="radio"]:checked{
+	width: 12px;
+	height: 13px;
+	background: url('../images/radioFull.png') no-repeat;
+}
+.error{
+	display: none;
+	width: 420px;
+	background-color: #fe6363;
+	border: 1px solid #ae0000;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	font-size: 0.8em;
+	position: relative;
+	top: 50%;
+	margin: auto auto 5px auto;
 	
 }
-footer.alt{
+footer{
+	
+}
+footer.secondary{
 	font-size: 0.7em;
 	color: #fff;
 	position: relative;
@@ -39,63 +84,124 @@ footer.alt{
 
 /* Login */
 #loginBox{
-	width: 456px;
-	height: 237px;
-	background: url('../images/loginBox.png') no-repeat;
-	top: 50%;
-	margin: -120px auto 0 auto;
-	position: relative;
+	width: 440px;
+	height: 225px;
+	margin: -120px auto 10px auto;
+}
+#loginTitle{
+	width: 192px;
+	height: 66px;
+	background: url('../images/loginTitle.png') no-repeat;
+	margin: 15px 0 0 128px;
+	position: absolute;
 }
 #loginEmail{
-	width: 360px;
-	height: 33px;
-	background: url('../images/loginInput.png') no-repeat;
-	margin: 100px 0 0 45px;
+	width: 355px;
+	height: 30px;
+	margin: 100px 0 0 35px;
 	padding-left: 10px;
 }
 #loginPassword{
-	width: 360px;
-	height: 33px;
-	background: url('../images/loginInput.png') no-repeat;
-	margin: 5px 0 0 45px;
+	width: 355px;
+	height: 30px;
+	margin: 5px 0 0 35px;
 	padding-left: 10px;
 }
-	#loginEmail:focus,
-	#loginPassword:focus{
-		outline: none;
+#loginButton{
+	width: 108px;
+	height: 27px;
+	background: url('../images/loginButton.png') no-repeat;
+	margin: 15px 0 0 35px;
+}
+	#loginButton:hover{
+		background: url('../images/loginButtonHover.png') no-repeat;
 	}
-#loginButton{margin: 15px 0 0 45px;}
 #joinButton{
+	width: 108px;
+	height: 27px;
+	background: url('../images/loginButtonG.png');
 	text-align: center;
-	margin: -26px 170px 0 0;
+	margin: -26px 160px 0 0;
 	float: right;
 }
-#joinButton p{
-	margin-top: 5px;
-	text-shadow: 1px 0 3px rgb(0,0,0);
-}
+	#joinButton p{
+		margin-top: 5px;
+		text-shadow: 0 1px 3px rgb(0,66,112);
+	}
+	#joinButton:hover{
+		background: url('../images/loginButtonGHover.png') no-repeat;
+	}
 #reset{
 	font-size: 0.7em;
 	color: #787878;
-	margin: -19px 0 0 315px;
-}
-#loginError{
-	display: none;
-	width: 420px;
-	height: 15px;
-	background: #ff8787;
-	border: 1px solid #830000;
-	border-radius: 10px;
-	padding: 10px;
-	text-align: center;
-	font-size: 0.8em;
-	position: relative;
-	top: 50%;
-	margin: auto;
+	margin: -19px 0 0 311px;
 }
 
 /* Join */
-#newAccountBox{
-	
+#joinBox{
+	width: 450px;
+	height: 325px;
+	margin: -165px auto 10px auto;
 }
-
+#joinLeft{
+	width: 225px;
+	height: 325px;
+	float: left;
+	position: absolute;
+	padding: 15px;
+	margin-top: 15px;
+}
+	select{
+		width: 192px;
+		height: 20px;
+		border-radius: 5px;
+		border: 1px solid rgb(140,140,140);
+		box-shadow: 0px 1px 0px rgb(226,226,226);
+		margin-bottom: 10px;
+		padding-left: 5px;
+	}
+	#joinTexts{margin-bottom: 10px;}
+	label[name="texts"]{
+		font-weight: bold;
+		padding-right: 9px;
+	}
+	label[name="emails"]{font-weight: bold;}
+	label{font-size: 0.75em;}
+#joinRight{
+	width: 225px;
+	height: 250px;
+	float: right;
+	margin: 75px 0 0 -10px;
+}
+	/*#editImage{
+		width: 50px;
+		height: 50px;
+		background: url('../images/defaultProfileImage.png') no-repeat;
+		color: #fff;
+		font-size: 0.5em;
+	}
+	#overlay{
+		width: 100%;
+		height: 100%;
+		opacity: 0.4;
+		background-color: #000;
+		border-radius: 10px;
+		margin-top: -11px;
+	}*/
+	#joinTitle{
+		width: 192px;
+		height: 106px;
+		background: url('../images/joinTitle.png') no-repeat;
+	}
+	#joinSubmit{
+		margin: 30px 0 0 15px;
+	}
+	#joinCancel{
+		text-align: center;
+		margin: 30px 50px 0 0;
+		float: right;
+	}
+		#joinCancel p{
+			margin-top: 3px;
+			text-shadow: 0 1px 3px rgb(0,66,112);
+		}
