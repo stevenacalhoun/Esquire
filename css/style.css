@@ -1,9 +1,11 @@
 /* Foundation & Common Elements */
-*{margin: 0;padding: 0;border: 0;text-decoration: none;font-family: 'Helvetica';}
+*{margin: 0;padding: 0;border: 0;text-decoration: none;}
 body{
 	width: 100%;
 	height: 100%;
+	position: relative;
 	background: url('../images/bodyBG.png');
+	font-family: Helvetica, Ariel, Sans-serif;
 }
 .box{
 	background: url('../images/boxBG.png');
@@ -14,7 +16,7 @@ body{
 }
 .container{
 	width: 850px;
-	min-height: 300px;
+	height: 100%;
 	margin: auto;
 	background: url('../images/boxBG.png');
 }
@@ -233,9 +235,28 @@ footer{
 /* Groups */
 #groupList{
 	width: 100%;
-	height: 100px;
+	height: 100%;
 }
 #groupSearch{
 	width: 400px;
-	margin: 20px 0 0 225px;
+	margin: 20px 0 20px 225px;
+}
+.groupBlock{
+	width: 100%;
+	padding: 15px 0;
+	background: url('../images/boxBG.png');
+	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
+}
+.groupTitle{
+	margin-left: 10px;
+	font-size: 0.95em;
+	font-weight: bold;
+	color: #0283de;
+}
+.groupText{
+	margin: 5px 10px;
+	font-size: 0.85em;
+}
+#groupCreate{
+	margin-top: 20px;
 }
