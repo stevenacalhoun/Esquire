@@ -27,7 +27,7 @@
 			<!-- Group chunks go here -->
             <?php 
                 require_once("php/userClass.php");
-                require_once("php/groupClass.php");
+                require("php/groupClass.php");
                 require_once("php/db_setup.php");
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
                 mysql_select_db("$db_name", $con);
@@ -38,12 +38,12 @@
                 
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
-
-                    // Christian is awesome
-                    <div class="groupBlock">
-                    	<div class="groupTitle"></div>
-                    	<div class="groupText"></div>
-                    </div>
+             ?>
+                 	<div class="groupBlock">
+                 		<div class="groupTitle"></div>
+                 		<div class="groupText"></div>
+                 	</div>              
+                    <?php
                 }
              ?>    
 		</div>
