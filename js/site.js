@@ -13,8 +13,9 @@ $(document).ready(function() {
 	$('#joinEmail').blur(validateEmail);
     $('#joinPassword').blur(validatePass1);
     $('#joinConfirm').blur(validatePass2);
-    	
-	
+    
+    // Sniffer for logout
+    $('.navLogout').click(function(){window.location.replace("index.php");});
 });
 
 // AJAX function for login. Checking to see if correct login.
