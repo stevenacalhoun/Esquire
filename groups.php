@@ -46,8 +46,8 @@
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
              ?>
-                 	<div id="<?php echo $group->getGroupID(); ?>" class="groupBlock">
-                 		<div class="groupTitle">
+                 	<div class="groupBlock">
+                 		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
                  			<?php echo $group->getName(); ?>
                  		</div>
                  		<div class="groupText">
