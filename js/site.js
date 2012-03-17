@@ -76,8 +76,10 @@ function newAccount(event)
             }
             else {$('#passMatchError').fadeOut('fast');}
             
+            
+            
             // If there are no errors then move the user to the next page
-            if (data==''){window.location.replace("groups.html");}
+            if (data==''){window.location.replace("groups.php");}
         }
     );
 }

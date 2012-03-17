@@ -88,8 +88,7 @@
     	
     	
     	// Create user object and add to Session
-    	$groups = [];
-    	$user = new userClass($firstName, $lastName, $email, $phoneEmail, $password, $groups);
+    	$user = new userClass($email);
     	$_SESSION['user'] = $user;
     	
     }
