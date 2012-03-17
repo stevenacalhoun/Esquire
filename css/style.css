@@ -16,7 +16,7 @@ body{
 }
 .container{
 	width: 850px;
-	height: 100%;
+	min-height: 700px;
 	margin: auto;
 	background: url('../images/boxBG.png');
 }
@@ -120,10 +120,19 @@ input[type="radio"]:checked{
 	margin: auto auto 5px auto;
 	
 }
+.overlay{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: 0.4;
+	background-color: #000;
+	z-index: 1;
+}
 footer{
 	width: 850px;
 	height: 40px;
-	margin: auto;
+	margin: -20px auto 0 auto;
+	position: relative;
 	padding-top: 25px;
 	background: url('../images/boxBG.png');
 	box-shadow: 0px -1px 0px rgb(170, 170, 170);
@@ -267,3 +276,6 @@ footer{
 	font-size: 0.85em;
 }
 #groupCreate{margin: 20px;}
+
+/* Create Group popover */
+#group
