@@ -1,11 +1,11 @@
 <?php
     class groupClass{
-        var $_groupID;
-        var $_name;
-        var $_admin;
-        var $_description;
+        private $_groupID;
+        private $_name;
+        private $_admin;
+        private $_description;
         
-        public function __constructor($groupID){
+        public function groupClass($groupID){
             require("db_setup.php");
             $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
             mysql_select_db("$db_name", $con);
@@ -17,6 +17,23 @@
             $this->_description = $groupInfo['description'];
             $this->_admin = $groupInfo['admin'];
         
+        }
+     
+        // Getters
+        public function getGroupID(){
+            return $this->_getGroupID;
+        }   
+        
+        public function getName(){
+            return $this->_name;
+        }
+        
+        public function getAdmin(){
+            return $this->_admin;
+        }
+        
+        public function getDescription(){
+            return $this->_description;
         }
     }
 ?>

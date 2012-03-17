@@ -2,15 +2,15 @@
 
 class userClass {
     
-    public $_firstName;
-    var $_lastName;
-    var $_email;
-    var $_phoneEmail;
-    var $_password;
-    public $_groups;
+    private $_firstName;
+    private $_lastName;
+    private $_email;
+    private $_phoneEmail;
+    private $_password;
+    private $_groups;
 
         
-    public function __construct($email){
+    public function userClass($email){
             require("db_setup.php");
             $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
             mysql_select_db("$db_name", $con);
@@ -30,10 +30,19 @@ class userClass {
     }
     
     // Getters
-    function getGroups(){
-        return $this->_groups;
+    public function getFirstName(){
+        return $this->_firstName;
     }
-    function getName(){
-        echo $this->_firstName;
+    
+    public function getEmail(){
+        return $this->_email;
+    }
+    
+    public function getLastName(){
+        return $this->_lastName;
+    }
+    
+    public function getGroups(){
+        return $this->_groups;
     }
 }
