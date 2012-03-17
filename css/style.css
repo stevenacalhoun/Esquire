@@ -1,3 +1,4 @@
+/* Foundation & Common Elements */
 *{margin: 0;padding: 0;border: 0;text-decoration: none;font-family: 'Helvetica';}
 body{
 	width: 100%;
@@ -11,31 +12,70 @@ body{
 	top: 50%;
 	position: relative;
 }
+.container{
+	width: 850px;
+	min-height: 300px;
+	margin: auto;
+	background: url('../images/boxBG.png');
+}
+header{
+	width: 850px;
+	height: 65px;
+	background: url('../images/boxBG.png');
+	box-shadow: 0px 1px 0px rgb(170, 170, 170);
+}
+.mainTitle{
+	width: 145px;
+	height: 50px;
+	background: url('../images/loginTitle.png') no-repeat;
+	background-size: 145px 50px;
+	margin: 10px 0 0 25px;
+	float: left;
+}
+.postButton{
+	width: 40px;
+	height: 40px;
+	background: url('../images/postButton.png') no-repeat;
+	background-size: 40px 40px;
+	margin: 14px 0 0 62px;
+	float: left;
+	cursor: pointer;
+}
+	.postButton:hover{background: url('../images/postButtonHover.png') no-repeat;}
+nav{
+	margin-top: 21px;
+	float: right;
+}
+	nav ul{list-style: none;}
+	nav ul li{
+		margin-right: 20px;
+		float: left;
+		line-height: 27px;
+	}
 .button{
-	width: 75px;
-	height: 23px;
+	width: 108px;
+	height: 27px;
 	background: url('../images/button.png') no-repeat;
 	color: #fff;
 	text-shadow: 0 1px 3px rgb(0,66,112);
+	text-align: center;
+	line-height: 27px;
 	font-size: 0.85em;
 	cursor: pointer;
 }
-	.button:hover{
-		background: url('../images/buttonHover.png') no-repeat;
-	}
+	.button:hover{background: url('../images/buttonHover.png') no-repeat;}
 .buttonG{
-	width: 75px;
-	height: 23px;
+	width: 108px;
+	height: 27px;
 	background: url('../images/buttonG.png') no-repeat;
 	color: #fff;
 	text-shadow: 0 1px 3px rgb(0,99,23);
+	text-align: center;
+	line-height: 27px;
 	font-size: 0.85em;
 	cursor: pointer;
 }
-	.buttonG:hover{
-		background: url('../images/buttonGHover.png') no-repeat;	
-	}
-
+	.buttonG:hover{background: url('../images/buttonGHover.png') no-repeat;	}
 input[type="text"],
 input[type="password"]{
 	width: 185px;
@@ -71,9 +111,20 @@ input[type="radio"]:checked{
 	
 }
 footer{
-	
+	width: 850px;
+	height: 40px;
+	margin: auto;
+	padding-top: 25px;
+	background: url('../images/boxBG.png');
+	box-shadow: 0px -1px 0px rgb(170, 170, 170);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: #7c7c7c;
+	font-size: 0.85em;
+	text-align: center;
+	text-shadow: 0px 1px 0px rgb(241, 241, 241);
 }
-footer.secondary{
+.secondaryFooter{
 	font-size: 0.7em;
 	color: #fff;
 	position: relative;
@@ -107,30 +158,11 @@ footer.secondary{
 	margin: 5px 0 0 35px;
 	padding-left: 10px;
 }
-#loginButton{
-	width: 108px;
-	height: 27px;
-	background: url('../images/loginButton.png') no-repeat;
-	margin: 15px 0 0 35px;
-}
-	#loginButton:hover{
-		background: url('../images/loginButtonHover.png') no-repeat;
-	}
+#loginButton{margin: 15px 0 0 35px;}
 #joinButton{
-	width: 108px;
-	height: 27px;
-	background: url('../images/loginButtonG.png');
-	text-align: center;
 	margin: -26px 160px 0 0;
 	float: right;
 }
-	#joinButton p{
-		margin-top: 5px;
-		text-shadow: 0 1px 3px rgb(0,66,112);
-	}
-	#joinButton:hover{
-		background: url('../images/loginButtonGHover.png') no-repeat;
-	}
 #reset{
 	font-size: 0.7em;
 	color: #787878;
@@ -148,8 +180,7 @@ footer.secondary{
 	height: 325px;
 	float: left;
 	position: absolute;
-	padding: 15px;
-	margin-top: 15px;
+	margin: 30px 0 0 20px;
 }
 	select{
 		width: 192px;
@@ -171,7 +202,7 @@ footer.secondary{
 	width: 225px;
 	height: 250px;
 	float: right;
-	margin: 75px 0 0 -10px;
+	margin: 75px -10px 0 0;
 }
 	/*#editImage{
 		width: 50px;
@@ -193,15 +224,18 @@ footer.secondary{
 		height: 106px;
 		background: url('../images/joinTitle.png') no-repeat;
 	}
-	#joinSubmit{
-		margin: 30px 0 0 15px;
-	}
+	#joinSubmit{margin: 10px 0 0 40px;}
 	#joinCancel{
-		text-align: center;
-		margin: 30px 50px 0 0;
+		margin: 5px 77px 0 0;
 		float: right;
 	}
-		#joinCancel p{
-			margin-top: 3px;
-			text-shadow: 0 1px 3px rgb(0,66,112);
-		}
+	
+/* Groups */
+#groupList{
+	width: 100%;
+	height: 100px;
+}
+#groupSearch{
+	width: 400px;
+	margin: 20px 0 0 225px;
+}
