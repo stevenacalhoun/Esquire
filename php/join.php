@@ -90,7 +90,7 @@
     	// Create user object and add to Session
     	$user = new userClass($email);
     	$_SESSION['user'] = $user;
-    	
     }
+    // Close DB connection
     mysql_close($con);
 ?>

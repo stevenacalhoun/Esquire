@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<?php session_start(); session_destroy(); ?>
+
+<?php 
+    // Destroy any session info that may be leftover to ensure login
+    session_start();
+    session_destroy();
+?>
 <html>
 <head>
 	<meta charset="utf-8" />

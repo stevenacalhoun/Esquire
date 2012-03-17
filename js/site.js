@@ -17,7 +17,14 @@ $(document).ready(function() {
     // Sniffer for logout
     $('.navLogout').click(function(){window.location.replace("index.php");});
     
-    $('.groupTitle').click(function(){console.log($('.groupBlock').attr('id'));});
+    // Sniffer for click on group title to take user to specific group page
+    $('.groupTitle').click(
+        function(){
+            console.log(this.id);
+            window.location.replace("specificGroup.php?groupID=" + this.id);
+    
+        }
+    );
 });
 
 // AJAX function for login. Checking to see if correct login.

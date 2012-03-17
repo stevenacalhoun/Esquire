@@ -24,6 +24,7 @@
 	// If count is 1 then the pair is correct and store them to the seession
 	if ($count == 1)
 	{
+	    // Add user object to the session and return success for login
         $user = new userClass($email);
         $_SESSION['user'] = $user;
         echo "success";
@@ -34,5 +35,7 @@
 	{
 		echo "Wrong username or password";
 	}
+	
+	// Close DB connection
 	mysql_close($con);
 ?>
