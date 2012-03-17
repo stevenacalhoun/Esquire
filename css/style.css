@@ -27,7 +27,7 @@ header{
 .mainTitle{
 	width: 145px;
 	height: 50px;
-	background: url('../images/loginTitle.png') no-repeat;
+	background: url('../images/title.png') no-repeat;
 	background-size: 145px 50px;
 	margin: 10px 0 0 25px;
 	float: left;
@@ -142,7 +142,7 @@ footer{
 #loginTitle{
 	width: 192px;
 	height: 66px;
-	background: url('../images/loginTitle.png') no-repeat;
+	background: url('../images/title.png') no-repeat;
 	margin: 15px 0 0 128px;
 	position: absolute;
 }
