@@ -20,14 +20,18 @@
 </head>
 <body>
 
-	<div class="overlay"></div>
-	<div id="createGroupBox">
+	<!-- Create Group Box -->
+	<div class="overlay" id="createGroupOverlay"></div>
+	<div class="box" id="createGroupBox">
 		<div id="createGroupTitle">Create a Group</div>
+		<form action="createGroup.php" id="createGroupForm">
 		<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
-		<input type="text" name="createGroupDescription" placeholder="description" id="createGroupDescription" />
-		<input type="text" name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails" />
-		<div class="button" id="createGroupCreate">Create</div>
+		<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
+		<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
+		<input type="submit" value="Create" class="buttonG" id="createGroupCreate" />
 	</div>
+	
+	<!-- Group Page -->
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>

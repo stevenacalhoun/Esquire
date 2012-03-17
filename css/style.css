@@ -6,6 +6,7 @@ body{
 	position: relative;
 	background: url('../images/bodyBG.png');
 	font-family: Helvetica, Ariel, Sans-serif;
+	z-index: 0;
 }
 .box{
 	background: url('../images/boxBG.png');
@@ -87,7 +88,8 @@ nav{
 }
 	.buttonG:hover{background: url('../images/buttonGHover.png') no-repeat;	}
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+textarea{
 	width: 185px;
 	height: 20px;
 	border-radius: 5px;
@@ -124,7 +126,7 @@ input[type="radio"]:checked{
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	opacity: 0.4;
+	opacity: 0.5;
 	background-color: #000;
 	z-index: 1;
 }
@@ -278,4 +280,38 @@ footer{
 #groupCreate{margin: 20px;}
 
 /* Create Group popover */
-#group
+#createGroupOverlay{display: none;}
+#createGroupBox{
+	display: none;
+	width: 400px;
+	position: absolute;
+	margin: -300px 0 0 575px;
+	z-index: 2;
+}
+#createGroupTitle{
+	margin: 10px;
+	font-weight: bold;
+	font-size: 0.95em;
+}
+#createGroupName{
+	width: 350px;
+	margin: 0 0 5px 20px;
+}
+#createGroupDescription{
+	width: 350px;
+	height: 100px;
+	margin: 0 0 5px 20px;
+	padding-top: 5px;
+	resize: none;
+}
+#createGroupEmails{
+	width: 350px;
+	height: 75px;
+	margin: 0 0 5px 20px;
+	padding-top: 5px;
+	resize: none;
+}
+#createGroupCreate{
+	float: right;
+	margin: 0 23px 10px 0;
+}
