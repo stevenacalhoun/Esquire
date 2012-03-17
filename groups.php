@@ -25,10 +25,10 @@
 			<div class="postButton"></div>
 			<nav>
 				<ul>
-					<a href="feed.php"><li class="button" id="navFeed">Feed</li></a>
-					<li class="button" id="navProfile">Profile</li>
-					<a href="groups.php"><li class="button" id="navGroup">Groups</li></a>
-					<li class="button" id="navLogout">Logout</li>
+					<a href="feed.php"><li class="button navFeed">Feed</li></a>
+					<li class="button navProfile">Profile</li>
+					<a href="groups.php"><li class="button navGroup">Groups</li></a>
+					<li class="button navLogout">Logout</li>
 				</ul>
 			</nav>
 		</header>
