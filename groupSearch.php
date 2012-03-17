@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Groups | Esquire</title>
+	<title>Group Search | Esquire</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>
@@ -14,9 +14,9 @@
 			<div class="postButton"></div>
 			<nav>
 				<ul>
-					<a href="feed.php"><li class="button navFeed">Feed</li></a>
+					<li class="button navFeed"><a href="feed.php">Feed</a></li>
 					<li class="button navProfile">Profile</li>
-					<a href="groups.php"><li class="button navGroup">Groups</li></a>
+					<li class="button navGroup"><a href="groups.php">Groups</a></li>
 					<li class="button navLogout">Logout</li>
 				</ul>
 			</nav>
@@ -24,7 +24,7 @@
 		<input type="text" name="search" placeholder="search groups" id="groupSearch" />
 		<div id="groupList">
 		
-			<!-- Group chunks go here -->
+			<!-- Group Search chunks go here -->
             <?php 
                 require_once("php/userClass.php");
                 require("php/groupClass.php");
@@ -46,12 +46,12 @@
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>
                  		</div>
+                 		<div class="groupAdd"></div>
                  	</div>              
             <?php
                 }
              ?>    
 		</div>
-		<div class="buttonG" id="groupCreate">Create</div> 
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
 </body>
