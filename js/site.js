@@ -16,6 +16,8 @@ $(document).ready(function() {
     
     // Sniffer for logout
     $('.navLogout').click(function(){window.location.replace("index.php");});
+    
+    $('.groupTitle').click(function(){console.log($('.groupBlock').attr('id'));});
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -136,10 +138,3 @@ function validatePass2()
         return false;
     }
 }
-    
-    
-    
-    
-    
-    
-    

@@ -40,7 +40,6 @@
 
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
                 mysql_select_db("$db_name", $con);
-      file://localhost/Volumes/Media/Users/Christian/Sites/esquire/SQL%20DB%20create.txt          
                 $user = $_SESSION['user'];
                 $groupIDs = $user->getGroups();
                 
