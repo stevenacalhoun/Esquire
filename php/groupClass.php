@@ -21,7 +21,7 @@
      
         // Getters
         public function getGroupID(){
-            return $this->_getGroupID;
+            return $this->_groupID;
         }   
         
         public function getName(){

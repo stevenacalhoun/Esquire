@@ -14,10 +14,10 @@
 			<div class="postButton"></div>
 			<nav>
 				<ul>
-					<a href="feed.html"><li class="button">Feed</li></a>
-					<li class="button">Profile</li>
-					<a href="groups.html"><li class="button">Groups</li></a>
-					<li class="button">Sign Out</li>
+					<li class="button navFeed"><a href="feed.php">Feed</a></li>
+					<li class="button navProfile">Profile</li>
+					<li class="button navGroup"><a href="groups.php">Groups</a></li>
+					<li class="button navLogout">Logout</li>
 				</ul>
 			</nav>
 		</header>

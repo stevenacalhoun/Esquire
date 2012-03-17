@@ -25,9 +25,9 @@
 			<div class="postButton"></div>
 			<nav>
 				<ul>
-					<a href="feed.php"><li class="button navFeed">Feed</li></a>
+					<li class="button navFeed"><a href="feed.php">Feed</a></li>
 					<li class="button navProfile">Profile</li>
-					<a href="groups.php"><li class="button navGroup">Groups</li></a>
+					<li class="button navGroup"><a href="groups.php">Groups</a></li>
 					<li class="button navLogout">Logout</li>
 				</ul>
 			</nav>
@@ -40,14 +40,14 @@
 
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
                 mysql_select_db("$db_name", $con);
-                
+      file://localhost/Volumes/Media/Users/Christian/Sites/esquire/SQL%20DB%20create.txt          
                 $user = $_SESSION['user'];
                 $groupIDs = $user->getGroups();
                 
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
              ?>
-                 	<div class="groupBlock">
+                 	<div id="<?php echo $group->getGroupID(); ?>" class="groupBlock">
                  		<div class="groupTitle">
                  			<?php echo $group->getName(); ?>
                  		</div>

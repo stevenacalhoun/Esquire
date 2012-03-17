@@ -14,9 +14,9 @@
 			<div class="postButton"></div>
 			<nav>
 				<ul>
-					<a href="feed.php"><li class="button navFeed">Feed</li></a>
+					<li class="button navFeed"><a href="feed.php">Feed</a></li>
 					<li class="button navProfile">Profile</li>
-					<a href="groups.php"><li class="button navGroup">Groups</li></a>
+					<li class="button navGroup"><a href="groups.php">Groups</a></li>
 					<li class="button navLogout">Logout</li>
 				</ul>
 			</nav>
