@@ -3,6 +3,7 @@
     // Start session and bring in DB info    
     session_start();
     require_once("db_setup.php");
+    require_once("userClass.php");
     $tbl_name = "users";
 
 	
@@ -85,9 +86,12 @@
     	// Add user to database
     	mysql_query($sql) or die("Could not query: " . mysql_error());
     	
-    	// Add info to session 
-        $_SESSION["email"] = $email;
-        $_SESSION["password"] = $password;
+    	
+    	// Create user object and add to Session
+    	$groups = [];
+    	$user = new userClass($firstName, $lastName, $email, $phoneEmail, $password, $groups);
+    	$_SESSION['user'] = $user;
+    	
     }
     mysql_close($con);
 ?>

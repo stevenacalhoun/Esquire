@@ -10,9 +10,9 @@ $(document).ready(function() {
 	});
 	
 	// Sniffers for blurs on the email, password, and confirm password for create account page
-	$('.accountEmail').blur(validateEmail);
-    $('.accountPassword').blur(validatePass1);
-    $('.accountConfirmPassword').blur(validatePass2);
+	$('#joinEmail').blur(validateEmail);
+    $('#joinPassword').blur(validatePass1);
+    $('#joinConfirm').blur(validatePass2);
     	
 	
 });
@@ -31,7 +31,7 @@ function login(event)
 		function(data) {
 	        console.log(data);
             if (data=="success"){
-                window.location.replace("groups.html");
+                window.location.replace("groups.php");
 		    }
 		    else {
                 $('#loginError').fadeIn('fast');
@@ -119,7 +119,7 @@ function validatePass1()
 function validatePass2()
 {
     // Variable for first password
-    var pass = $('.accountPassword');
+    var pass = $('#joinPassword');
     
     // Passwords must be the same, if it's valid remove error window
     if (pass.val() == this.value){

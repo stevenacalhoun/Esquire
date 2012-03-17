@@ -3,6 +3,7 @@
     // Start session and bring in DB info
 	session_start();
 	require_once("db_setup.php");
+	require_once("userClass.php");
     $tbl_name = "users";
 	
 	// Connect to server and database
@@ -11,7 +12,7 @@
 	
 	// Get email and password from form
 	$email = $_POST['email'];
-	$password = $_POST[	'password'];
+	$password = $_POST['password'];
 	
 	// Construct query from input and query database
 	$sql = "SELECT * FROM $tbl_name WHERE email = '$email' and password = '$password'";
@@ -23,8 +24,14 @@
 	// If count is 1 then the pair is correct and store them to the seession
 	if ($count == 1)
 	{
-        $_SESSION["email"] = $email;
-    	$_SESSION["password"] = $password;
+        $userRow = mysql_fetch_array($result);
+        $groupsIDs = mysql_query("SELECT groupID FROM member_of WHERE email = '$email'");
+        while($ID = mysql_fetch_array($groupsIDs)){
+            $groups[] = $ID['groupID'];
+        }
+        
+        $user = new userClass($userRow['firstName'], $userRow['lastName'], $userRow['email'], $userRow['phoneEmail'], $userRow['password'], $groups);
+        $_SESSION['user'] = $user;
         echo "success";
 	}
 	
