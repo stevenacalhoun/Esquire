@@ -40,10 +40,14 @@
                     $group = new groupClass($groupID);
              ?>
                  	<div class="groupBlock">
-                 		<div class="groupTitle"></div>
-                 		<div class="groupText"></div>
+                 		<div class="groupTitle">
+                 			<?php echo $group->getName(); ?>
+                 		</div>
+                 		<div class="groupText">
+                 			<?php echo $group->getDescription(); ?>
+                 		</div>
                  	</div>              
-                    <?php
+            <?php
                 }
              ?>    
 		</div>
