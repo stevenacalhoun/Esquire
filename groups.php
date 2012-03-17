@@ -27,20 +27,18 @@
 			<!-- Group chunks go here -->
             <?php 
                 require_once("php/userClass.php");
+                require_once("php/groupClass.php");
                 require_once("php/db_setup.php");
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
                 mysql_select_db("$db_name", $con);
                 
                 session_start();
                 $user = $_SESSION['user'];
-                $groups = $user->getGroups();
+                $groupIDs = $user->getGroups();
+                
+                foreach($groupIDs as $groupID){
+                    $group = new groupClass($groupID);
 
-                foreach($groups as $group){
-                    $groupInfo = mysql_fetch_array(mysql_query("SELECT * FROM groups WHERE groupID = '$group'"));
-                    $groupName = $groupInfo['name'];
-                    $groupDesc = $groupInfo['description'];
-                    $groupAdmin = $groupInfo['admin'];
-                    
                     // Christian...you up
                 }
              ?>    

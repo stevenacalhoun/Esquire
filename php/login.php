@@ -24,13 +24,7 @@
 	// If count is 1 then the pair is correct and store them to the seession
 	if ($count == 1)
 	{
-        $userRow = mysql_fetch_array($result);
-        $groupsIDs = mysql_query("SELECT groupID FROM member_of WHERE email = '$email'");
-        while($ID = mysql_fetch_array($groupsIDs)){
-            $groups[] = $ID['groupID'];
-        }
-        
-        $user = new userClass($userRow['firstName'], $userRow['lastName'], $userRow['email'], $userRow['phoneEmail'], $userRow['password'], $groups);
+        $user = new userClass($email);
         $_SESSION['user'] = $user;
         echo "success";
 	}
