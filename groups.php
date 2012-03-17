@@ -39,7 +39,11 @@
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
 
-                    // Christian...you up
+                    // Christian is awesome
+                    <div class="groupBlock">
+                    	<div class="groupTitle"></div>
+                    	<div class="groupText"></div>
+                    </div>
                 }
              ?>    
 		</div>
