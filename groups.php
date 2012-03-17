@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+    // Pull in required files and make sure the user is logged in
+    require_once("php/userClass.php");
+    require("php/groupClass.php");
+    require_once("php/db_setup.php");
+     
+    session_start();
+    if (!array_key_exists('user', $_SESSION)){
+    header('Location:index.php');
+    } 
+?>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -26,13 +37,10 @@
 		
 			<!-- Group chunks go here -->
             <?php 
-                require_once("php/userClass.php");
-                require("php/groupClass.php");
-                require_once("php/db_setup.php");
+
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
                 mysql_select_db("$db_name", $con);
                 
-                session_start();
                 $user = $_SESSION['user'];
                 $groupIDs = $user->getGroups();
                 

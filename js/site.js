@@ -13,8 +13,9 @@ $(document).ready(function() {
 	$('#joinEmail').blur(validateEmail);
     $('#joinPassword').blur(validatePass1);
     $('#joinConfirm').blur(validatePass2);
-    	
-	
+    
+    // Sniffer for logout
+    $('.navLogout').click(function(){window.location.replace("index.php");});
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -76,8 +77,10 @@ function newAccount(event)
             }
             else {$('#passMatchError').fadeOut('fast');}
             
+            
+            
             // If there are no errors then move the user to the next page
-            if (data==''){window.location.replace("groups.html");}
+            if (data==''){window.location.replace("groups.php");}
         }
     );
 }
