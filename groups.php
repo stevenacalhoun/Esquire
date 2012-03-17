@@ -19,6 +19,15 @@
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
+
+	<div class="overlay"></div>
+	<div id="createGroupBox">
+		<div id="createGroupTitle">Create a Group</div>
+		<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
+		<input type="text" name="createGroupDescription" placeholder="description" id="createGroupDescription" />
+		<input type="text" name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails" />
+		<div class="button" id="createGroupCreate">Create</div>
+	</div>
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>
@@ -35,7 +44,6 @@
 		<input type="text" name="search" placeholder="search groups" id="groupSearch" />
 		<div id="groupList">
 		
-			<!-- Group chunks go here -->
             <?php 
                 // Connect to database
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
