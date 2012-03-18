@@ -24,11 +24,13 @@
 	<div class="overlay" id="createGroupOverlay"></div>
 	<div class="box" id="createGroupBox">
 		<div id="createGroupTitle">Create a Group</div>
-		<form action="createGroup.php" id="createGroupForm">
-		<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
-		<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
-		<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
-		<input type="submit" value="Create" class="buttonG" id="createGroupCreate" />
+		<form action="createGroup.php" id="createGroupForm" method="post">
+			<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
+			<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
+			<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
+			<input type="submit" value="Create" class="buttonG" id="createGroupCreate" />
+		</form>
+		<div class="button" id="createGroupCancel">Cancel</div>
 	</div>
 	
 	<!-- Group Page -->
@@ -71,8 +73,7 @@
                  		</div>
                  		<?php if($user->getEmail() == $group->getAdmin()){
                  		?>
-                 		    <!-- Insert yo button -->
-                 		    
+                 		   	<div class="groupDelete"></div>
                  		<?php } ?>
                  	</div>              
             <?php

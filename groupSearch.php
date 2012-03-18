@@ -36,21 +36,20 @@
 		
 			<!-- Group Search chunks go here -->
             <?php 
-                require_once("php/userClass.php");
-                require("php/groupClass.php");
-                require_once("php/db_setup.php");
+                // Connect to database
                 $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
                 mysql_select_db("$db_name", $con);
                 
-                session_start();
+                // Get current user from the session and get group IDs
                 $user = $_SESSION['user'];
                 $groupIDs = $user->getGroups();
                 
+                // Walk over each ID and add a group block for each one
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
              ?>
                  	<div class="groupBlock">
-                 		<div class="groupTitle">
+                 		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
                  			<?php echo $group->getName(); ?>
                  		</div>
                  		<div class="groupText">
@@ -60,7 +59,9 @@
                  	</div>              
             <?php
                 }
+                mysql_close($con);
              ?>    
+             
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
