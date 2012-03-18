@@ -58,6 +58,7 @@
                 $groupIDs = $user->getGroups();
                 
                 // Walk over each ID and add a group block for each one
+                if (!empty($groupIDs)){
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
              ?>
@@ -76,7 +77,8 @@
                  	</div>              
             <?php
                 }
-                mysql_close($con);
+            }
+            mysql_close($con);
              ?>    
 		</div>
 		<div class="buttonG" id="groupCreate">Create</div> 

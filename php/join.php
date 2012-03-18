@@ -35,6 +35,9 @@
     function emailExistence($email){
         return (mysql_num_rows(mysql_query("SELECT * FROM users WHERE email = '$email'")) <= 0);
     }
+    function emptyFieldsTest($firstName, $lastName, $phoneNum){
+        return ($firstName == '' || $lastName == '' || $phoneNum == '');
+    }
 
 	
 	// Switch case for different carriers. Phone email is constructed by using the phone
@@ -77,8 +80,13 @@
 	    echo ("exists");
 	}
 	
+	if (emptyFieldsTest($firstName, $lastName, $phoneNum)){
+	    echo ("blankError");
+	}
+	
+	
 	// If all the inputs are valid then they can be submitted to the DB
-    if (validateEmail($email) AND validatePassword($password) AND validatePassword2($password, $passwordConfirm) AND emailExistence($email)){
+    if(validateEmail($email) AND validatePassword($password) AND validatePassword2($password, $passwordConfirm) AND emailExistence($email) AND !emptyFieldsTest($firstName, $lastName, $phoneNum)){
     	
     	// Construct SQL query to add new user
     	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates) VALUES ('$email', '$firstName', '$lastName', '$password', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates')";
@@ -90,6 +98,9 @@
     	// Create user object and add to Session
     	$user = new userClass($email);
     	$_SESSION['user'] = $user;
+    	
+    	$message = "Hello $firstName $lastName, welcome to Esquire";
+    	mail($email, "Welcome to Esquire", $message);
     }
     // Close DB connection
     mysql_close($con);

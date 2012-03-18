@@ -25,6 +25,10 @@ $(document).ready(function() {
     
         }
     );
+    
+    // Sniffer for creating a new group and canceling group
+    $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
+    $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');}
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -60,6 +64,15 @@ function newAccount(event)
     var data = $("form#joinForm").serialize();
     var url = $("form#joinForm").attr('action');
     
+    if($("#joinFirst").val()=="" || $("#joinLast").val()=="" || $("#joinPhone").val()==""){
+        $('#blankError').fadeIn('fast');
+    }
+    else{
+        $('#blankError').fadeOut('fast');
+    }
+    
+    console.log($("#joinFirst").val());
+    
     // Use AJAX post to prevent refresh of page
     $.post (url, data,
         function(data) {
@@ -86,6 +99,10 @@ function newAccount(event)
             }
             else {$('#passMatchError').fadeOut('fast');}
             
+            if (data.indexOf("blankError") != -1){
+                $('#blankError').fadeIn('fast');
+            }
+            else {$('blankError').fadeOut('fast');}
             
             
             // If there are no errors then move the user to the next page
