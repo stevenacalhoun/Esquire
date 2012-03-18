@@ -47,7 +47,7 @@
         }
         
         public function getMembers(){
-            return %$this->_members;
+            return $this->_members;
         }
     }
 ?>
