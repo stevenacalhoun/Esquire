@@ -28,7 +28,7 @@ $(document).ready(function() {
     
     // Sniffer for creating a new group and canceling group
     $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
-    $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');}
+    $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
 });
 
 // AJAX function for login. Checking to see if correct login.

@@ -5,6 +5,7 @@
         private $_name;
         private $_admin;
         private $_description;
+        private $_memebers;
         
         // Constructor function
         public function groupClass($groupID){
@@ -21,6 +22,11 @@
             $this->_name = $groupInfo['name'];
             $this->_description = $groupInfo['description'];
             $this->_admin = $groupInfo['admin'];
+            
+            $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID'");
+            while($email = mysql_fetch_array($memberEmails)){
+                $this->_members[] = $email['email'];
+            }
         }
      
         // Getters for all variables because they are private
@@ -38,6 +44,10 @@
         
         public function getDescription(){
             return $this->_description;
+        }
+        
+        public function getMembers(){
+            return %$this->_members;
         }
     }
 ?>
