@@ -29,6 +29,7 @@ $(document).ready(function() {
     // Sniffer for creating a new group and canceling group
     $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
     $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
+    $('#createGroupCreate').click(createGroup);
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -161,4 +162,28 @@ function validatePass2()
         $('#passMatchError').fadeIn('fast');
         return false;
     }
+}
+
+function createGroup()
+{
+    event.preventDefault();
+    
+    var data = $("form#createGroupForm").serialize();
+    var url = $("form#createGroupForm").attr('action');
+    
+    //if($("#createGroupName".val=="" || $("createGroupDescription").val==""
+    
+    $.post (url, data,
+        function(data){
+            console.log(data);
+            // Check for each error
+            if (data.indexOf("emailError") != -1){
+                $("#createEmailError").fadeIn('fast');
+            }
+            if (data.indexOf("blankError") != -1){
+                $("#createEmptyError").fadeIn('fast');
+            }
+            if (data==''){window.location.replace("groups.php");}
+        }
+    );
 }

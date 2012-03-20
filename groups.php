@@ -24,7 +24,7 @@
 	<div class="overlay" id="createGroupOverlay"></div>
 	<div class="box" id="createGroupBox">
 		<div id="createGroupTitle">Create a Group</div>
-		<form action="createGroup.php" id="createGroupForm" method="post">
+		<form action="php/createGroup.php" id="createGroupForm" method="post">
 			<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
 			<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
 			<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>

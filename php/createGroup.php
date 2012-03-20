@@ -1,9 +1,9 @@
 <?php
 
-  // Start session and bring in DB info
-    session_start();
+    // Start session and bring in DB info
     require_once("db_setup.php");
     require_once("userClass.php");
+    session_start();
     $tbl_name = "groups";
     
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword")or die("Can't connect to Server" . mysql_error());
@@ -11,58 +11,62 @@
     
     
     $name = $_POST['createGroupName'];
-    $descripton = $_POST['createGroupDescription'];
-    $email_string = $_POST['createGroupEmails'];
+    $description = $_POST['createGroupDescription'];
+    $emailString = $_POST['createGroupEmails'];
     
-    $email_array = explode(",", $email_string);
+    $trimmedEmailString = trim($emailString);
+    $emailArray = explode(",", $trimmedEmailString);
     
     
-    //checks to see if any of the fields are empty
-    function emptyFieldsTest($name, $description, $email_string){
-        return ($name == '' || $description == '' || $email_string == '');
+    // Function to check to see if any of the fields are empty
+    function emptyFieldsTest($name, $description){
+        return ($name == '' || $description == '');
     }
 
-    //checks to make sure all emails are valid
-    function validateEmails ($email_array){
-    foreach ($email_array as $item){
-      $check = (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
-      if($check == false){
-          return false;
-      }
+    // Function to check to make sure all emails are valid
+    function validateEmails ($emailArray){
+        foreach ($emailArray as $email){
+          $check = (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
+          if($check == false){
+              return false;
+          }
+        }
+        return true;
     }
-    return true;
-    }
     
     
     
-    if(!emptyFieldsTest($name, $description, $email_string)){
+    if(emptyFieldsTest($name, $description)){
         echo("blankError");
     }
     
-    if(!validateEmails($email_array)){
+    if(!validateEmails($emailArray)){
         echo("emailError");
     }
     
     
     //adds the group to the database
-    if (emptyFieldsTest($name,$description,$email_string) &&
-    validateEmails($email_array)){
+    if (!emptyFieldsTest($name, $description) && validateEmails($emailArray)){
     
-      $numGroups = (mysql_num_rows(mysql_query("SELECT COUNT() FROM groups")) <= 0);
+      $currentGroups = (mysql_query("SELECT * FROM groups"));
+      $numGroups = mysql_num_rows($currentGroups);
       $groupID = $numGroups + 1;
     
       $user = $_SESSION['user'];
-      $adminEmail = $user->getName();
+      $adminEmail = $user->getEmail();
     
-      $squl = "INSERT INTO groups (groupID, name, admin, description) VALUES ('$groupID', '$name', '$adminEmail', '$description')";
+      $sql = "INSERT INTO groups (groupID, name, admin, description) VALUES ('$groupID', '$name', '$adminEmail', '$description')";
+      mysql_query($sql) or die("Could not query: " . mysql_error());
+      
+      $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$adminEmail', '$groupID', 'yes')";
       mysql_query($sql) or die("Could not query: " . mysql_error());
     
       //sends the invites to all emails included
-      foreach($email_array as $email){
-          $message = "$adminEmail has invited to join the Esquire group $name!";
-          mail($email, "Esquire Group Invite", $message);
-      }
-    
+//      foreach($email_array as $email){
+//          $message = "$adminEmail has invited to join the Esquire group $name!";
+//          mail($email, "Esquire Group Invite", $message);
+//      }
+//    
     }
     
     //close database connection
