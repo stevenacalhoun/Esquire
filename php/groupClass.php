@@ -5,7 +5,7 @@
         private $_name;
         private $_admin;
         private $_description;
-        private $_memebers;
+        private $_confirmedMembers;
         
         // Constructor function
         public function groupClass($groupID){
@@ -22,10 +22,20 @@
             $this->_name = $groupInfo['name'];
             $this->_description = $groupInfo['description'];
             $this->_admin = $groupInfo['admin'];
+
+            //
+//            $memberInfo = mysql_fetch_array(mysql_query("SELECT * FROM member_of WHERE groupID = '$groupID' and email = '$email'");
+//            $this->_acceptance = $memberInfo['accept'];
             
-            $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID'");
-            while($email = mysql_fetch_array($memberEmails)){
-                $this->_members[] = $email['email'];
+            // Initialize a dummy members so the array is never null
+            $this->_confirmedMembers[] = "dummy";
+            
+            // Find the confirmed members of the group
+            $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID' and accept = 'yes'");
+            if ($memberEmails != null){
+                while($email = mysql_fetch_array($memberEmails)){
+                    $this->_confirmedMembers[] = $email['email'];
+                }
             }
         }
      
@@ -47,7 +57,7 @@
         }
         
         public function getMembers(){
-            return $this->_members;
+            return $this->_confirmedMembers;
         }
     }
 ?>

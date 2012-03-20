@@ -71,11 +71,20 @@
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>
                  		</div>
+                 		
+                 		<!-- Admin deleteGroup button -->
                  		<?php if($user->getEmail() == $group->getAdmin()){
                  		?>
                  		   	<div class="groupDelete"></div>
+                 	    <?php } ?>
+                 	    
+                 	    <!-- Accept/decline buttons -->
+                 	    <?php if(!in_array($user->getEmail(), $group->getMembers())){
+                 	    ?>
+                 	        <!-- Add accept/decline buttons -->
+                 	        
                  		<?php } ?>
-                 	</div>              
+                 	</div>          
             <?php
                 }
             }

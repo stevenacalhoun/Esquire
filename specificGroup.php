@@ -8,11 +8,14 @@
     if (!array_key_exists('user', $_SESSION)){
     header('Location:index.php');
     }
+    // Get group from GET request
+    $requestedGroupID = $_GET['groupID'];
+    $group = new groupClass($requestedGroupID);
 ?>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Group Name | Esquire</title>
+	<title><?php echo $group->getName(); ?> | Esquire</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>
