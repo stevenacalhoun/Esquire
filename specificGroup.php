@@ -11,6 +11,15 @@
     // Get group from GET request
     $requestedGroupID = $_GET['groupID'];
     $group = new groupClass($requestedGroupID);
+    
+    // Connect to database
+    $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
+    mysql_select_db("$db_name", $con);
+    
+    // Get current user from the session and get group IDs
+    $user = $_SESSION['user'];
+    $groupIDs = $user->getGroups();
+    $members = $group->getMembers();
 ?>
 <html>
 <head>
@@ -36,7 +45,41 @@
 		</header>
 		
 		<!-- Specific Group chucks go here-->
-		
+		<div id="specificGroupList">
+			
+			<!-- Group Name & Description -->
+			<div class="specificGroupBlock">
+				<div class="specificGroupTitle">
+					<?php echo $group->getName(); ?>
+				</div>
+				<div class="specificGroupText">
+					<?php echo $group->getDescription(); ?>
+				</div>
+			</div>
+			
+			<!-- Administrator -->
+			<div class="specificGroupBlock">
+				<div class="specificGroupTitle">Administrator</div>
+				<div class="specificGroupText">
+					<?php echo $group->getAdmin(); ?>
+				</div>
+			</div>
+			
+			<!-- Members -->
+			<div class="specificGroupBlock">
+				<div class="specificGroupTitle">Members</div>
+				<div class="specificGroupText">
+				<!-- For each member, test if confirmed, print out appropriate stuff -->
+				<?php 
+					
+				
+				 ?>
+				</div>
+			</div>
+			
+			<!-- Leave Group -->
+			<div class="specificGroupLeave"></div>
+		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
 </body>

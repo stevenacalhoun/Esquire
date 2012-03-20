@@ -65,7 +65,7 @@
                     $group = new groupClass($groupID);
              ?>
                  	<div class="groupBlock">
-                 		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
+                 		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
                  			<?php echo $group->getName(); ?>
                  		</div>
                  		<div class="groupText">
@@ -75,7 +75,7 @@
                  		<!-- Admin deleteGroup button -->
                  		<?php if($user->getEmail() == $group->getAdmin()){
                  		?>
-                 		   	<div class="groupDelete"></div>
+                 		   	<div class="groupDelete" id="groupDelete<?php echo $group->getGroupID(); ?>"></div>
                  	    <?php } ?>
                  	    
                  	    <!-- Accept/decline buttons -->
