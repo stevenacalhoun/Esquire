@@ -193,4 +193,5 @@ function createGroup()
 
 function deleteGroup()
 {
-    this
+    window.location.replace("removeGroup.php?groupID=" + this.id);
+}

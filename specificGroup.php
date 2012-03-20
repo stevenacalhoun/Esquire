@@ -9,7 +9,7 @@
     header('Location:index.php');
     }
     // Get group from GET request
-    $requestedGroupID = $_GET['groupID'];
+    $requestedGroupID = str_replace("group", "",$_GET['groupID']);
     $group = new groupClass($requestedGroupID);
     
     // Connect to database
