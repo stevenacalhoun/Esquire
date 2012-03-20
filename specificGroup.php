@@ -71,7 +71,9 @@
 				<div class="specificGroupText">
 				<!-- For each member, test if confirmed, print out appropriate stuff -->
 				<?php 
-					
+					foreach($members as $member){
+						
+					}
 				
 				 ?>
 				</div>
