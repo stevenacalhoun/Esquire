@@ -31,7 +31,7 @@ $(document).ready(function() {
     $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
     $('#createGroupCreate').click(createGroup);
     
-    //
+    // Sniffer for admin's delete group button
     $('.groupDelete').click(deleteGroup);
 });
 
@@ -193,5 +193,5 @@ function createGroup()
 
 function deleteGroup()
 {
-    window.location.replace("removeGroup.php?groupID=" + this.id);
+    window.location.replace("php/removeGroup.php?groupID=" + this.id);
 }
