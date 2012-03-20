@@ -49,4 +49,8 @@ class userClass {
     public function getGroups(){
         return $this->_groups;
     }  
+    
+    public function addGroup($groupID){
+        $this->_groups[] = $groupID;
+    }
 }
