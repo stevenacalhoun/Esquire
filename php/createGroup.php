@@ -3,6 +3,7 @@
     // Start session and bring in DB info
     require_once("db_setup.php");
     require_once("userClass.php");
+    require_once("groupClass.php");
     session_start();
     $tbl_name = "groups";
     
@@ -14,7 +15,7 @@
     $description = $_POST['createGroupDescription'];
     $emailString = $_POST['createGroupEmails'];
     
-    $trimmedEmailString = trim($emailString);
+    $trimmedEmailString = str_replace(" " , "", $emailString);
     $emailArray = explode(",", $trimmedEmailString);
     
     
@@ -26,12 +27,12 @@
     // Function to check to make sure all emails are valid
     function validateEmails ($emailArray){
         foreach ($emailArray as $email){
-          $check = (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
-          if($check == false){
-              return false;
-          }
+            $check = (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
+            if($check == false){
+                return false;
+            }
         }
-        return true;
+            return true;
     }
     
     
@@ -48,25 +49,35 @@
     //adds the group to the database
     if (!emptyFieldsTest($name, $description) && validateEmails($emailArray)){
     
-      $currentGroups = (mysql_query("SELECT * FROM groups"));
-      $numGroups = mysql_num_rows($currentGroups);
-      $groupID = $numGroups + 1;
-    
-      $user = $_SESSION['user'];
-      $adminEmail = $user->getEmail();
-    
-      $sql = "INSERT INTO groups (groupID, name, admin, description) VALUES ('$groupID', '$name', '$adminEmail', '$description')";
-      mysql_query($sql) or die("Could not query: " . mysql_error());
-      
-      $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$adminEmail', '$groupID', 'yes')";
-      mysql_query($sql) or die("Could not query: " . mysql_error());
-    
-      //sends the invites to all emails included
-//      foreach($email_array as $email){
-//          $message = "$adminEmail has invited to join the Esquire group $name!";
-//          mail($email, "Esquire Group Invite", $message);
-//      }
-//    
+        // Find out the current number of groups then increment it to make new groupID
+        $currentGroups = (mysql_query("SELECT * FROM groups"));
+        $numGroups = mysql_num_rows($currentGroups);
+        $groupID = $numGroups + 1;
+        
+        // Get user from session and get the email
+        $user = $_SESSION['user'];
+        $adminEmail = $user->getEmail();
+        
+        // Add group to database
+        $sql = "INSERT INTO groups (groupID, name, admin, description) VALUES ('$groupID', '$name', '$adminEmail', '$description')";
+        mysql_query($sql) or die("Could not query: " . mysql_error());
+        
+        // Add admin to group
+        $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$adminEmail', '$groupID', 'yes')";
+        mysql_query($sql) or die("Could not query: " . mysql_error());
+        
+        // Add the new groupID to the current users group's list
+        $user->addGroup($groupID);
+        
+        // Create new group object
+        $group = new groupClass($groupID);
+        
+        // Add each invited member the groups member list
+        foreach($emailArray as $email){
+            $group->addMember($email);
+//            $message = "$adminEmail has invited to join the Esquire group $name!";
+//            mail($email, "Esquire Group Invite", $message);
+        }
     }
     
     //close database connection

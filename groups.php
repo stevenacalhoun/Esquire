@@ -66,7 +66,7 @@
              ?>
                  	<div class="groupBlock">
                  		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
-                 			<?php echo $group->getName(); ?>
+                 			<?php echo trim($group->getName()) . "\n"; ?>
                  		</div>
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>

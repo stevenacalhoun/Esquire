@@ -30,6 +30,9 @@ $(document).ready(function() {
     $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
     $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
     $('#createGroupCreate').click(createGroup);
+    
+    //
+    $('.groupDelete').click(deleteGroup);
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -187,3 +190,7 @@ function createGroup()
         }
     );
 }
+
+function deleteGroup()
+{
+    this

@@ -59,5 +59,11 @@
         public function getMembers(){
             return $this->_confirmedMembers;
         }
+        
+        public function addMember($email){
+            $groupID = $this->getGroupID();
+            $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$email', '$groupID', 'no')";
+            mysql_query($sql) or die("Could not query: " . mysql_error());
+        }
     }
 ?>
