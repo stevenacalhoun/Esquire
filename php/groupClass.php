@@ -11,7 +11,7 @@
         public function groupClass($groupID){
             // Connect to database
             require("db_setup.php");
-            require("userClass.php");
+            require_once("userClass.php");
             $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
             mysql_select_db("$db_name", $con);
             
@@ -35,7 +35,7 @@
             $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID' and accept = 'yes'");
             if ($memberEmails != null){
                 while($email = mysql_fetch_array($memberEmails)){
-                    $this->_confirmedMembers[] = new userClass($email['email']);
+                    $this->_confirmedMembers[] = $email['email'];
                 }
             }
         }

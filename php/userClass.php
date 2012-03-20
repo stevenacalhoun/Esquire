@@ -46,6 +46,10 @@ class userClass {
         return $this->_lastName;
     }
     
+    public function getFullName(){
+    	return $this->_firstName . ' ' . $this->_lastName;
+    }
+    
     public function getGroups(){
         return $this->_groups;
     }  

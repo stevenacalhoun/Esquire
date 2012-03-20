@@ -28,7 +28,7 @@
 			<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
 			<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
 			<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
-			<input type="submit" value="Create" class="buttonG" id="createGroupCreate" />
+			<input type="submit" value="Create" class="button green" id="createGroupCreate" />
 		</form>
 		<div class="button" id="createGroupCancel">Cancel</div>
 	</div>
@@ -91,7 +91,7 @@
             mysql_close($con);
              ?>    
 		</div>
-		<div class="buttonG" id="groupCreate">Create</div> 
+		<div class="button green" id="groupCreate">Create</div> 
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
 </body>

@@ -61,26 +61,32 @@
 			<div class="specificGroupBlock">
 				<div class="specificGroupTitle">Administrator</div>
 				<div class="specificGroupText">
-					<?php echo $group->getAdmin(); ?>
+					<?php 
+						$adminUserObject = new userClass($group->getAdmin());
+						echo $adminUserObject->getFullName();
+					?>
 				</div>
 			</div>
+			
+			<!-- Notifications for Admin -->
 			
 			<!-- Members -->
 			<div class="specificGroupBlock">
 				<div class="specificGroupTitle">Members</div>
 				<div class="specificGroupText">
-				<!-- For each member, test if confirmed, print out appropriate stuff -->
-				<?php 
-					foreach($members as $member){
-						
-					}
-				
-				 ?>
+				<?php foreach($members as $member){ ?>
+						<div class="specificGroupMember">
+				<?php
+						$userObject = new userClass($member);
+						echo $userObject->getFullName();
+				?>
+						</div>
+				<?php } ?>
 				</div>
 			</div>
 			
 			<!-- Leave Group -->
-			<div class="specificGroupLeave"></div>
+			<div class="button red">Leave</div>
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>

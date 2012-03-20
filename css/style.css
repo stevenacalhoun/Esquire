@@ -75,18 +75,16 @@ nav{
 	cursor: pointer;
 }
 	.button:hover{background: url('../images/buttonHover.png') no-repeat;}
-.buttonG{
-	width: 108px;
-	height: 27px;
+.green{
 	background: url('../images/buttonG.png') no-repeat;
-	color: #fff;
 	text-shadow: 0 1px 3px rgb(0,99,23);
-	text-align: center;
-	line-height: 27px;
-	font-size: 0.85em;
-	cursor: pointer;
 }
-	.buttonG:hover{background: url('../images/buttonGHover.png') no-repeat;	}
+	.green:hover{background: url('../images/buttonGHover.png') no-repeat;}
+.red{
+	background: url('../images/buttonR.png') no-repeat;
+	text-shadow: 0 1px 3px rgb(128,24,24);
+}
+	.red:hover{background: url('../images/buttonRHover.png') no-repeat;}
 input[type="text"],
 input[type="password"],
 textarea{
@@ -357,6 +355,9 @@ footer{
 	.specificGroupText{
 		margin: 5px 50px 0 20px;
 		font-size: 0.8em;
+	}
+	.specificGroupMember{
+		margin-bottom: 5px;
 	}
 	.specifcGroupIcon{
 		width: 27px;
