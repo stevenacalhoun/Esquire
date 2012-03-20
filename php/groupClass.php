@@ -11,7 +11,7 @@
         public function groupClass($groupID){
             // Connect to database
             require("db_setup.php");
-            //require("userClass.php");
+            require_once("userClass.php");
             $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
             mysql_select_db("$db_name", $con);
             
