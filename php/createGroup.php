@@ -15,6 +15,7 @@
     $description = $_POST['createGroupDescription'];
     $emailString = $_POST['createGroupEmails'];
     
+
     $trimmedEmailString = str_replace(" " , "", $emailString);
     $emailArray = explode(",", $trimmedEmailString);
     
@@ -25,7 +26,8 @@
     }
 
     // Function to check to make sure all emails are valid
-    function validateEmails ($emailArray){
+    function validateEmails ($emailArray, $emailString){
+        if ($emailString == "") return true;
         foreach ($emailArray as $email){
             $check = (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
             if($check == false){
@@ -41,18 +43,22 @@
         echo("blankError");
     }
     
-    if(!validateEmails($emailArray)){
+    if(!validateEmails($emailArray, $emailString) && $emailString != ""){
         echo("emailError");
     }
     
     
     //adds the group to the database
-    if (!emptyFieldsTest($name, $description) && validateEmails($emailArray)){
+    if (!emptyFieldsTest($name, $description) && validateEmails($emailArray, $emailString)){
     
         // Find out the current number of groups then increment it to make new groupID
-        $currentGroups = (mysql_query("SELECT * FROM groups"));
-        $numGroups = mysql_num_rows($currentGroups);
-        $groupID = $numGroups + 1;
+        $currentGroups = (mysql_query("SELECT groupID FROM groups"));
+        
+        while ($nextGroup = mysql_fetch_array($currentGroups)){
+            $groupNums[] = $nextGroup['groupID'];
+        }
+        
+        $groupID = max($groupNums) + 1;
         
         // Get user from session and get the email
         $user = $_SESSION['user'];
@@ -73,10 +79,12 @@
         $group = new groupClass($groupID);
         
         // Add each invited member the groups member list
-        foreach($emailArray as $email){
-            $group->addMember($email);
-//            $message = "$adminEmail has invited to join the Esquire group $name!";
-//            mail($email, "Esquire Group Invite", $message);
+        if($emailString != ""){
+            foreach($emailArray as $email){
+                $group->addMember($email);
+    //            $message = "$adminEmail has invited to join the Esquire group $name!";
+    //            mail($email, "Esquire Group Invite", $message);
+            }
         }
     }
     

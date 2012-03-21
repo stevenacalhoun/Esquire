@@ -57,4 +57,9 @@ class userClass {
     public function addGroup($groupID){
         $this->_groups[] = $groupID;
     }
+    
+    public function removeGroup($groupID){
+        $this->_groups = array_diff($this->_groups, array($groupID));
+        $this->_groups = array_values($this->_groups);
+    }
 }

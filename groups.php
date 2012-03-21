@@ -62,10 +62,13 @@
                 if (!empty($groupIDs)){
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
+                    $name = $group->getName();
+                    $name = str_replace(" ", "c", $name);
              ?>
                  	<div class="groupBlock">
                  		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
                  			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
+                 			<?php echo $name; ?>
                  		</div>
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>
