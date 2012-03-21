@@ -17,15 +17,6 @@ $(document).ready(function() {
     // Sniffer for logout
     $('.navLogout').click(function(){window.location.replace("index.php");});
     
-    // Sniffer for click on group title to take user to specific group page
-    $('.groupTitle').click(
-        function(){
-            console.log(this.id);
-            window.location.replace("specificGroup.php?groupID=" + this.id);
-    
-        }
-    );
-    
     // Sniffer for creating a new group and canceling group
     $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
     $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
