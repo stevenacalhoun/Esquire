@@ -62,13 +62,10 @@
                 if (!empty($groupIDs)){
                 foreach($groupIDs as $groupID){
                     $group = new groupClass($groupID);
-                    $name = $group->getName();
-                    $name = str_replace(" ", "c", $name);
              ?>
                  	<div class="groupBlock">
                  		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
                  			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
-                 			<?php echo $name; ?>
                  		</div>
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>
@@ -82,8 +79,8 @@
                  	    <!-- Accept/decline buttons -->
                  	    <?php if(!in_array($user->getEmail(), $group->getMembers())){
                  	    ?>
-                 	    	<div class="decline specificGroupIcon" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
-                 	        <div class="accept specificGroupIcon" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
+                 	    	<div class="decline icon" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
+                 	        <div class="accept icon" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
                  	        
                  		<?php } ?>
                  	</div>          

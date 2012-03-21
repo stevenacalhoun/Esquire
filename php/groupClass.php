@@ -34,6 +34,7 @@
             // Find the confirmed members of the group
             $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID' and accept = 'yes'");
             if ($memberEmails != null){
+            	$this->_confirmedMembers = array();
                 while($email = mysql_fetch_array($memberEmails)){
                     $this->_confirmedMembers[] = $email['email'];
                 }
