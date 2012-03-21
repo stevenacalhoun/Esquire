@@ -37,7 +37,6 @@
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>
-			<div class="postButton"></div>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>
@@ -66,22 +65,22 @@
              ?>
                  	<div class="groupBlock">
                  		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
-                 			<?php echo $group->getName(); ?>
+                 			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
                  		</div>
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>
                  		</div>
                  		
                  		<!-- Admin deleteGroup button -->
-                 		<?php if($user->getEmail() == $group->getAdmin()){
-                 		?>
+                 		<?php if($user->getEmail() == $group->getAdmin()){ ?>
                  		   	<div class="groupDelete" id="groupDelete<?php echo $group->getGroupID(); ?>"></div>
                  	    <?php } ?>
                  	    
                  	    <!-- Accept/decline buttons -->
                  	    <?php if(!in_array($user->getEmail(), $group->getMembers())){
                  	    ?>
-                 	        <!-- Add accept/decline buttons -->
+                 	    	<div class="decline specificGroupIcon" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
+                 	        <div class="accept specificGroupIcon" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
                  	        
                  		<?php } ?>
                  	</div>          

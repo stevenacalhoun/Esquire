@@ -22,7 +22,7 @@
 			
 			<input type="submit" value="Login" id="loginButton" class="button" />
 		</form>
-		<a href="join.html"><div id="joinButton" class="buttonG">Join</div></a>
+		<a href="join.html"><div id="joinButton" class="button green">Join</div></a>
 		<div id="reset">Forgot password?</div>
 	</div>
 	<div id="loginError" class="error">Wrong Username/Password Combination.</div>

@@ -33,7 +33,6 @@
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>
-			<div class="postButton"></div>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>
@@ -86,7 +85,9 @@
 			</div>
 			
 			<!-- Leave Group -->
-			<div class="button red">Leave</div>
+			<?php if($user->getEmail() != $group->getAdmin()){ ?>
+				<div class="button red" id="specificGroupDelete">Leave</div>
+			<?php } ?>
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>

@@ -21,7 +21,6 @@
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>
-			<div class="postButton"></div>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>

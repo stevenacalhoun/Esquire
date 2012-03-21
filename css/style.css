@@ -269,10 +269,13 @@ footer{
 	font-size: 0.95em;
 	font-weight: bold;
 	color: #0283de;
-	cursor: pointer;
+	//cursor: pointer;
+}
+.groupTitle a{
+	color: #0283de;
 }
 .groupText{
-	margin: 5px 50px 0 20px;
+	margin: 5px 100px 0 20px;
 	font-size: 0.8em;
 }
 .groupDelete{
@@ -359,11 +362,21 @@ footer{
 	.specificGroupMember{
 		margin-bottom: 5px;
 	}
-	.specifcGroupIcon{
-		width: 27px;
-		height: 15px;
-		background-size: 27px 15px;
+	#specificGroupDelete{margin: 20px;}
+	.specificGroupIcon{
+		width: 20px;
+		height: 20px;
+		background-size: 20px 20px;
 		float: right;
-		margin: -10px 10px 0 0;
 		cursor: pointer;
 	}
+	.accept{
+		background: url('../images/accept.png') no-repeat;
+		margin: -15px 10px 0 0;
+	}
+		.accept:hover{background: url('../images/acceptHover.png') no-repeat;}
+	.decline{
+		background: url('../images/decline.png') no-repeat;
+		margin: -15px 10px 0 0;
+	}
+		.decline:hover{background: url('../images/declineHover.png') no-repeat;}
