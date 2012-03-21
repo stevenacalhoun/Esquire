@@ -49,12 +49,12 @@
              ?>
                  	<div class="groupBlock">
                  		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
-                 			<?php echo $group->getName(); ?>
+                 			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
                  		</div>
                  		<div class="groupText">
                  			<?php echo $group->getDescription(); ?>
                  		</div>
-                 		<div class="groupAdd"></div>
+                 		<div class="groupAdd icon"></div>
                  	</div>              
             <?php
                 }

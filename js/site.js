@@ -24,6 +24,9 @@ $(document).ready(function() {
     
     // Sniffer for admin's delete group button
     $('.groupDelete').click(deleteGroup);
+    
+    // Sniffer for leave group
+    $('#specificGroupDelete').click(leaveGroup);
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -186,3 +189,16 @@ function deleteGroup()
 {
     window.location.replace("php/removeGroup.php?groupID=" + this.id);
 }
+
+function leaveGroup()
+{
+    var url = $(location).attr("href");
+    window.location.replace("php/leaveGroup.php?groupID=" + url);
+}
+
+
+
+
+
+
+

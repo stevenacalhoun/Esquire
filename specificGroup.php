@@ -6,7 +6,7 @@
     require_once("php/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
-    header('Location:index.php');
+        header('Location:index.php');
     }
     // Get group from GET request
     $requestedGroupID = str_replace("group", "",$_GET['groupID']);
@@ -54,6 +54,10 @@
 				<div class="specificGroupText">
 					<?php echo $group->getDescription(); ?>
 				</div>
+				
+				<?php if($user->getEmail() == $group->getAdmin()){ ?>
+					<div class="specificGroupEdit icon"></div>
+				<?php } ?>
 			</div>
 			
 			<!-- Administrator -->
@@ -74,16 +78,23 @@
 				<div class="specificGroupTitle">Members</div>
 				<div class="specificGroupText">
 				<?php foreach($members as $member){ ?>
-						<div class="specificGroupMember">
+					<div class="specificGroupMember">
 				<?php
-						$userObject = new userClass($member);
-						echo $userObject->getFullName();
+					$userObject = new userClass($member);
+					echo $userObject->getFullName();
+					if($user->getEmail() == $group->getAdmin() && $userObject->getEmail() != $group->getAdmin()){
 				?>
-						</div>
+						<div class="specificGroupRemove"></div>
+				<?php } ?>
+					</div>
 				<?php } ?>
 				</div>
 			</div>
 			
+			<!-- Add Members -->
+			<?php if($user->getEmail() == $group->getAdmin()){ ?>
+				<div class="button green" id="specificGroupAdd">Add</div>
+			<?php } ?>
 			<!-- Leave Group -->
 			<?php if($user->getEmail() != $group->getAdmin()){ ?>
 				<div class="button red" id="specificGroupDelete">Leave</div>

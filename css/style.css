@@ -128,6 +128,13 @@ input[type="radio"]:checked{
 	background-color: #000;
 	z-index: 1;
 }
+.icon{
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px;
+	float: right;
+	cursor: pointer;
+}
 footer{
 	width: 850px;
 	height: 40px;
@@ -223,21 +230,6 @@ footer{
 	float: right;
 	margin: 75px -10px 0 0;
 }
-	/*#editImage{
-		width: 50px;
-		height: 50px;
-		background: url('../images/defaultProfileImage.png') no-repeat;
-		color: #fff;
-		font-size: 0.5em;
-	}
-	#overlay{
-		width: 100%;
-		height: 100%;
-		opacity: 0.4;
-		background-color: #000;
-		border-radius: 10px;
-		margin-top: -11px;
-	}*/
 	#joinTitle{
 		width: 192px;
 		height: 106px;
@@ -268,12 +260,8 @@ footer{
 	margin-left: 20px;
 	font-size: 0.95em;
 	font-weight: bold;
-	color: #0283de;
-	//cursor: pointer;
 }
-.groupTitle a{
-	color: #0283de;
-}
+.groupTitle a{color: #0283de;}
 .groupText{
 	margin: 5px 100px 0 20px;
 	font-size: 0.8em;
@@ -289,15 +277,23 @@ footer{
 }
 	.groupDelete:hover{background: url('../images/deleteHover.png') no-repeat;}
 .groupAdd{
-	width: 15px;
-	height: 15px;
 	background: url('../images/add.png') no-repeat;
-	background-size: 15px 15px;
 	float: right;
-	margin: -10px 10px 0 0;
-	cursor: pointer;
+	margin: -15px 10px 0 0;
 }
 	.groupAdd:hover{background: url('../images/addHover.png') no-repeat;}
+.accept{
+	background: url('../images/accept.png') no-repeat;
+	float: right;
+	margin: -15px 10px 0 0;
+}
+	.accept:hover{background: url('../images/acceptHover.png') no-repeat;}
+.decline{
+	background: url('../images/decline.png') no-repeat;
+	float: right;
+	margin: -15px 10px 0 0;
+}
+	.decline:hover{background: url('../images/declineHover.png') no-repeat;}
 #groupCreate{margin: 20px;}
 
 	/* Create Group popover */
@@ -306,7 +302,7 @@ footer{
 		display: none;
 		width: 400px;
 		position: absolute;
-		margin: -300px 0 0 575px;
+		margin: -300px 0 0 500px;
 		z-index: 2;
 	}
 	#createGroupTitle{
@@ -356,27 +352,27 @@ footer{
 		color: #0283de;
 	}
 	.specificGroupText{
-		margin: 5px 50px 0 20px;
+		margin: 5px 100px 0 20px;
 		font-size: 0.8em;
 	}
+	.specificGroupEdit{
+		background: url('../images/edit.png') no-repeat;
+		float: right;
+		margin: -15px 10px 0 0;
+	}
+		.specificGroupEdit:hover{background: url('../images/editHover.png') no-repeat;}
 	.specificGroupMember{
 		margin-bottom: 5px;
 	}
-	#specificGroupDelete{margin: 20px;}
-	.specificGroupIcon{
-		width: 20px;
-		height: 20px;
-		background-size: 20px 20px;
+	.specificGroupRemove{
+		width: 27px;
+		height: 15px;
+		background: url('../images/delete.png') no-repeat;
+		background-size: 27px 15px;
 		float: right;
+		margin-right: 500px;
 		cursor: pointer;
 	}
-	.accept{
-		background: url('../images/accept.png') no-repeat;
-		margin: -15px 10px 0 0;
-	}
-		.accept:hover{background: url('../images/acceptHover.png') no-repeat;}
-	.decline{
-		background: url('../images/decline.png') no-repeat;
-		margin: -15px 10px 0 0;
-	}
-		.decline:hover{background: url('../images/declineHover.png') no-repeat;}
+		.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}
+	#specificGroupAdd,
+	#specificGroupDelete{margin: 20px;}

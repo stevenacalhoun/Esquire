@@ -34,6 +34,7 @@
             // Find the confirmed members of the group
             $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID' and accept = 'yes'");
             if ($memberEmails != null){
+            	$this->_confirmedMembers = array();
                 while($email = mysql_fetch_array($memberEmails)){
                     $this->_confirmedMembers[] = $email['email'];
                 }
@@ -61,10 +62,29 @@
             return $this->_confirmedMembers;
         }
         
+        // Other functions
         public function addMember($email){
             $groupID = $this->getGroupID();
             $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$email', '$groupID', 'no')";
             mysql_query($sql) or die("Could not query: " . mysql_error());
+        }
+        
+        public function deleteMember($email){
+            $groupID = $this->getGroupID();
+            $sql = "DELETE FROM member_of WHERE email = '$email' and groupID = '$groupID'";
+            mysql_query($sql) or die("Could not query: " . mysql_error());
+        }
+        
+        public function deleteGroup(){
+            $groupID = $this->_groupID;
+            
+            // Remove all the members of the group first
+            $sql = "DELETE FROM member_of WHERE groupID = '$groupID'";
+            mysql_query($sql) or die("could not delete some member " . msql_error());
+            
+            // Remove the group itself
+            $sql = "DELETE FROM groups WHERE groupID = '$groupID'";
+            mysql_query($sql) or die("could not delete group: " . mysql_error());      
         }
     }
 ?>
