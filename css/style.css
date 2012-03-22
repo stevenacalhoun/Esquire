@@ -3,21 +3,16 @@
 body{
 	width: 100%;
 	height: 100%;
-	position: relative;
 	background: url('../images/bodyBG.png');
 	font-family: Helvetica, Ariel, Sans-serif;
-	z-index: 0;
 }
 .box{
 	background: url('../images/boxBG.png');
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px #000;
-	top: 50%;
-	position: relative;
 }
 .container{
 	width: 850px;
-	min-height: 700px;
 	margin: auto;
 	background: url('../images/boxBG.png');
 }
@@ -164,6 +159,8 @@ footer{
 	width: 440px;
 	height: 225px;
 	margin: -120px auto 10px auto;
+	top: 50%;
+	position: relative;
 }
 #loginTitle{
 	width: 192px;
@@ -200,6 +197,8 @@ footer{
 	width: 450px;
 	height: 325px;
 	margin: -165px auto 10px auto;
+	top: 50%;
+	position: relative;
 }
 #joinLeft{
 	width: 225px;
@@ -294,85 +293,105 @@ footer{
 	margin: -15px 10px 0 0;
 }
 	.decline:hover{background: url('../images/declineHover.png') no-repeat;}
-#groupCreate{margin: 20px;}
+#groupCreate{
+	margin: 20px;
+	padding-bottom: 20px;
+}
 
-	/* Create Group popover */
-	#createGroupOverlay{display: none;}
-	#createGroupBox{
+	/* Popovers */
+	#createGroupOverlay,
+	#specificGroupOverlay{display: none;}
+	#createGroupBox,
+	#editGroupBox,
+	#inviteBox{
 		display: none;
 		width: 400px;
 		position: absolute;
-		margin: -300px 0 0 500px;
+		top: 50%;
+		left: 50%;
+		margin: -300px 0 0 -200px;
 		z-index: 2;
 	}
-	#createGroupTitle{
+	#createGroupTitle,
+	#editGroupTitle,
+	#inviteTitle{
 		margin: 10px;
 		font-weight: bold;
 		font-size: 0.95em;
 	}
-	#createGroupName{
+	#createGroupName,
+	#editGroupName{
 		width: 350px;
 		margin: 0 0 5px 20px;
 	}
-	#createGroupDescription{
+	#createGroupDescription,
+	#editGroupDescription{
 		width: 350px;
 		height: 100px;
 		margin: 0 0 5px 20px;
 		padding-top: 5px;
 		resize: none;
 	}
-	#createGroupEmails{
+	#createGroupEmails,
+	#inviteEmails{
 		width: 350px;
 		height: 75px;
 		margin: 0 0 5px 20px;
 		padding-top: 5px;
 		resize: none;
 	}
-	#createGroupCreate{
+	#createGroupCreate,
+	#editGroupCreate,
+	#inviteSubmit{
 		float: right;
 		margin: 0 23px 10px 10px;
 	}
-	#createGroupCancel{float: right;}
+	#createGroupCancel,
+	#editGroupCancel,
+	#inviteCancel{float: right;}
 	
-	/* Specific Groups */
-	#specificGroupList{
-		width: 100%;
-		height: 100%;
-	}
-	.specificGroupBlock{
-		width: 100%;
-		padding: 15px 0;
-		background: url('../images/boxBG.png');
-		box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
-	}
-	.specificGroupTitle{
-		margin-left: 20px;
-		font-size: 0.95em;
-		font-weight: bold;
-		color: #0283de;
-	}
-	.specificGroupText{
-		margin: 5px 100px 0 20px;
-		font-size: 0.8em;
-	}
-	.specificGroupEdit{
-		background: url('../images/edit.png') no-repeat;
-		float: right;
-		margin: -15px 10px 0 0;
-	}
-		.specificGroupEdit:hover{background: url('../images/editHover.png') no-repeat;}
-	.specificGroupMember{
-		margin-bottom: 5px;
-	}
-	.specificGroupRemove{
-		width: 27px;
-		height: 15px;
-		background: url('../images/delete.png') no-repeat;
-		background-size: 27px 15px;
-		float: right;
-		margin-right: 500px;
-		cursor: pointer;
-	}
-		.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}
-	#specificGroupAdd,
-	#specificGroupDelete{margin: 20px;}
+/* Specific Groups */
+#specificGroupList{
+	width: 100%;
+	height: 100%;
+}
+.specificGroupBlock{
+	width: 100%;
+	padding: 15px 0;
+	background: url('../images/boxBG.png');
+	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
+}
+.specificGroupTitle{
+	margin-left: 20px;
+	font-size: 0.95em;
+	font-weight: bold;
+	color: #0283de;
+}
+.specificGroupText{
+	margin: 5px 100px 0 20px;
+	font-size: 0.8em;
+}
+.specificGroupEdit{
+	background: url('../images/edit.png') no-repeat;
+	float: right;
+	margin: -15px 10px 0 0;
+}
+	.specificGroupEdit:hover{background: url('../images/editHover.png') no-repeat;}
+.specificGroupMember{
+	margin-bottom: 5px;
+}
+.specificGroupRemove{
+	width: 27px;
+	height: 15px;
+	background: url('../images/delete.png') no-repeat;
+	background-size: 27px 15px;
+	float: right;
+	margin-right: 500px;
+	cursor: pointer;
+}
+	.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}
+#specificGroupAdd,
+#specificGroupDelete{
+	margin: 20px;
+	padding-bottom: 20px;
+}
