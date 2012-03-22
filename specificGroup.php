@@ -62,7 +62,7 @@
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>
-					<li class="button navProfile">Profile</li>
+					<li class="button navProfile"><a href="#">Profile</a></li>
 					<li class="button navGroup"><a href="groups.php">Groups</a></li>
 					<li class="button navLogout">Logout</li>
 				</ul>
