@@ -54,11 +54,17 @@
         // Find out the current number of groups then increment it to make new groupID
         $currentGroups = (mysql_query("SELECT groupID FROM groups"));
         
+        $groupNums = NULL;
+        
         while ($nextGroup = mysql_fetch_array($currentGroups)){
             $groupNums[] = $nextGroup['groupID'];
         }
         
-        $groupID = max($groupNums) + 1;
+        if($groupNums != NULL){
+            $groupID = max($groupNums) + 1;
+        }
+        
+        else {$groupID = 1;}
         
         // Get user from session and get the email
         $user = $_SESSION['user'];
@@ -71,7 +77,7 @@
         // Add admin to group
         $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$adminEmail', '$groupID', 'yes')";
         mysql_query($sql) or die("Could not query: " . mysql_error());
-        
+                
         // Add the new groupID to the current users group's list
         $user->addGroup($groupID);
         

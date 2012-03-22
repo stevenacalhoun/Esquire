@@ -15,7 +15,7 @@
 
     
     // Get groupID from get request and strip everything but the number
-    $groupID = str_replace("pre-string goes here", "", $_GET["groupID"]);
+    $groupID = str_replace("specificGroup", "", $_GET["groupID"]);
     $group = new groupClass($groupID);
     
     // Get email of the member to be removed

@@ -56,7 +56,7 @@
 	</div>
 	
 	
-	<div class="container">
+	<div class="container" id="specificGroup<?php echo $group->getGroupID(); ?>">
 		<header>
 			<div class="mainTitle"></div>
 			<nav>
@@ -110,7 +110,7 @@
 					echo $userObject->getFullName();
 					if($user->getEmail() == $group->getAdmin() && $userObject->getEmail() != $group->getAdmin()){
 				?>
-						<div class="specificGroupRemove"></div>
+						<div class="specificGroupRemove" id="specificGroup<?php $user->getEmail(); ?>"></div>
 				<?php } ?>
 					</div>
 				<?php } ?>

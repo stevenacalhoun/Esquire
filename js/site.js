@@ -29,7 +29,7 @@ $(document).ready(function() {
     $('#specificGroupDelete').click(leaveGroup);
     
     // Sniffer for remove member click 
-    $('#specificGroupRemove').click(removeMember);
+    $('.specificGroupRemove').click(removeMember);
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -201,7 +201,9 @@ function leaveGroup()
 
 function removeMember()
 {
-    window.location.replace("php/deleteMember.php?groupID=" + hmmmm + "&email=" + this.id);
+    var group = $('.container');
+    var groupID = ($(group).attr('id'));
+    window.location.replace("php/deleteMember.php?groupID=" + groupID + "&email=" + this.id);
 }
 
 
