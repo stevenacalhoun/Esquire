@@ -18,6 +18,20 @@
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
+
+	<!-- Post popover -->
+	<div class="overlay" id="feedOverlay"></div>
+	
+	<!-- Edit Group Popover-->
+	<div class="box" id="postBox">
+		<div id="postTitle">Post an Update</div>
+		<form action="php/post.php" id="postForm" method="post">
+			<textarea name="postContent" id="postContent"></textarea>
+			<input type="submit" value="Post" class="button green" id="postCreate" />
+		</form>
+		<div class="button" id="postCancel">Cancel</div>
+	</div>
+	
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>
