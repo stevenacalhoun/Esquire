@@ -301,10 +301,12 @@ footer{
 
 	/* Popovers */
 	#createGroupOverlay,
-	#specificGroupOverlay{display: none;}
+	#specificGroupOverlay,
+	#feedOverlay{display: none;}
 	#createGroupBox,
 	#editGroupBox,
-	#inviteBox{
+	#inviteBox,
+	#postBox{
 		display: none;
 		width: 400px;
 		position: absolute;
@@ -315,7 +317,8 @@ footer{
 	}
 	#createGroupTitle,
 	#editGroupTitle,
-	#inviteTitle{
+	#inviteTitle,
+	#postTitle{
 		margin: 10px;
 		font-weight: bold;
 		font-size: 0.95em;
@@ -326,7 +329,8 @@ footer{
 		margin: 0 0 5px 20px;
 	}
 	#createGroupDescription,
-	#editGroupDescription{
+	#editGroupDescription,
+	#postContent{
 		width: 350px;
 		height: 100px;
 		margin: 0 0 5px 20px;
@@ -343,13 +347,15 @@ footer{
 	}
 	#createGroupCreate,
 	#editGroupCreate,
-	#inviteSubmit{
+	#inviteSubmit,
+	#postCreate{
 		float: right;
 		margin: 0 23px 10px 10px;
 	}
 	#createGroupCancel,
 	#editGroupCancel,
-	#inviteCancel{float: right;}
+	#inviteCancel,
+	#postCancel{float: right;}
 	
 /* Specific Groups */
 #specificGroupList{
@@ -396,3 +402,5 @@ footer{
 	margin: 20px;
 	padding-bottom: 20px;
 }
+
+/* Feed */
