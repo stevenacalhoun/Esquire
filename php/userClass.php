@@ -24,6 +24,9 @@ class userClass {
             $this->_firstName = $userRow['firstName'];
             $this->_lastName = $userRow['lastName'];
             $this->_password = $userRow['password'];
+            $this->_phoneNum = $userRow['phoneNum'];
+            $this->_textUpdates = $userRow['textUpdates'];
+            $this->_emailUpdates = $userRow['emailUpdates'];
             $this->_phoneEmail = $userRow['phoneEmail'];
             
             // Query member_of table and so long as there are rows add the groupID to the groups array
@@ -48,6 +51,31 @@ class userClass {
     
     public function getFullName(){
     	return $this->_firstName . ' ' . $this->_lastName;
+    }
+    
+    public function getPhone(){
+    	return $this->_phoneNum;
+    }
+    
+    public function getCarrier(){
+    	$carrier = $this->_phoneEmail;
+    	if(strpos($carrier, "tmomail.net")){
+    		return "T-Mobile";
+    	}
+    	else if(strpos($carrier, "vtext.com")){
+    		return "Verizon";
+    	}
+    	else if(strpos($carrier, "txt.att.net")){
+    		return "AT&T";
+    	}
+    }
+    
+    public function getTexts(){
+    	return $this->_textUpdates;
+    }
+    
+    public function getEmails(){
+    	return $this->_emailUpdates;
     }
     
     public function getGroups(){
