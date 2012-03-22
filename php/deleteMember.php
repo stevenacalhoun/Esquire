@@ -19,7 +19,7 @@
     $group = new groupClass($groupID);
     
     // Get email of the member to be removed
-    $email = str_replace("pre-string goes here", "", $_GET["email"]);
+    $email = str_replace("specificGroup", "", $_GET["email"]);
 
     // If the logged in user is not the admin then they can't delete the group
     if($user->getEmail() != $group->getAdmin()){

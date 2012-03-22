@@ -203,6 +203,7 @@ function removeMember()
 {
     var group = $('.container');
     var groupID = ($(group).attr('id'));
+    console.log(this.id);
     window.location.replace("php/deleteMember.php?groupID=" + groupID + "&email=" + this.id);
 }
 
