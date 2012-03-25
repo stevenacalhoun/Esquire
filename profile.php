@@ -43,6 +43,5 @@
 		<a href="#"><div id="profileCancel" class="button">Cancel</div></a>
 		<a href="#"><div id="profileEdit" class="button green">Edit</div></a>
 	</div>
-	<div class="secondaryFooter">&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</div>
 </body>
 </html>
