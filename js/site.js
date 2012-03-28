@@ -38,6 +38,10 @@ $(document).ready(function() {
     
     // Sniffer for profile cancel click
     $('#profileCancel').click(hideProfile);
+    $('#editProfileCancel').click(hideProfile);
+    
+    // Sniffer for edit profile click
+    $('#profileEdit').click(editProfile);
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -212,13 +216,16 @@ function addMember(){
 }
 
 function showProfile(){
-    $("body").append($("<div id=poopy>").load("profile.php").fadeIn("fast"));
-    
-    $("#profileBox").fadeIn("fast");
+    $('#test').html('').load("profile.php").fadeIn('fast');
+    $('.overlay').fadeIn('fast');
 }
 
 function hideProfile(){
-    $("#poopy").remove().fadeOut("fast");
+    $("#test").html('').fadeOut("fast");
+    $('.overlay').fadeOut('fast');
 }
 
-
+function editProfile(){
+    $("#test").html('').fadeOut("fast");
+    $("#test").html('').load("profileEdit.php").fadeIn('fast');
+}

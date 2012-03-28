@@ -88,5 +88,6 @@
 		<div class="button green" id="groupCreate">Create</div> 
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
+	<div id="test"></div>
 </body>
 </html>
