@@ -22,6 +22,10 @@
 	$textUpdates = $_POST['texts'];
 	$emailUpdates = $_POST['emails']; 
 	
+	// Determine boolean values for update options
+	if ($textUpdates == "textYes"){$textUpdates = true;}
+	if ($emailUpdates == "emailYes"){$emailUpdates = true;}
+	
 	// Functions for validation
 	function validateEmail($email){
 	    return (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));

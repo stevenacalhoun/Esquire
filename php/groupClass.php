@@ -6,6 +6,8 @@
         private $_admin;
         private $_description;
         private $_confirmedMembers;
+        private $_allowedMembers;
+        private $_permittedMembers;
         
         // Constructor function
         public function groupClass($groupID){
@@ -30,13 +32,23 @@
             
             // Initialize a dummy members so the array is never null
             $this->_confirmedMembers[] = "dummy";
+            $this->_acceptedMembers[] = "dummy";
+            $this->_permittedMembers[] = "dummy";
             
             // Find the confirmed members of the group
-            $memberEmails = mysql_query("SELECT email FROM member_of WHERE groupID = '$groupID' and accept = 'yes'");
+            $memberEmails = mysql_query("SELECT * FROM member_of WHERE groupID = '$groupID'");
             if ($memberEmails != null){
-            	$this->_confirmedMembers = array();
+            	//$this->_confirmedMembers = array();
                 while($email = mysql_fetch_array($memberEmails)){
-                    $this->_confirmedMembers[] = $email['email'];
+                    if ($email['accept'] and $email['permission']){
+                        $this->_confirmedMembers[] = $email['email'];
+                    }
+                    else if ($email['accept']){
+                        $this->_acceptedMembers[] = $email['email'];
+                    }
+                    else if ($email['permission']){
+                        $this->_permittedMembers[] = $email['email'];
+                    }
                 }
             }
         }
@@ -62,10 +74,18 @@
             return $this->_confirmedMembers;
         }
         
+        public function getPermittedMembers(){
+            return $this->_permittedMembers;
+        }
+        
+        public function getAllowedMembers(){
+            return $this->_allowedMembers;
+        }
+        
         // Other functions
         public function addMember($email){
             $groupID = $this->getGroupID();
-            $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$email', '$groupID', 'no')";
+            $sql = "INSERT INTO member_of (email, groupID, accept, permission) VALUES ('$email', '$groupID', 0, 1)";
             mysql_query($sql) or die("Could not query: " . mysql_error());
         }
         

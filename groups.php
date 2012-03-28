@@ -5,9 +5,7 @@
     require("php/groupClass.php");
     require_once("php/db_setup.php");
     session_start();
-    if (!array_key_exists('user', $_SESSION)){
-        header('Location:index.php');
-    } 
+  
 ?>
 
 <html>
@@ -58,6 +56,7 @@
                 if (!empty($groupIDs)){
                     foreach($groupIDs as $groupID){
                         $group = new groupClass($groupID);
+                        if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
                  ?>
                      	<div class="groupBlock">
                      		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
@@ -79,7 +78,8 @@
                      	        <div class="accept icon" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
                      	        
                      		<?php } ?>
-                     	</div>          
+                     	</div>   
+                     	<?php } ?>       
                 <?php
                     }
                 }
