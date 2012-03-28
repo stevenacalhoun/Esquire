@@ -306,8 +306,10 @@ footer{
 	#createGroupBox,
 	#editGroupBox,
 	#inviteBox,
-	#postBox{
-		display: none;
+	#postBox,
+	#profileBox,
+	#editProfileBox{
+		//display: none;
 		width: 400px;
 		position: absolute;
 		top: 50%;
@@ -356,6 +358,13 @@ footer{
 	#editGroupCancel,
 	#inviteCancel,
 	#postCancel{float: right;}
+	
+	/* Profile */
+	.profileTitle{
+		width: 100px;
+		margin: 10px 0 10px 10px;
+		font-weight: bold;
+	}
 	
 /* Specific Groups */
 #specificGroupList{

@@ -24,7 +24,7 @@
 <body>
 	<div id="profileBox" class="box">
 		<div class="profileTitle"><?php echo $user->getFullName(); ?></div>
-		<div class="profileEmail">Email:&nbsp;<?php echo $user->getEmail(); ?></div>
+		<div class="profileTitle">Email:&nbsp;</div><div class="profileEmail"><?php echo $user->getEmail(); ?></div>
 		<div class="profilePhone">Phone:&nbsp;<?php echo $user->getPhone(); ?></div>
 		<div class="profileCarrier">Carrier:&nbsp;<?php echo $user->getCarrier(); ?></div>
 		<div class="profileTexts">Texts:&nbsp;<?php if($user->getTexts()=="textYes")echo "Yes";else echo "No"; ?></div>
