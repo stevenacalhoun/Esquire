@@ -17,20 +17,10 @@
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
-
-	<!-- Create Group Box -->
-	<div class="overlay" id="createGroupOverlay"></div>
-	<div class="box" id="createGroupBox">
-		<div id="createGroupTitle">Create a Group</div>
-		<form action="php/createGroup.php" id="createGroupForm" method="post">
-			<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
-			<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
-			<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
-			<input type="submit" value="Create" class="button green" id="createGroupCreate" />
-		</form>
-		<div class="button" id="createGroupCancel">Cancel</div>
-	</div>
 	
+	<!-- Overlay -->
+	<div class="overlay" id="createGroupOverlay"></div>
+
 	<!-- Group Page -->
 	<div class="container">
 		<header>
@@ -88,5 +78,19 @@
 		<div class="button green" id="groupCreate">Create</div> 
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
+	
+	<!-- Create Group Box -->
+	<div class="box" id="createGroupBox">
+		<div id="createGroupTitle">Create a Group</div>
+		<form action="php/createGroup.php" id="createGroupForm" method="post">
+			<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
+			<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
+			<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
+			<input type="submit" value="Create" class="button green" id="createGroupCreate" />
+		</form>
+		<div class="button" id="createGroupCancel">Cancel</div>
+	</div>
+	<div class="error" id="createGroupEmptyField">You left a field blank.</div>
+	<div class="error" id="createGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
 </body>
 </html>
