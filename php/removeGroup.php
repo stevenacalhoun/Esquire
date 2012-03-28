@@ -26,7 +26,7 @@
         break;
     }
     
-    else {
+//    else {
         // Delete group
         $group->deleteGroup();
     
@@ -35,5 +35,5 @@
         
         // Redirect back to groups page
         header("Location: ../groups.php");
-    }
+//    }
 ?>

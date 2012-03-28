@@ -309,7 +309,7 @@ footer{
 	#postBox,
 	#profileBox,
 	#editProfileBox{
-		//display: none;
+		display: none;
 		width: 400px;
 		position: absolute;
 		top: 50%;

@@ -32,6 +32,12 @@ $(document).ready(function() {
     $('.specificGroupRemove').click(removeMember);
     
     $('#specificGroupAdd').click(addMember);
+    
+    // Sniffer for profile button click
+    $('.navProfile').click(showProfile);
+    
+    // Sniffer for profile cancel click
+    $('#profileCancel').click(hideProfile);
 });
 
 // AJAX function for login. Checking to see if correct login.
@@ -205,5 +211,14 @@ function addMember(){
     $("htmladf").appendTo(".specificGroupBlock").page();
 }
 
+function showProfile(){
+    $("body").append($("<div id=poopy>").load("profile.php").fadeIn("fast"));
+    
+    $("#profileBox").fadeIn("fast");
+}
+
+function hideProfile(){
+    $("#poopy").remove().fadeOut("fast");
+}
 
 
