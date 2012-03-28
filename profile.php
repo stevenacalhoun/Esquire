@@ -1,3 +1,5 @@
+<?php $user = $_SESSION['user']; ?>
+
 <!-- Profile popover -->
 <div id="profileBox" class="box">
 	<div class="profileTitle"><?php echo $user->getFullName(); ?></div>

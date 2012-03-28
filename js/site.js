@@ -213,8 +213,8 @@ function addMember(){
 
 function showProfile(){
     $("body").append($("<div id=poopy>").load("profile.php").fadeIn("fast"));
-    
-    $("#profileBox").fadeIn("fast");
+    event.preventDefault();
+    $(".overlay").fadeIn("fast");
 }
 
 function hideProfile(){
