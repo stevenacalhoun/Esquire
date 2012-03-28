@@ -30,11 +30,12 @@ $(document).ready(function() {
     
     // Sniffer for remove member click 
     $('.specificGroupRemove').click(removeMember);
+    
+    $('#specificGroupAdd').click(addMember);
 });
 
 // AJAX function for login. Checking to see if correct login.
-function login(event)
-{
+function login(event){
 	event.preventDefault();
 	
 	// Create data form form and get action
@@ -57,8 +58,7 @@ function login(event)
 
 
 // Function that handles the returns of php validation and moving user to next page upon successful account creation
-function newAccount(event)
-{
+function newAccount(event){
     event.preventDefault();
     
     // Create data form form and get action
@@ -113,8 +113,7 @@ function newAccount(event)
 }
 
 // Validate email
-function validateEmail()
-{
+function validateEmail(){
     // Create regular expression to validate an email
     var regEmail = (/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);    
     
@@ -131,8 +130,7 @@ function validateEmail()
     }
 }
 
-function validatePass1()
-{    
+function validatePass1(){    
     // Password must be at least 5 characters, if it's valid remove error window
     if (this.value.length > 4){
         $('#invalidPassError').fadeOut('fast');
@@ -146,8 +144,7 @@ function validatePass1()
     }
 }
 
-function validatePass2()
-{
+function validatePass2(){
     // Variable for first password
     var pass = $('#joinPassword');
     
@@ -164,8 +161,7 @@ function validatePass2()
     }
 }
 
-function createGroup()
-{
+function createGroup(){
     event.preventDefault();
     
     var data = $("form#createGroupForm").serialize();
@@ -188,8 +184,7 @@ function createGroup()
     );
 }
 
-function deleteGroup()
-{
+function deleteGroup(){
     window.location.replace("php/removeGroup.php?groupID=" + this.id);
 }
 
@@ -199,15 +194,16 @@ function leaveGroup()
     window.location.replace("php/leaveGroup.php?groupID=" + url);
 }
 
-function removeMember()
-{
+function removeMember(){
     var group = $('.container');
     var groupID = ($(group).attr('id'));
     console.log(this.id);
     window.location.replace("php/deleteMember.php?groupID=" + groupID + "&email=" + this.id);
 }
 
-
+function addMember(){
+    $("htmladf").appendTo(".specificGroupBlock").page();
+}
 
 
 

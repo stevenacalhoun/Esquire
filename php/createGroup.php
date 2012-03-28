@@ -75,7 +75,7 @@
         mysql_query($sql) or die("Could not query: " . mysql_error());
         
         // Add admin to group
-        $sql = "INSERT INTO member_of (email, groupID, accept) VALUES ('$adminEmail', '$groupID', 'yes')";
+        $sql = "INSERT INTO member_of (email, groupID, accept, permission) VALUES ('$adminEmail', '$groupID', 1, 1)";
         mysql_query($sql) or die("Could not query: " . mysql_error());
                 
         // Add the new groupID to the current users group's list
