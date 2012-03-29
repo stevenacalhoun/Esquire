@@ -36,7 +36,7 @@ $(document).ready(function() {
     // Sniffer for profile button click
     $('.navProfile').click(showProfile);
     
-    // Sniffer for profile cancel click
+    // Sniffer for profile cancel click    
     $('#profileCancel').click(hideProfile);
     $('#editProfileCancel').click(hideProfile);
     

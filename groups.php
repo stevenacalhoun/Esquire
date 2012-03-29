@@ -78,7 +78,6 @@
 		<div class="button green" id="groupCreate">Create</div> 
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
-	<div id="test"></div>
 	
 	<!-- Create Group Box -->
 	<div class="box" id="createGroupBox">
@@ -93,5 +92,6 @@
 	</div>
 	<div class="error" id="createGroupEmptyField">You left a field blank.</div>
 	<div class="error" id="createGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
+	<div id="test"></div>
 </body>
 </html>

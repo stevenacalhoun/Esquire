@@ -1,6 +1,18 @@
-<?php $user = $_SESSION['user']; ?>
+<?php
+    // Pull in required files and make sure the user is logged in, if not redirect ot log in
+    require_once("php/userClass.php");
+    require("php/groupClass.php");
+    require_once("php/db_setup.php");
+    session_start();
+    if (!array_key_exists('user', $_SESSION)){
+        header('Location:index.php');
+    }
+    $user = $_SESSION['user'];
+?>
 
 <!-- Profile popover -->
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/site.js" type="text/javascript"></script>
 <div id="profileBox" class="box">
 	<div class="profileTitle"><?php echo $user->getFullName(); ?></div>
 	<div class="profileTitle">Email:&nbsp;</div><div class="profileEmail"><?php echo $user->getEmail(); ?></div>
