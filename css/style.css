@@ -313,13 +313,12 @@ footer{
 		margin: -300px 0 0 -200px;
 		z-index: 2;
 	}
-	#profileBox,
-	#editProfileBox{
+	#profileBox{
 		width: 400px;
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		margin: -200px 0 0 -200px;
+		margin: -250px 0 0 -200px;
 		z-index: 2;
 	}
 	#createGroupTitle,
@@ -369,6 +368,29 @@ footer{
 		width: 100px;
 		margin: 10px 0 10px 10px;
 		font-weight: bold;
+	}
+	
+	/* Edit Profile */
+	#editProfileBox{
+		width: 450px;
+		height: 300px;
+		margin: -165px auto 10px auto;
+		top: 50%;
+		position: relative;
+		z-index: 2;
+	}
+	#editProfileLeft{
+		width: 225px;
+		height: 200px;
+		float: left;
+		position: absolute;
+		margin: 30px 0 0 20px;
+	}
+	#editProfileRight{
+		width: 225px;
+		height: 200px;
+		float: right;
+		margin: 75px -10px 0 0;
 	}
 	
 /* Specific Groups */

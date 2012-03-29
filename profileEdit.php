@@ -32,16 +32,16 @@
 			<div id="editProfileTexts">
 				<label name="texts">Texts:</label>
 					<label>Yes</label>
-					<input type="radio" name="texts" value="textYes" <?php if($user->getTexts()=="textYes"){ ?>checked<?php } ?> />
+					<input type="radio" name="texts" value="textYes" <?php if($user->getTexts()){ ?>checked<?php } ?> />
 					<label>No</label>
-					<input type="radio" name="texts" value="textNo" <?php if($user->getTexts()=="textNo"){ ?>checked<?php } ?>/>
+					<input type="radio" name="texts" value="textNo" <?php if(!$user->getTexts()){ ?>checked<?php } ?>/>
 			</div>
 			<div id="editProfileEmails">
 				<label name="emails">Emails:</label>
 					<label>Yes</label>
-					<input type="radio" name="emails" value="emailYes" <?php if($user->getEmails()=="emailYes"){ ?>checked<?php } ?> />
+					<input type="radio" name="emails" value="emailYes" <?php if($user->getEmails()){ ?>checked<?php } ?> />
 					<label>No</label>
-					<input type="radio" name="emails" value="emailNo" <?php if($user->getEmails()=="emailNo"){ ?>checked<?php } ?>/>
+					<input type="radio" name="emails" value="emailNo" <?php if(!$user->getEmails()){ ?>checked<?php } ?>/>
 			</div>
 		</div>
 			
