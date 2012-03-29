@@ -12,28 +12,14 @@
     
     // Get the current user from session
     $user = $_SESSION['user'];
-
     
     // Get groupID from get request and strip everything but the number
-    $groupID = str_replace("groupDelete", "", $_GET["groupID"]);
+    $groupID = str_replace("groupDelete", "", $_POST["groupID"]);
     $group = new groupClass($groupID);
-    
 
-    // If the logged in user is not the admin then they can't delete the group
-    if($user->getEmail() != $group->getAdmin()){
-        // Redirect back to groups page
-        header('Location:../groups.php');
-        break;
-    }
-    
-//    else {
-        // Delete group
-        $group->deleteGroup();
-    
-        // Remove the group from the logged in user's group list
-        $user->removeGroup($groupID);
-        
-        // Redirect back to groups page
-        header("Location: ../groups.php");
-//    }
+    // Delete group
+    $group->deleteGroup();
+
+    // Remove the group from the logged in user's group list
+    $user->removeGroup($groupID);
 ?>

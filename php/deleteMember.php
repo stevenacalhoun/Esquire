@@ -13,23 +13,13 @@
     // Get the current user from session
     $user = $_SESSION['user'];
 
-    
     // Get groupID from get request and strip everything but the number
-    $groupID = str_replace("specificGroup", "", $_GET["groupID"]);
+    $groupID = str_replace("specificGroup", "", $_POST["groupID"]);
     $group = new groupClass($groupID);
     
     // Get email of the member to be removed
-    $email = str_replace("specificGroup", "", $_GET["email"]);
+    $email = str_replace("specificGroup", "", $_POST["email"]);
 
-    // If the logged in user is not the admin then they can't delete the group
-    if($user->getEmail() != $group->getAdmin()){
-        // Redirect back to groups page
-        header('Location:../groups.php');
-        break;
-    }
-
-    else {
-        $group->deleteMember($email);
-        header('Location:../specificGroup.php?groupID=' . $groupID);
-    }
+    // Delete member
+    $group->deleteMember($email);
 ?>
