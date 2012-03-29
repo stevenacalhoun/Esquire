@@ -4,5 +4,5 @@
     $host = "localhost";
     $sqlusername = "root";
     $sqlpassword = "root";
-    $db_name = "test";
+    $db_name = "Esquire";
 ?>

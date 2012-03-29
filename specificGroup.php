@@ -34,28 +34,6 @@
 	<!-- Popovers -->
 	<div class="overlay" id="specificGroupOverlay"></div>
 	
-	<!-- Edit Group Popover-->
-	<div class="box" id="editGroupBox">
-		<div id="editGroupTitle">Edit Group</div>
-		<form action="php/editGroup.php" id="editGroupForm" method="post">
-			<input type="text" name="editGroupName" placeholder="name" id="editGroupName" />
-			<textarea name="editGroupDescription" placeholder="description" id="editGroupDescription"></textarea>
-			<input type="submit" value="Submit" class="button green" id="editGroupCreate" />
-		</form>
-		<div class="button" id="editGroupCancel">Cancel</div>
-	</div>
-	
-	<!-- Invite Popover -->
-	<div class="box" id="inviteBox">
-		<div id="inviteTitle">Invite Members</div>
-		<form action="php/invite.php" id="inviteForm" method="post">
-			<textarea name="inviteEmails" placeholder="emails to invite" id="inviteEmails"></textarea>
-			<input type="submit" value="Submit" class="button green" id="inviteSubmit" />
-		</form>
-		<div class="button" id="inviteCancel">Cancel</div>
-	</div>
-	
-	
 	<div class="container" id="specificGroup<?php echo $group->getGroupID(); ?>">
 		<header>
 			<div class="mainTitle"></div>
@@ -128,5 +106,26 @@
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
+	
+	<!-- Edit Group Popover-->
+	<div class="box" id="editGroupBox">
+		<div id="editGroupTitle">Edit Group</div>
+		<form action="php/editGroup.php" id="editGroupForm" method="post">
+			<input type="text" name="editGroupName" placeholder="name" id="editGroupName" />
+			<textarea name="editGroupDescription" placeholder="description" id="editGroupDescription"></textarea>
+			<input type="submit" value="Submit" class="button green" id="editGroupCreate" />
+		</form>
+		<div class="button" id="editGroupCancel">Cancel</div>
+	</div>
+	
+	<!-- Invite Popover -->
+	<div class="box" id="inviteBox">
+		<div id="inviteTitle">Invite Members</div>
+		<form action="php/invite.php" id="inviteForm" method="post">
+			<textarea name="inviteEmails" placeholder="emails to invite" id="inviteEmails"></textarea>
+			<input type="submit" value="Submit" class="button green" id="inviteSubmit" />
+		</form>
+		<div class="button" id="inviteCancel">Cancel</div>
+	</div>
 </body>
 </html>

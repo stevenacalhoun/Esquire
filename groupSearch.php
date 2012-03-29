@@ -18,6 +18,10 @@
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
+
+	<!-- Overlay -->
+	<div class="overlay" id="searchGroupOverlay"></div>
+	
 	<div class="container">
 		<header>
 			<div class="mainTitle"></div>

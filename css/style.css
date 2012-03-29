@@ -67,7 +67,7 @@ nav{
 	text-shadow: 0 1px 3px rgb(0,66,112);
 	text-align: center;
 	line-height: 27px;
-	font-size: 0.85em;
+	font-size: 0.8em;
 	cursor: pointer;
 }
 	.button:hover{background: url('../images/buttonHover.png') no-repeat;}
