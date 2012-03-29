@@ -127,5 +127,8 @@
 		</form>
 		<div class="button" id="inviteCancel">Cancel</div>
 	</div>
+	
+	<!-- Profile popovers -->
+	<div class="dynamicPopover"></div>
 </body>
 </html>

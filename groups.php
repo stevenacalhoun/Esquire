@@ -92,6 +92,8 @@
 	</div>
 	<div class="error" id="createGroupEmptyField">You left a field blank.</div>
 	<div class="error" id="createGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
-	<div id="test"></div>
+	
+	<!-- Profile popovers -->
+	<div class="dynamicPopover"></div>
 </body>
 </html>

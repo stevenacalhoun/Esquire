@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
     require_once("php/userClass.php");
     require("php/groupClass.php");
@@ -9,14 +8,6 @@
         header('Location:index.php');
     }
     $user = $_SESSION['user'];
-=======
-	// Pull in required files and make sure the user is logged in, if not redirect ot log in
-	require_once("php/userClass.php");
-	require("php/groupClass.php");
-	require_once("php/db_setup.php");
-	session_start();
-	$user = $_SESSION['user']; 
->>>>>>> FORK YOU GIT. FORK YOU.
 ?>
 
 <!-- Profile popover -->

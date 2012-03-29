@@ -68,5 +68,8 @@
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
+	
+	<!-- Profile popovers -->
+	<div class="dynamicPopover"></div>
 </body>
 </html>

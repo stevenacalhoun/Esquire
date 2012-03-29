@@ -50,5 +50,8 @@
 		</form>
 		<div class="button" id="postCancel">Cancel</div>
 	</div>
+	
+	<!-- Profile popovers -->
+	<div class="dynamicPopover"></div>
 </body>
 </html>

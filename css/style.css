@@ -306,10 +306,17 @@ footer{
 	#createGroupBox,
 	#editGroupBox,
 	#inviteBox,
-	#postBox,
+	#postBox{
+		display: none;
+		width: 400px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -300px 0 0 -200px;
+		z-index: 2;
+	}
 	#profileBox,
 	#editProfileBox{
-		//display: none;
 		width: 400px;
 		position: absolute;
 		top: 50%;

@@ -216,16 +216,16 @@ function addMember(){
 }
 
 function showProfile(){
-    $('#test').html('').load("profile.php").fadeIn('fast');
+    $('.dynamicPopover').html('').load("profile.php").fadeIn('fast');
     $('.overlay').fadeIn('fast');
 }
 
 function hideProfile(){
-    $("#test").html('').fadeOut("fast");
+    $(".dynamicPopover").html('').fadeOut("fast");
     $('.overlay').fadeOut('fast');
 }
 
 function editProfile(){
-    $("#test").html('').fadeOut("fast");
-    $("#test").html('').load("profileEdit.php").fadeIn('fast');
+    $(".dynamicPopover").html('').fadeOut("fast");
+    $(".dynamicPopover").html('').load("profileEdit.php").fadeIn('fast');
 }
