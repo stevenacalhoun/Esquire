@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    /** Login, join, logout, and validation **/
+    
     // Sniffer for login submit
 	$('#loginForm').submit(function() {
 		login(event);
@@ -17,6 +20,19 @@ $(document).ready(function() {
     // Sniffer for logout
     $('.navLogout').click(function(){window.location.replace("index.php");});
     
+    
+    /** Profile edit buttons **/
+    
+    // Sniffer for profile button click
+    $('.navProfile').click(showProfile);
+    
+    // Sniffer for profile cancel click    
+    $('#profileCancel').click(hideProfile);
+    $('#editProfileCancel').click(hideProfile);
+    
+    
+    /** Group functions **/
+    
     // Sniffer for creating a new group and canceling group
     $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
     $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
@@ -28,21 +44,46 @@ $(document).ready(function() {
     // Sniffer for leave group
     $('#specificGroupDelete').click(leaveGroup);
     
+    
+    /** Group's admin privileges **/
+    
     // Sniffer for remove member click 
     $('.specificGroupRemove').click(removeMember);
     
-    $('#specificGroupAdd').click(addMember);
-    
-    // Sniffer for profile button click
-    $('.navProfile').click(showProfile);
-    
-    // Sniffer for profile cancel click    
-    $('#profileCancel').click(hideProfile);
-    $('#editProfileCancel').click(hideProfile);
-    
     // Sniffer for edit profile click
     $('#profileEdit').click(editProfile);
+    
+    // Sniffer for admin edit group button and cancel
+    $('.specificGroupEdit').click(
+        function(){
+            $('#editGroupBox').fadeIn('fast'); 
+            $('.overlay').fadeIn('fast');
+        }
+    );
+    $('#editGroupCancel').click(
+        function(){
+            $('#editGroupBox').fadeOut('fast');
+            $('.overlay').fadeOut('fast');
+        }
+    );
+    
+    // Sniffer for admin invite member button and cancel
+    $('#specificGroupAdd').click(
+        function(){
+            $('#inviteBox').fadeIn('fast');
+            $('.overlay').fadeIn('fast');
+        }
+    );
+    $('#inviteCancel').click(
+        function(){
+            $('#inviteBox').fadeOut('fast');
+            $('.overlay').fadeOut('fast');
+        }
+    );
 });
+
+
+/** Login and join functions **/
 
 // AJAX function for login. Checking to see if correct login.
 function login(event){
@@ -122,55 +163,54 @@ function newAccount(event){
     );
 }
 
-// Validate email
+/** Validation functions **/
+
+// Validate email using a regular expression
 function validateEmail(){
-    // Create regular expression to validate an email
     var regEmail = (/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);    
     
-    // If it's valid remove error window
     if(regEmail.test(this.value)){
         $('#emailError').fadeOut('fast');
         return true;
     }
     
-    // If invalid present the error box
     else {
         $('#emailError').fadeIn('fast');
         return false;
     }
 }
 
+// Validate password, much meet 5 character criteria
 function validatePass1(){    
-    // Password must be at least 5 characters, if it's valid remove error window
     if (this.value.length > 4){
         $('#invalidPassError').fadeOut('fast');
         return true;
     }
     
-    // If invalid present the error box
     else {
         $('#invalidPassError').fadeIn('fast');
         return false;
     }
 }
 
+// Validate confirm password by comparing it to the first one and ensuring they are identical
 function validatePass2(){
-    // Variable for first password
     var pass = $('#joinPassword');
     
-    // Passwords must be the same, if it's valid remove error window
     if (pass.val() == this.value){
         $('#passMatchError').fadeOut('fast');
         return true;
     }
     
-    // If invalid present the error box
     else {
         $('#passMatchError').fadeIn('fast');
         return false;
     }
 }
 
+/** Create and delete a group **/
+
+// Create a group by using a php file
 function createGroup(){
     event.preventDefault();
     
@@ -194,16 +234,21 @@ function createGroup(){
     );
 }
 
+// Delete a group using a php file
 function deleteGroup(){
     window.location.replace("php/removeGroup.php?groupID=" + this.id);
 }
 
+/** Group admin's privileges **/
+
+// Leave a group using a php file
 function leaveGroup()
 {
     var url = $(location).attr("href");
     window.location.replace("php/leaveGroup.php?groupID=" + url);
 }
 
+// Admin's privilege to remove a member by using a php file
 function removeMember(){
     var group = $('.container');
     var groupID = ($(group).attr('id'));
@@ -211,20 +256,26 @@ function removeMember(){
     window.location.replace("php/deleteMember.php?groupID=" + groupID + "&email=" + this.id);
 }
 
+// Admin's privilege to add a member by using a php file
 function addMember(){
     $("htmladf").appendTo(".specificGroupBlock").page();
 }
 
+/** User profile information **/
+
+// Present the current user's information 
 function showProfile(){
     $('.dynamicPopover').html('').load("profile.php").fadeIn('fast');
     $('.overlay').fadeIn('fast');
 }
 
+// Close out the profile popover
 function hideProfile(){
     $(".dynamicPopover").html('').fadeOut("fast");
     $('.overlay').fadeOut('fast');
 }
 
+// Change the popover to be editable
 function editProfile(){
     $(".dynamicPopover").html('').fadeOut("fast");
     $(".dynamicPopover").html('').load("profileEdit.php").fadeIn('fast');
