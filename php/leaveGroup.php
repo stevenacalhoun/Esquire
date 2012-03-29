@@ -6,8 +6,8 @@
     
     // Get user object and groupID
     $user = $_SESSION['user'];
-    $groupID = $_GET['groupID'];
-    $groupID = str_replace("http://esquire.dev/specificGroup.php?groupID=", "", $groupID);
+    $groupID = $_POST['groupID'];
+    $groupID = str_replace("specificGroup", "", $groupID);
 
     // Create group object
     $group = new groupClass($groupID);
@@ -15,11 +15,6 @@
     // Remove the member
     $group->deleteMember($user->getEmail());
     
-    // Remove group from logged inuser's groups list
+    // Remove group from logged in user's groups list
     $user->removeGroup($groupID);
-    
-    // Redirect back to groups page
-    header("Location: ../groups.php");
-    
-
 ?>

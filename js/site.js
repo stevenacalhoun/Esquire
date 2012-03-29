@@ -236,24 +236,42 @@ function createGroup(){
 
 // Delete a group using a php file
 function deleteGroup(){
-    window.location.replace("php/removeGroup.php?groupID=" + this.id);
+    var id = this.id;
+    var dataToSend = {groupID : id};
+    $.ajax({
+        type:    "POST",
+        url:     "php/removeGroup",
+        data:    dataToSend,
+        success: function(){window.location.replace("groups.php");}
+    });
 }
 
 /** Group admin's privileges **/
 
 // Leave a group using a php file
-function leaveGroup()
-{
-    var url = $(location).attr("href");
-    window.location.replace("php/leaveGroup.php?groupID=" + url);
+function leaveGroup(){
+    var id = $('.container').attr('id');
+    var dataToSend = {groupID: id};
+    console.log(id);
+    $.ajax({
+        type:    "POST",
+        url:     "php/leaveGroup.php",
+        data:    dataToSend,
+        success: function(){window.location.replace("groups.php");}
+    });
 }
 
 // Admin's privilege to remove a member by using a php file
 function removeMember(){
-    var group = $('.container');
-    var groupID = ($(group).attr('id'));
-    console.log(this.id);
-    window.location.replace("php/deleteMember.php?groupID=" + groupID + "&email=" + this.id);
+    var id = $('.container').attr('id');
+    var email = this.id;
+    var dataToSend = {groupID: id, email: email};
+    $.ajax({
+        type:     "POST",
+        url:      "php/deleteMember",
+        data:     dataToSend,
+        success:  function(){window.location.reload();}
+    });
 }
 
 // Admin's privilege to add a member by using a php file
