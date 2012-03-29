@@ -15,6 +15,7 @@ body{
 	width: 850px;
 	min-height: 80px;
 	margin: auto;
+	padding-bottom: 20px;
 	background: url('../images/boxBG.png');
 }
 header{
@@ -294,10 +295,7 @@ footer{
 	margin: -15px 10px 0 0;
 }
 	.decline:hover{background: url('../images/declineHover.png') no-repeat;}
-#groupCreate{
-	margin: 20px;
-	padding-bottom: 20px;
-}
+#groupCreate{margin: 20px;}
 
 	/* Popovers */
 	#createGroupOverlay,
@@ -321,7 +319,7 @@ footer{
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		margin: -300px 0 0 -200px;
+		margin: -200px 0 0 -200px;
 		z-index: 2;
 	}
 	#createGroupTitle,
@@ -414,9 +412,6 @@ footer{
 }
 	.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}
 #specificGroupAdd,
-#specificGroupDelete{
-	margin: 20px;
-	padding-bottom: 20px;
-}
+#specificGroupDelete{margin: 20px;}
 
 /* Feed */
