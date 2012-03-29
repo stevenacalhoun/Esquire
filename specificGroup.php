@@ -111,8 +111,8 @@
 	<div class="box" id="editGroupBox">
 		<div id="editGroupTitle">Edit Group</div>
 		<form action="php/editGroup.php" id="editGroupForm" method="post">
-			<input type="text" name="editGroupName" placeholder="name" id="editGroupName" />
-			<textarea name="editGroupDescription" placeholder="description" id="editGroupDescription"></textarea>
+			<input type="text" name="editGroupName" value="<?php echo $group->getName(); ?>" placeholder="name" id="editGroupName" />
+			<textarea name="editGroupDescription" value="<?php echo $group->getDescription(); ?>" placeholder="description" id="editGroupDescription"></textarea>
 			<input type="submit" value="Submit" class="button green" id="editGroupCreate" />
 		</form>
 		<div class="button" id="editGroupCancel">Cancel</div>
