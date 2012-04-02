@@ -15,22 +15,41 @@
 <script src="js/site.js" type="text/javascript"></script>
 <div id="profileBox" class="box">
 	<div class="profileTitle"><?php echo $user->getFullName(); ?></div>
-	<div class="profileTitle">Email:&nbsp;</div><div class="profileEmail"><?php echo $user->getEmail(); ?></div>
-	<div class="profilePhone">Phone:&nbsp;<?php echo $user->getPhone(); ?></div>
-	<div class="profileCarrier">Carrier:&nbsp;<?php echo $user->getCarrier(); ?></div>
-	<div class="profileTexts">Texts:&nbsp;<?php if($user->getTexts())echo "Yes";else echo "No"; ?></div>
-	<div class="profileEmails">Emails:&nbsp;<?php if($user->getEmails())echo "Yes";else echo "No"; ?></div>
-	<div class="profileGroupsTitle">Member of:</div>
-		<div class="profileGroups">
-			<?php 
-			$groups = $user->getGroups();
-			foreach($groups as $group){
-				$groupName = new groupClass($group);
-				echo $groupName->getName();
-				echo "<br />";
-			}
-			?>
-		</div>
-	<a href="#"><div id="profileCancel" class="button">Cancel</div></a>
+	<div class="profileEntry">
+		<div class="profileSubTitle">Email:&nbsp;</div>
+		<div class="profileContent"><?php echo $user->getEmail(); ?></div>
+	</div>
+	<div class="profileEntry">
+		<div class="profileSubTitle">Phone:&nbsp;</div>
+		<div class="profileContent"><?php echo $user->getPhone(); ?></div>
+	</div>
+	<div class="profileEntry">
+		<div class="profileSubTitle">Carrier:&nbsp;</div>
+		<div clas="profileContent"><?php echo $user->getCarrier(); ?></div>
+	</div>
+	<div class="profileEntry">
+		<div class="profileSubTitle">Texts:&nbsp;</div>
+		<div class="profileContent"><?php if($user->getTexts())echo "Yes";else echo "No"; ?></div>
+	</div>
+	<div class="profileEntry">
+		<div class="profileSubTitle">Emails:&nbsp;</div>
+		<div class="profileContent"><?php if($user->getEmails())echo "Yes";else echo "No"; ?></div>
+	</div>
+	<div class="profileEntry">
+		<div class="profileSubTitle">Member of:&nbsp;</div>
+			<div class="profileContent">
+				<?php 
+				$groups = $user->getGroups();
+				foreach($groups as $group){
+					$groupName = new groupClass($group);
+					echo $groupName->getName();
+					if(sizeof($groups)>1){
+						echo ", ";
+					}
+				}
+				?>
+			</div>
+	</div>
 	<a href="#"><div id="profileEdit" class="button green">Edit</div></a>
+	<a href="#"><div id="profileCancel" class="button">Cancel</div></a>
 </div>
