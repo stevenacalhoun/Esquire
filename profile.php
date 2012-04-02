@@ -24,10 +24,15 @@
 		<div class="profileGroups">
 			<?php 
 			$groups = $user->getGroups();
-			foreach($groups as $group){
-				$groupName = new groupClass($group);
-				echo $groupName->getName();
-				echo "<br />";
+			if($groups != null){
+    			foreach($groups as $group){
+    				$groupName = new groupClass($group);
+    				echo $groupName->getName();
+    				echo "<br />";
+			    }
+			}
+			else{
+			    echo "you ain't a member of any groups yo";
 			}
 			?>
 		</div>

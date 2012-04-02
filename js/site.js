@@ -35,7 +35,14 @@ $(document).ready(function() {
     
     // Sniffer for creating a new group and canceling group
     $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
-    $('#createGroupCancel').click(function(){$('#createGroupOverlay').fadeOut('fast'); $('#createGroupBox').fadeOut('fast');});
+    $('#createGroupCancel').click(
+        function(){
+            $('#createGroupOverlay').fadeOut('fast');
+            $('#createGroupBox').fadeOut('fast');
+            $("#createGroupInvalidEmail").fadeOut('fast');
+            $("#createGroupEmptyField").fadeOut('fast');
+        }
+    );
     $('#createGroupCreate').click(createGroup);
     
     // Sniffer for admin's delete group button
@@ -228,10 +235,16 @@ function createGroup(){
             console.log(data);
             // Check for each error
             if (data.indexOf("emailError") != -1){
-                $("#createEmailError").fadeIn('fast');
+                $("#createGroupInvalidEmail").fadeIn('fast');
             }
+            else{
+                $("#createGroupInvalidEmail").fadeOut('fast');
+            }                
             if (data.indexOf("blankError") != -1){
-                $("#createEmptyError").fadeIn('fast');
+                $("#createGroupEmptyField").fadeIn('fast');
+            }
+            else{
+                $("#createGroupEmptyField").fadeOut('fast');
             }
             if (data==''){window.location.replace("groups.php");}
         }
