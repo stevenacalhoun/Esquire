@@ -44,6 +44,13 @@ $(document).ready(function() {
     // Sniffer for leave group
     $('#specificGroupDelete').click(leaveGroup);
     
+    // Sniffer for searching for groups
+    $('#groupSearch').keyup(function(event){
+        if (event.keyCode == 13 && $('#groupSearch').val() != ""){
+            window.location.replace("groupSearch.php?search=" + $("#groupSearch").val());
+        }
+    });
+    
     
     /** Group's admin privileges **/
     
@@ -123,13 +130,10 @@ function newAccount(event){
         $('#blankError').fadeOut('fast');
     }
     
-    console.log($("#joinFirst").val());
-    
     // Use AJAX post to prevent refresh of page
     $.post (url, data,
-        function(data) {
-            console.log(data);
-            
+        function(data) {       
+            console.log(data);     
             // Check for each error in the return data and present error windows accordingly
             if (data.indexOf("exists") != -1){
                 $('#creationError').fadeIn('fast');

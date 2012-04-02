@@ -4,6 +4,7 @@
     require_once("db_setup.php");
     require_once("userClass.php");
     require_once("groupClass.php");
+    require_once("./lib/class.phpmailer.php");
     session_start();
     $tbl_name = "groups";
     
@@ -87,9 +88,51 @@
         // Add each invited member the groups member list
         if($emailString != ""){
             foreach($emailArray as $email){
-                $group->addMember($email);
-    //            $message = "$adminEmail has invited to join the Esquire group $name!";
-    //            mail($email, "Esquire Group Invite", $message);
+                $sql = "SELECT COUNT(*) FROM users WHERE email = '$email'";
+                $result = mysql_query($sql);
+                if ((mysql_result($result, 0) >= 1)){
+                    $group->addMember($email);
+                    $userObject = new userClass($email);
+                    
+                    if ($userObject->getEmails()){
+                        $mail = new PHPMailer();
+                        $mail->IsSMTP();
+                        $mail->Host = "cse.msstate.edu";
+                        $mail->SMTPDebug = 2;
+                        $mail->SetFrom('Esquire@gmail.com', 'Esquire');
+                        $mail->Subject = "You've been inivted to the Group $name";
+                        $message = "Login to join this group!";
+                        $mail->Body = $message;
+                        $address = $email;
+                        $mail->AddAddress($address, "$firstName $lastName");
+                        $mail->Send();
+                        
+//                        $message = "$adminEmail has invited to join the Esquire group $name!";
+//                        mail($email, "Esquire Group Invite", $message);
+                    }
+                    
+                    if ($userObject->getTexts()){
+                        $mail = new PHPMailer();
+                        $mail->IsSMTP();
+                        $mail->Host = "cse.msstate.edu";
+                        $mail->SMTPDebug = 2;
+                        $mail->SetFrom('Esquire@gmail.com', 'Esquire');
+                        $mail->Subject = "You've been inivted to the Group $name";
+                        $message = "Login to join this group!";
+                        $mail->Body = $message;
+                        $address = $userObject->getPhoneEmail();
+                        $mail->AddAddress($address, "$firstName $lastName");
+                        $mail->Send();
+                        
+//                        $message = "$adminEmail has invited to join the Esquire group $name!";
+//                        mail($userObject->getPhoneEmail(), "Esquire Group Invite", $message);
+                    }
+                }
+                
+                else{
+//                    $message = "$adminEmail has invited to join the Esquire group $name! You have to join Esquire first though!";
+//                    mail($email, "Esquire Group Invite", $message);
+                }
             }
         }
     }

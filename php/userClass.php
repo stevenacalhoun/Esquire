@@ -70,6 +70,10 @@ class userClass {
     	}
     }
     
+    public function getPhoneEmail(){
+        return $this->_phoneEmail;
+    }
+    
     public function getTexts(){
     	return $this->_textUpdates;
     }
@@ -89,5 +93,19 @@ class userClass {
     public function removeGroup($groupID){
         $this->_groups = array_diff($this->_groups, array($groupID));
         $this->_groups = array_values($this->_groups);
+    }
+    
+    //Daniel code additions*******************************
+    //wrote the search function
+    public function searchGroups($search){
+//        if($search){
+        $groupList = mysql_query("SELECT groupID FROM groups WHERE name LIKE '%$search%'");
+        
+        $groupIDs = null;
+        
+        while($ID = mysql_fetch_array($groupList)){
+            $groupIDs[] = $ID['groupID'];
+        }
+        return $groupIDs;
     }
 }
