@@ -4,6 +4,7 @@
     session_start();
     require_once("db_setup.php");
     require_once("userClass.php");
+    require_once('./lib/class.phpmailer.php');
     $tbl_name = "users";
 
 	
@@ -102,9 +103,19 @@
     	// Create user object and add to Session
     	$user = new userClass($email);
     	$_SESSION['user'] = $user;
+    	$message = "Hello $firstName $lastName, welcome to Esquire";    	
     	
-    	$message = "Hello $firstName $lastName, welcome to Esquire";
-    	mail($email, "Welcome to Esquire", $message);
+    	$mail = new PHPMailer();
+    	$mail->IsSMTP();
+    	$mail->Host = "cse.msstate.edu";
+    	$mail->SMTPDebug = 2;
+    	$mail->SetFrom('Esquire@gmail.com', 'Esquire');
+    	$mail->Subject = "Welcome to Esquire";
+    	$mail->Body = $message;
+    	$address = $email;
+    	$mail->AddAddress($address, "$firstName $lastName");
+    	$mail->Send();
+//    	mail($email, "Welcome to Esquire", $message);
     }
     // Close DB connection
     mysql_close($con);

@@ -6,7 +6,7 @@
     require_once("php/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
-    header('Location:index.php');
+        header('Location:index.php');
     } 
 ?>
 <html>
@@ -47,21 +47,30 @@
                 $user = $_SESSION['user'];
                 $groupIDs = $user->getGroups();
                 
+                $search = $_GET['search'];
+                
+                //renamed the search function 
+                $groupIDs = $user->searchGroups($search);
+                
+                if($groupIDs != null){
                 // Walk over each ID and add a group block for each one
-                foreach($groupIDs as $groupID){
-                    $group = new groupClass($groupID);
-             ?>
-                 	<div class="groupBlock">
-                 		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
-                 			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
-                 		</div>
-                 		<div class="groupText">
-                 			<?php echo $group->getDescription(); ?>
-                 		</div>
-                 		<div class="groupAdd icon"></div>
-                 	</div>              
-            <?php
+                    foreach($groupIDs as $groupID){
+                        $group = new groupClass($groupID);
+                 ?>
+                     	<div class="groupBlock">
+                     		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
+                     			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
+                     		</div>
+                     		<div class="groupText">
+                     			<?php echo $group->getDescription(); ?>
+                     		</div>
+                     		<div class="groupAdd icon"></div>
+                     	</div>              
+                <?php
+                    }
                 }
+                                else{echo "none of them results";}
+                
                 mysql_close($con);
              ?>    
              
