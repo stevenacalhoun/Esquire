@@ -40,13 +40,20 @@
 			<div class="profileContent">
 				<?php 
 				$groups = $user->getGroups();
-				foreach($groups as $group){
-					$groupName = new groupClass($group);
-					echo $groupName->getName();
-					if(sizeof($groups)>1){
-						echo ", ";
-					}
-				}
+    			if ($groups != null){
+    				$i = 0;
+    				foreach($groups as $group){
+    				    $i++;
+    					$groupName = new groupClass($group);
+    					echo $groupName->getName();
+    					if(sizeof($groups)>1 && $i<sizeof($groups)){
+    						echo ", ";
+    					}
+    				}
+    			}
+    			else {
+    			    echo "<i>No groups</i>";
+    			}
 				?>
 			</div>
 	</div>
