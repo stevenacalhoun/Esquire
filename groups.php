@@ -90,7 +90,7 @@
 		</form>
 		<div class="button" id="createGroupCancel">Cancel</div>
 	</div>
-	<div class="error" id="createGroupEmptyField">You left a field blank.</div>
+	<div id="createGroupEmptyField" class="error">You left a field blank.</div>
 	<div class="error" id="createGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
 	
 	<!-- Profile popovers -->

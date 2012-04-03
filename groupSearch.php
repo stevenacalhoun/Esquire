@@ -64,16 +64,16 @@
                      		<div class="groupText">
                      			<?php echo $group->getDescription(); ?>
                      		</div>
+                     	<?php if(!in_array($groupID, $user->getGroups())){ ?>
                      		<div class="groupAdd icon"></div>
+                     	<?php } ?>
                      	</div>              
                 <?php
                     }
                 }
-                                else{echo "none of them results";}
-                
-                mysql_close($con);
-             ?>    
-             
+                else{ ?>
+                	<div id="emptyResults">Your search returned no results.</div>
+			<?php } mysql_close($con); ?>    
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>

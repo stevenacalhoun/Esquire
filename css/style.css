@@ -105,7 +105,7 @@ input[type="radio"]:checked{
 }
 .error{
 	display: none;
-	width: 420px;
+	width: 430px;
 	background-color: #fe6363;
 	border: 1px solid #ae0000;
 	border-radius: 10px;
@@ -115,9 +115,9 @@ input[type="radio"]:checked{
 	position: relative;
 	top: 50%;
 	margin: auto auto 5px auto;
-	
 }
 .overlay{
+	display: none;
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -241,120 +241,62 @@ footer{
 		margin: 5px 77px 0 0;
 		float: right;
 	}
-	
-/* Groups */
-#groupList{
-	width: 100%;
-	height: 100%;
-}
-#groupSearch{
-	width: 400px;
-	margin: 20px 0 20px 225px;
-}
-.groupBlock{
-	width: 100%;
-	padding: 15px 0;
-	background: url('../images/boxBG.png');
-	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
-}
-.groupTitle{
-	margin-left: 20px;
-	font-size: 0.95em;
-	font-weight: bold;
-}
-.groupTitle a{color: #0283de;}
-.groupText{
-	margin: 5px 100px 0 20px;
-	font-size: 0.8em;
-}
-.groupDelete{
-	width: 27px;
-	height: 15px;
-	background: url('../images/delete.png') no-repeat;
-	background-size: 27px 15px;
-	float: right;
-	margin: -10px 10px 0 0;
-	cursor: pointer;
-}
-	.groupDelete:hover{background: url('../images/deleteHover.png') no-repeat;}
-.groupAdd{
-	background: url('../images/add.png') no-repeat;
-	float: right;
-	margin: -15px 10px 0 0;
-}
-	.groupAdd:hover{background: url('../images/addHover.png') no-repeat;}
-.accept{
-	background: url('../images/accept.png') no-repeat;
-	float: right;
-	margin: -15px 10px 0 0;
-}
-	.accept:hover{background: url('../images/acceptHover.png') no-repeat;}
-.decline{
-	background: url('../images/decline.png') no-repeat;
-	float: right;
-	margin: -15px 10px 0 0;
-}
-	.decline:hover{background: url('../images/declineHover.png') no-repeat;}
-#groupCreate{margin: 20px;}
 
-	/* Popovers */
-	#createGroupOverlay,
-	#specificGroupOverlay,
-	#feedOverlay{display: none;}
-	#createGroupBox,
-	#editGroupBox,
-	#inviteBox,
-	#postBox{
-		display: none;
-		width: 400px;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin: -300px 0 0 -200px;
-		z-index: 2;
-	}
-	#createGroupTitle,
-	#editGroupTitle,
-	#inviteTitle,
-	#postTitle{
-		margin: 10px;
-		font-weight: bold;
-		font-size: 0.95em;
-	}
-	#createGroupName,
-	#editGroupName{
-		width: 350px;
-		margin: 0 0 5px 20px;
-	}
-	#createGroupDescription,
-	#editGroupDescription,
-	#postContent{
-		width: 350px;
-		height: 100px;
-		margin: 0 0 5px 20px;
-		padding-top: 5px;
-		resize: none;
-	}
-	#createGroupEmails,
-	#inviteEmails{
-		width: 350px;
-		height: 75px;
-		margin: 0 0 5px 20px;
-		padding-top: 5px;
-		resize: none;
-	}
-	#createGroupCreate,
-	#editGroupCreate,
-	#inviteSubmit,
-	#postCreate{
-		float: right;
-		margin: 0 23px 10px 10px;
-	}
-	#createGroupCancel,
-	#editGroupCancel,
-	#inviteCancel,
-	#postCancel{float: right;}
-	
+/* Popovers */
+#createGroupBox,
+#editGroupBox,
+#inviteBox,
+#postBox{
+	display: none;
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -300px 0 0 -200px;
+	z-index: 2;
+}
+#createGroupTitle,
+#editGroupTitle,
+#inviteTitle,
+#postTitle{
+	margin: 10px;
+	font-weight: bold;
+	font-size: 0.95em;
+}
+#createGroupName,
+#editGroupName{
+	width: 350px;
+	margin: 0 0 5px 20px;
+}
+#createGroupDescription,
+#editGroupDescription,
+#postContent{
+	width: 350px;
+	height: 100px;
+	margin: 0 0 5px 20px;
+	padding-top: 5px;
+	resize: none;
+}
+#createGroupEmails,
+#inviteEmails{
+	width: 350px;
+	height: 75px;
+	margin: 0 0 5px 20px;
+	padding-top: 5px;
+	resize: none;
+}
+#createGroupCreate,
+#editGroupCreate,
+#inviteSubmit,
+#postCreate{
+	float: right;
+	margin: 0 23px 10px 10px;
+}
+#createGroupCancel,
+#editGroupCancel,
+#inviteCancel,
+#postCancel{float: right;}
+
 	/* Profile */
 	#profileBox{
 		width: 400px;
@@ -417,6 +359,70 @@ footer{
 			float: right;
 		}
 	
+	/* Errors */
+	#createGroupEmptyField,
+	#createGroupInvalidEmail{
+		width: 400px;
+		position: relative;
+		margin-top: -300px;
+		z-index: 2;
+	}
+	
+/* Groups */
+#groupList{
+	width: 100%;
+	height: 100%;
+}
+#groupSearch{
+	width: 400px;
+	margin: 20px 0 20px 225px;
+}
+.groupBlock{
+	width: 100%;
+	padding: 15px 0;
+	background: url('../images/boxBG.png');
+	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
+}
+.groupTitle{
+	margin-left: 20px;
+	font-size: 0.95em;
+	font-weight: bold;
+}
+.groupTitle a{color: #0283de;}
+.groupText{
+	margin: 5px 100px 0 20px;
+	font-size: 0.8em;
+}
+.groupDelete{
+	width: 27px;
+	height: 15px;
+	background: url('../images/delete.png') no-repeat;
+	background-size: 27px 15px;
+	float: right;
+	margin: -10px 10px 0 0;
+	cursor: pointer;
+}
+	.groupDelete:hover{background: url('../images/deleteHover.png') no-repeat;}
+.groupAdd{
+	background: url('../images/add.png') no-repeat;
+	float: right;
+	margin: -15px 10px 0 0;
+}
+	.groupAdd:hover{background: url('../images/addHover.png') no-repeat;}
+.accept{
+	background: url('../images/accept.png') no-repeat;
+	float: right;
+	margin: -15px 10px 0 0;
+}
+	.accept:hover{background: url('../images/acceptHover.png') no-repeat;}
+.decline{
+	background: url('../images/decline.png') no-repeat;
+	float: right;
+	margin: -15px 10px 0 0;
+}
+	.decline:hover{background: url('../images/declineHover.png') no-repeat;}
+#groupCreate{margin: 20px;}
+	
 /* Specific Groups */
 #specificGroupList{
 	width: 100%;
@@ -459,5 +465,8 @@ footer{
 	.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}
 #specificGroupAdd,
 #specificGroupDelete{margin: 20px;}
+
+/* Search Groups */
+#emptyResults{margin: 0 0 20px 20px;}
 
 /* Feed */
