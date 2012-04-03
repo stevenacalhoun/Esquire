@@ -11,6 +11,7 @@
     // Get group from GET request
     $requestedGroupID = str_replace("group", "",$_GET['groupID']);
     $group = new groupClass($requestedGroupID);
+    $_SESSION['group'] = $group;
     
     // Connect to database
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
@@ -100,7 +101,7 @@
 				<div class="button green" id="specificGroupAdd">Add</div>
 			<?php } ?>
 			<!-- Leave Group -->
-			<?php if($user->getEmail() != $group->getAdmin()){ ?>
+			<?php if($user->getEmail() != $group->getAdmin() && (in_array($requestedGroupID, $user->getGroups()) )){ ?>
 				<div class="button red" id="specificGroupDelete">Leave</div>
 			<?php } ?>
 		</div>

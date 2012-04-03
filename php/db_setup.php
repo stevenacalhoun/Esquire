@@ -5,4 +5,5 @@
     $sqlusername = "root";
     $sqlpassword = "root";
     $db_name = "Esquire";
+
 ?>

@@ -3,9 +3,7 @@ $(document).ready(function() {
     /** Login, join, logout, and validation **/
     
     // Sniffer for login submit
-	$('#loginForm').submit(function() {
-		login(event);
-	});
+	$('#loginForm').submit(login);
 	
 	// Sniffer for join submit
 	$('#joinForm').submit(function() {
@@ -26,9 +24,17 @@ $(document).ready(function() {
     // Sniffer for profile button click
     $('.navProfile').click(showProfile);
     
+    // Sniffer for edit profile click
+    $('#profileEdit').click(showEditProfile);
+    
     // Sniffer for profile cancel click    
     $('#profileCancel').click(hideProfile);
     $('#editProfileCancel').click(hideProfile);
+    
+    // Sniffers for blurs on the password and confirm password
+    $('#editProfilePassword').blur(validatePass1);
+    $('#editProfileConfirm').blur(validatePass2);
+    $('#editProfileForm').submit(editProfile);
     
     
     /** Group functions **/
@@ -64,9 +70,6 @@ $(document).ready(function() {
     // Sniffer for remove member click 
     $('.specificGroupRemove').click(removeMember);
     
-    // Sniffer for edit profile click
-    $('#profileEdit').click(editProfile);
-    
     // Sniffer for admin edit group button and cancel
     $('.specificGroupEdit').click(
         function(){
@@ -80,6 +83,7 @@ $(document).ready(function() {
             $('.overlay').fadeOut('fast');
         }
     );
+    $('#editGroupCreate').click(editGroup);
     
     // Sniffer for admin invite member button and cancel
     $('#specificGroupAdd').click(
@@ -296,6 +300,18 @@ function addMember(){
     $("htmladf").appendTo(".specificGroupBlock").page();
 }
 
+function editGroup(event){
+    event.preventDefault();
+    
+    var data = $("form#editGroupForm").serialize();
+    var url = $("form#editGroupForm").attr('action');
+    
+    if ($("#editGroupName").val()=="" || $("#editGroupDescription").val()==""){
+        $('#createGroupEmptyField').fadeIn('fast');
+    }
+    else {$('#createGroupEmptyField').fadeOut('fast');}
+}    
+
 /** User profile information **/
 
 // Present the current user's information 
@@ -311,7 +327,58 @@ function hideProfile(){
 }
 
 // Change the popover to be editable
-function editProfile(){
+function showEditProfile(){
     $(".dynamicPopover").html('').fadeOut("fast");
     $(".dynamicPopover").html('').load("profileEdit.php").fadeIn('fast');
 }
+
+function editProfile(event){
+    event.preventDefault();
+    
+    // Create data form form and get action
+    var data = $("form#editProfileForm").serialize();
+    var url = $("form#editProfileForm").attr('action');
+    
+    if($("#joinFirst").val()=="" || $("#joinLast").val()=="" || $("#joinPhone").val()==""){
+        $('#blankError').fadeIn('fast');
+        return;
+    }
+    else{
+        $('#blankError').fadeOut('fast');
+    }
+        
+    // Use AJAX post to prevent refresh of page
+    $.post (url, data,
+        function(data) {       
+            console.log(data);     
+            
+            // Check for each error in the return data and present error windows accordingly
+            if (data.indexOf("passwordError") != -1){
+                $('#invalidPassError').fadeIn('fast');
+            }
+            else {$('#invalidPassError').fadeOut('fast');}
+            
+            if (data.indexOf("passwordMatchError") != -1){
+                $('#passMatchError').fadeIn('fast');
+            }
+            else {$('#passMatchError').fadeOut('fast');}
+            
+            if (data.indexOf("blankError") != -1){
+                $('#blankError').fadeIn('fast');
+            }
+            else {$('blankError').fadeOut('fast');}
+            
+            
+            // If there are no errors then move the user to the next page
+            if (data==''){window.location.replace("groups.php");}
+        }
+    );
+}
+  
+        
+    
+    
+    
+    
+    
+    
