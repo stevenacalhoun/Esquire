@@ -110,7 +110,8 @@ class userClass {
     }
     
     // Request admission to a given group
-    public function requestAdmission($groupID){         
+    public function requestAdmission($groupID){     
+        $email = $this->_email;    
         $sql = "INSERT INTO member_of (email, groupID, accept, permission) VALUES ('$email', '$groupID', 1, 0)"; 
     }
 	
