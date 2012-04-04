@@ -11,8 +11,12 @@
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword")or die("Can't connect to Server" . mysql_error());
     mysql_select_db("$db_name", $con) or die("Database does not exist");
 
-    $emailsToInvite = $_POST['inviteEmails'];
+    $emailString = $_POST['emails'];
+    $groupID = $_POST['groupID'];
     
+    $trimmedEmailString = str_replace(" " , "", $emailString);
+    $emailArray = explode(",", $trimmedEmailString);
+        
     // Function to check to make sure all emails are valid
     function validateEmails ($emailArray, $emailString){
         if ($emailString == "") return true;
@@ -25,10 +29,11 @@
             return true;
     }
     
-    if (validateEmails($emailsToInvite)){
+    if (validateEmails($emailArray, $emailString)){
         foreach($emailArray as $email){
             $sql = "SELECT COUNT(*) FROM users WHERE email = '$email'";
             $result = mysql_query($sql);
+            $group = new groupClass($groupID);
             if ((mysql_result($result, 0) >= 1)){
                 $group->addMember($email);
                 $userObject = new userClass($email);
