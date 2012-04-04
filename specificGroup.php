@@ -81,6 +81,12 @@
 				<div class="specificGroupBlock">
 					<div class="specificGroupTitle">Notifications</div>
 					<div class="specificGroupText">Notifications are gonna go hurrr.</div>
+					<div class="notificationBlock">
+						<div class="notificationType"></div>
+						<div class="notificationText">Hurrr durrr I'm texttttt.</div>
+						<div class="notificationAccept"></div>
+						<div class="notificationReject"></div>
+					</div>
 				</div>
 			<?php } ?>
 			<!-- Members -->
