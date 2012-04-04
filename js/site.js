@@ -385,7 +385,17 @@ function editProfile(event){
 /** Miscellaneous group stuff **/
 
 function groupAdd(){
-    var groupID = $("groupTitle"
+    var groupID = this.id;
+    groupID = groupID.replace("groupAdd", groupID);
+    
+    var dataToSend = {groupID: groupID};
+    $.ajax({
+        type:     "POST",
+        url:      "php/requestAdmission",
+        data:     dataToSend,
+        success:  function(data){console.log(data);}  
+    });
+}
     
 function acceptInvitation(){
     var groupID = this.id;
