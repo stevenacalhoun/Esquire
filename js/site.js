@@ -329,23 +329,35 @@ function inviteMembers(){
     var groupID = $('.container').attr('id');
     groupID = groupID.replace("specificGroup", "");
     
-    var data = $("form#inviteForm").serialize();
+    var emails = $('#inviteForm :input').val();
+    
+    var groupID = $('.container').attr('id');
+    groupID = groupID.replace("specificGroup", "");
+    
     var url = $("form#inviteForm").attr('action');
     
-    $.post(url, data,
-        function(data){
-                console.log(data);
-                if(data.indexOf("emailError") != -1){
-                    $("#inviteEmailError").fadeIn('fast');
-                }
-                else{$("#inviteEmailError").fadeOut('fast');}
-                
-                if(data==""){
-                    $('#inviteBox').fadeOut('fast');
-                    $('.overlay').fadeOut('fast');
-                }                
+    var dataToSend = {emails: emails, groupID: groupID};
+    
+    $.ajax({
+        type:       "POST",
+        url:        "php/invite.php",
+        data:       dataToSend,
+        success:    function(data){
+                        console.log(data);
+                        if(data.indexOf("emailError") != -1){
+                            $("#inviteEmailError").fadeIn('fast');
+                        }
+                        else{$("#inviteEmailError").fadeOut('fast');}
+                        
+                        if(data==""){
+                            $('#inviteBox').fadeOut('fast');
+                            $('.overlay').fadeOut('fast');
+                            $(':input','#inviteForm')
+                            .removeAttr('inviteEmails');
+                            
+                        }                
         }
-    );
+    });
 }
 
 /** User profile information **/
