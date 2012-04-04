@@ -64,6 +64,8 @@ $(document).ready(function() {
         }
     });
     
+    $('.groupAdd').click(groupAdd);
+    
     // Sniffer for accept invitation button
     $('.accept').click(acceptInvitation);
     
@@ -380,7 +382,11 @@ function editProfile(event){
     );
 }
   
-/** Miscellaneous group stuff **/    
+/** Miscellaneous group stuff **/
+
+function groupAdd(){
+    var groupID = $("groupTitle"
+    
 function acceptInvitation(){
     var groupID = this.id;
     groupID = groupID.replace("groupAccept", "");

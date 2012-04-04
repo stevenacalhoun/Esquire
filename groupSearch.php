@@ -66,7 +66,7 @@
                      			<?php echo $group->getDescription(); ?>
                      		</div>
                      	<?php if(!in_array($groupID, $user->getGroups())){ ?>
-                     		<div class="groupAdd icon" id="<?php echo $group->getGroupID(); ?>"></div>
+                     		<div class="groupAdd icon" id="groupAdd<?php echo $group->getGroupID();?>"></div>
                      	<?php } ?>
                      	</div>              
                 <?php
