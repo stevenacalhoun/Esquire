@@ -386,14 +386,15 @@ function editProfile(event){
 
 function groupAdd(){
     var groupID = this.id;
-    groupID = groupID.replace("groupAdd", groupID);
+    groupID = groupID.replace("groupAdd", "");
     
+    console.log(groupID);
     var dataToSend = {groupID: groupID};
     $.ajax({
         type:     "POST",
         url:      "php/requestAdmission",
         data:     dataToSend,
-        success:  function(data){console.log(data);}  
+        success:  function(data){window.location.replace("groupSearch.php?search=" + data);}  
     });
 }
     

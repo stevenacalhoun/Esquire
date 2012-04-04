@@ -78,8 +78,8 @@
             return $this->_permittedMembers;
         }
         
-        public function getAllowedMembers(){
-            return $this->_allowedMembers;
+        public function getAcceptedMembers(){
+            return $this->_acceptedMembers;
         }
         
         // Other functions

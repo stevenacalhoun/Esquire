@@ -113,19 +113,20 @@ class userClass {
     public function requestAdmission($groupID){     
         $email = $this->_email;    
         $sql = "INSERT INTO member_of (email, groupID, accept, permission) VALUES ('$email', '$groupID', 1, 0)"; 
+        mysql_query($sql) or die("Could not reqeust Admission: " . mysql_error()); 
     }
 	
 	// Accept an awaiting group invitation
 	public function acceptInvitation($groupID){
 	    $email = $this->_email;
         $sql = "UPDATE  member_of SET  accept =  1 WHERE  email ='$email' AND  groupID = '$groupID'";
-        mysql_query($sql) or die("could not accept invitation: " . mysql_error()); 
+        mysql_query($sql) or die("Could not accept invitation: " . mysql_error()); 
 	}
 	
 	// Decline an awaiting group invitation
     public function declineInvitation($groupID){
     	$email = $this->_email;
         $sql = "DELETE FROM member_of WHERE groupID = '$groupID' AND email = '$email'  ";
-        mysql_query($sql) or die("Could not delete some member " . msql_error());	
+        mysql_query($sql) or die("Could not delete member: " . msql_error());	
     }
 }
