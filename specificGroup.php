@@ -77,7 +77,12 @@
 			</div>
 			
 			<!-- Notifications for Admin -->
-			
+			<?php if($user->getEmail() == $group->getAdmin()){ ?>
+				<div class="specificGroupBlock">
+					<div class="specificGroupTitle">Notifications</div>
+					<div class="specificGroupText">Notifications are gonna go hurrr.</div>
+				</div>
+			<?php } ?>
 			<!-- Members -->
 			<div class="specificGroupBlock">
 				<div class="specificGroupTitle">Members</div>
