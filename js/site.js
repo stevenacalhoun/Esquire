@@ -84,12 +84,16 @@ $(document).ready(function() {
             $('.overlay').fadeIn('fast');
         }
     );
+    
+    // Cancel button for edit group popover
     $('#editGroupCancel').click(
         function(){
             $('#editGroupBox').fadeOut('fast');
             $('.overlay').fadeOut('fast');
         }
     );
+    
+    // Click for edit group
     $('#editGroupCreate').click(editGroup);
     
     // Sniffer for admin invite member button and cancel
@@ -99,6 +103,11 @@ $(document).ready(function() {
             $('.overlay').fadeIn('fast');
         }
     );
+    
+    // Submit for inviting new members
+    $('#inviteSubmit').click(inviteMembers);
+    
+    // Cancel click for invite box
     $('#inviteCancel').click(
         function(){
             $('#inviteBox').fadeOut('fast');
@@ -302,11 +311,6 @@ function removeMember(){
     });
 }
 
-// Admin's privilege to add a member by using a php file
-function addMember(){
-    $("htmladf").appendTo(".specificGroupBlock").page();
-}
-
 function editGroup(event){
     event.preventDefault();
     
@@ -318,6 +322,31 @@ function editGroup(event){
     }
     else {$('#createGroupEmptyField').fadeOut('fast');}
 }    
+
+// Invite new members to a group
+function inviteMembers(){
+    event.preventDefault();
+    var groupID = $('.container').attr('id');
+    groupID = groupID.replace("specificGroup", "");
+    
+    var data = $("form#inviteForm").serialize();
+    var url = $("form#inviteForm").attr('action');
+    
+    $.post(url, data,
+        function(data){
+                console.log(data);
+                if(data.indexOf("emailError") != -1){
+                    $("#inviteEmailError").fadeIn('fast');
+                }
+                else{$("#inviteEmailError").fadeOut('fast');}
+                
+                if(data==""){
+                    $('#inviteBox').fadeOut('fast');
+                    $('.overlay').fadeOut('fast');
+                }                
+        }
+    );
+}
 
 /** User profile information **/
 
