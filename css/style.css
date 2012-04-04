@@ -116,6 +116,19 @@ input[type="radio"]:checked{
 	top: 50%;
 	margin: auto auto 5px auto;
 }
+.overlayError{
+	display: none;
+	width: 430px;
+	background-color: #fe6363;
+	border: 1px solid #ae0000;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	font-size: 0.8em;
+	//position: relative;
+	//top: 50%;
+	//margin: auto auto 5px auto;
+}
 .overlay{
 	display: none;
 	width: 100%;
@@ -358,15 +371,6 @@ footer{
 			margin: 5px 77px 0 0;
 			float: right;
 		}
-	
-	/* Errors */
-	#createGroupEmptyField,
-	#createGroupInvalidEmail{
-		width: 400px;
-		position: relative;
-		margin-top: -300px;
-		z-index: 2;
-	}
 	
 /* Groups */
 #groupList{
