@@ -53,4 +53,7 @@
 			<a href="#"><div id="editProfileCancel" class="button">Cancel</div></a>
 		</div>
 	</form>
+	<div class="overlayError" id="passMatchError">Passwords do not match.</div>
+	<div class="overlayError" id="invalidPassError">Password must contain at least 5 characters (letters, numbers, "_").</div>
+	<div class="overlayError" id="blankError">A required field is empty</div>
 </div>

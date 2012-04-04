@@ -118,16 +118,12 @@ input[type="radio"]:checked{
 }
 .overlayError{
 	display: none;
-	width: 430px;
-	background-color: #fe6363;
-	border: 1px solid #ae0000;
-	border-radius: 10px;
-	padding: 10px;
-	text-align: center;
+	width: 100%;
+	color: #ae0000;
 	font-size: 0.8em;
-	//position: relative;
-	//top: 50%;
-	//margin: auto auto 5px auto;
+	position: relative;
+	margin: 30px 0 10px 20px;
+	z-index: 2;
 }
 .overlay{
 	display: none;
@@ -171,7 +167,7 @@ footer{
 
 /* Login */
 #loginBox{
-	width: 440px;
+	width: 450px;
 	height: 225px;
 	margin: -120px auto 10px auto;
 	top: 50%;
@@ -181,30 +177,30 @@ footer{
 	width: 192px;
 	height: 66px;
 	background: url('../images/title.png') no-repeat;
-	margin: 15px 0 0 128px;
+	margin: 15px 0 0 133px;
 	position: absolute;
 }
 #loginEmail{
 	width: 355px;
 	height: 30px;
-	margin: 100px 0 0 35px;
+	margin: 100px 0 0 40px;
 	padding-left: 10px;
 }
 #loginPassword{
 	width: 355px;
 	height: 30px;
-	margin: 5px 0 0 35px;
+	margin: 5px 0 0 40px;
 	padding-left: 10px;
 }
-#loginButton{margin: 15px 0 0 35px;}
+#loginButton{margin: 15px 0 0 40px;}
 #joinButton{
-	margin: -26px 160px 0 0;
+	margin: -26px 170px 0 0;
 	float: right;
 }
 #reset{
 	font-size: 0.7em;
 	color: #787878;
-	margin: -19px 0 0 311px;
+	margin: -19px 0 0 317px;
 }
 
 /* Join */

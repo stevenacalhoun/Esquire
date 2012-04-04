@@ -89,9 +89,9 @@
 			<input type="submit" value="Create" class="button green" id="createGroupCreate" />
 		</form>
 		<div class="button" id="createGroupCancel">Cancel</div>
+		<div class="overlayError" id="createGroupEmptyField">You left a field blank.</div>
+		<div class="overlayError" id="createGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
 	</div>
-	<div class="overlayError" id="createGroupEmptyField">You left a field blank.</div>
-	<div class="overlayError" id="createGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
 	
 	<!-- Profile popovers -->
 	<div class="dynamicPopover"></div>
