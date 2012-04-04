@@ -36,7 +36,7 @@ class userClass {
             }
     }
     
-    // Getters for all the private varbles
+    /** Getters for all the private varbles **/
     public function getFirstName(){
         return $this->_firstName;
     }
@@ -95,17 +95,36 @@ class userClass {
         $this->_groups = array_values($this->_groups);
     }
     
-    //Daniel code additions*******************************
-    //wrote the search function
+    
+    /** Other functions **/
+    
+    // Search groups
     public function searchGroups($search){
-//        if($search){
         $groupList = mysql_query("SELECT groupID FROM groups WHERE name LIKE '%$search%'");
-        
         $groupIDs = null;
         
         while($ID = mysql_fetch_array($groupList)){
             $groupIDs[] = $ID['groupID'];
         }
         return $groupIDs;
+    }
+    
+    // Request admission to a given group
+    public function requestAdmission($groupID){         
+        $sql = "INSERT INTO member_of (email, groupID, accept, permission) VALUES ('$email', '$groupID', 1, 0)"; 
+    }
+	
+	// Accept an awaiting group invitation
+	public function acceptInvitation($groupID){
+	    $email = $this->_email;
+        $sql = "UPDATE  member_of SET  accept =  1 WHERE  email ='$email' AND  groupID = '$groupID'";
+        mysql_query($sql) or die("could not accept invitation: " . mysql_error()); 
+	}
+	
+	// Decline an awaiting group invitation
+    public function declineInvitation($groupID){
+    	$email = $this->_email;
+        $sql = "DELETE FROM member_of WHERE groupID = '$groupID' AND email = '$email'  ";
+        mysql_query($sql) or die("Could not delete some member " . msql_error());	
     }
 }

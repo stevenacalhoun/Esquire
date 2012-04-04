@@ -47,9 +47,10 @@
                 $user = $_SESSION['user'];
                 $groupIDs = $user->getGroups();
                 
+                // Get the desired search entry
                 $search = $_GET['search'];
                 
-                //renamed the search function 
+                // Use search function to search for groups 
                 $groupIDs = $user->searchGroups($search);
                 
                 if($groupIDs != null){

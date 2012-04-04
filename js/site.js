@@ -64,6 +64,11 @@ $(document).ready(function() {
         }
     });
     
+    // Sniffer for accept invitation button
+    $('.accept').click(acceptInvitation);
+    
+    // Sniffer for accept invitation button
+    $('.decline').click(declineInvitation);
     
     /** Group's admin privileges **/
     
@@ -375,10 +380,30 @@ function editProfile(event){
     );
 }
   
-        
+/** Miscellaneous group stuff **/    
+function acceptInvitation(){
+    var groupID = this.id;
+    groupID = groupID.replace("groupAccept", "");
     
+    var dataToSend = {groupID: groupID};
+    $.ajax({
+        type:     "POST",
+        url:      "php/acceptInvitation",
+        data:     dataToSend,
+        success:  function(){window.location.replace("groups.php");}
+    });
+}    
     
+function declineInvitation(){
+    var groupID = this.id;
+    groupID = groupID.replace("groupDecline", "");
     
-    
-    
-    
+    var dataToSend = {groupID: groupID};
+    $.ajax({
+        type:     "POST",
+        url:      "php/declineInvitation",
+        data:     dataToSend,
+        success:  function(){window.location.replace("groups.php");}
+    });
+}    
+

@@ -6,7 +6,7 @@
     require_once("php/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
-    header('Location:index.php');
+        header('Location:index.php');
     } 
 ?>
 <html>
