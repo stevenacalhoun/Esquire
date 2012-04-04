@@ -22,5 +22,7 @@
     $groupID = $_POST['groupID'];
     
     // User request invite    
-    $user->requestAdmission($groupID);   
+    $user->requestAdmission($groupID);  
+    
+    echo $_SESSION['search']; 
 ?>

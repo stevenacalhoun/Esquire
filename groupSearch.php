@@ -49,6 +49,7 @@
                 
                 // Get the desired search entry
                 $search = $_GET['search'];
+                $_SESSION['search'] = $search;
                 
                 // Use search function to search for groups 
                 $groupIDs = $user->searchGroups($search);
@@ -65,7 +66,7 @@
                      		<div class="groupText">
                      			<?php echo $group->getDescription(); ?>
                      		</div>
-                     	<?php if(!in_array($groupID, $user->getGroups())){ ?>
+                     	<?php if(!in_array($groupID, $user->getGroups()) && !in_array($user->getEmail(), $group->getAcceptedMembers())){ ?>
                      		<div class="groupAdd icon" id="groupAdd<?php echo $group->getGroupID();?>"></div>
                      	<?php } ?>
                      	</div>              
