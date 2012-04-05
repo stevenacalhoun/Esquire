@@ -47,7 +47,7 @@
 			
 		<!-- Right -->
 		<div id="editProfileRight">
-			<!--<div id="editImage">Edit<div id="overlay"></div></div>-->
+			<input type="file" name="profileImage" id="editProfileImage" />
 			<div id="editProfileTitle"></div>
 			<input type="submit" value="Submit" class="button green" id="editProfileSubmit" />
 			<a href="#"><div id="editProfileCancel" class="button">Cancel</div></a>
