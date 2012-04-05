@@ -255,8 +255,9 @@ footer{
 #createGroupBox,
 #editGroupBox,
 #inviteBox,
-#postBox{
-	display: none;
+#postBox,
+#feedBox{
+	//display: none;
 	width: 400px;
 	position: absolute;
 	top: 50%;
