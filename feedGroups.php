@@ -13,8 +13,15 @@
 ?>
 
 <!-- Group Selection for Feeds -->
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/site.js" type="text/javascript"></script>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Groups | Esquire</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/site.js" type="text/javascript"></script>
+</head>
+<body>
 <div class="box" id="feedBox">
 	<?php 
 		
@@ -24,8 +31,8 @@
 		        $group = new groupClass($groupID);
 		        if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
 		 ?>
-		     	<div class="groupBlock">
-		     		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
+		     	<div class="feedGroupBlock">
+		     		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
 		     			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
 		     		</div>
 		     		<div class="groupText">
@@ -36,3 +43,5 @@
 		    }
 		} ?>
 </div>
+</body>
+</html>
