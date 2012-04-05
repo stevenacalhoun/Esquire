@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
     require_once("php/userClass.php");
@@ -13,15 +12,8 @@
 ?>
 
 <!-- Group Selection for Feeds -->
-<html>
-<head>
-	<meta charset="utf-8" />
-	<title>Groups | Esquire</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<script src="js/jquery.js" type="text/javascript"></script>
-	<script src="js/site.js" type="text/javascript"></script>
-</head>
-<body>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/site.js" type="text/javascript"></script>
 <div class="box" id="feedBox">
 	<?php 
 		
@@ -43,5 +35,3 @@
 		    }
 		} ?>
 </div>
-</body>
-</html>

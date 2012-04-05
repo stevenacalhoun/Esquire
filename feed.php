@@ -37,6 +37,13 @@
 		</header>
 		
 		<!-- Feed chunks go here -->
+		<div class="feedBlock">
+			<div class="feedName">Matt Smith</div>
+			<div class="feedPost">Bespoke Austin authentic, art party echo park trust fund truffaut selvage mixtape helvetica thundercats forage. Tattooed marfa Austin, tumblr farm-to-table ethnic mustache seitan next level banksy brooklyn skateboard fanny pack. Authentic pop-up typewriter, thundercats godard gastropub sustainable art party freegan pinterest cliche terry richardson kogi. Banh mi wolf pop-up 3 wolf moon tumblr dreamcatcher, swag beard mlkshk fixie godard iphone. Biodiesel fixie hoodie typewriter. Godard raw denim kogi, PBR scenester fap kale chips banksy pickled echo park keffiyeh wolf cray lomo high life. Pitchfork before they sold out single-origin coffee yr artisan, vinyl twee beard jean shorts messenger bag bespoke shoreditch seitan.</div>
+			<div class="feedDate">8:52pm 20 February 2012</div>
+			<div class="feedDelete"></div>
+			<div class="feedFlag icon"></div>
+		</div>
 		
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
