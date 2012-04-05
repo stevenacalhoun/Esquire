@@ -8,6 +8,7 @@
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
     }
+    
     // Get group from GET request
     $requestedGroupID = str_replace("group", "",$_GET['groupID']);
     $group = new groupClass($requestedGroupID);
@@ -80,15 +81,52 @@
 			<?php if($user->getEmail() == $group->getAdmin()){ ?>
 				<div class="specificGroupBlock">
 					<div class="specificGroupTitle">Notifications</div>
-					<div class="specificGroupText">Notifications are gonna go hurrr.</div>
+					
+					<!-- Member requests -->
+					<?php 
+						$acceptedMembers = $group->getAcceptedMembers();
+						foreach($acceptedMembers as $acceptedMember){ 
+							if($acceptedMember != "dummy"){
+								$member = new userClass($acceptedMember);
+					?>
 					<div class="notificationBlock">
-						<div class="notificationType"></div>
-						<div class="notificationText">Hurrr durrr I'm texttttt.</div>
-						<div class="notificationAccept"></div>
-						<div class="notificationReject"></div>
+						<div class="notificationMember icon"></div>
+						<div class="notificationAccept icon" title="Accept"></div>
+						<div class="notificationDecline icon" title="Decline"></div>
+						<div class="notificationText notificationName">
+							<?php echo $member->getFullName(); ?>
+						</div>
+					</div>
+					<?php }} ?>
+					
+					<!-- Flags
+					<?php 
+						//$flaggedPosts = $group->getFlags();
+						//foreach($flaggedPosts as $flaggedPost){ 
+						//	$post = new Post($flaggedPost);
+					?>
+					<div class="notificationBlock">
+						<div class="notificationFlag icon"></div>
+						<div class="notificationAccept icon" title="Approve"></div>
+						<div class="notificationDecline icon" title="Remove"></div>
+						<div class="notificationText">
+							<?php //echo $post->getMessage(); ?>
+						</div>
+					</div>
+					<?php //} ?>
+					-->
+					
+					<div class="notificationBlock">
+						<div class="notificationFlag icon"></div>
+						<div class="notificationAccept icon" title="Approve"></div>
+						<div class="notificationDecline icon" title="Remove"></div>
+						<div class="notificationText">
+							Forage tumblr marfa, fanny pack vegan artisan skateboard williamsburg street art occupy photo booth ethnic. Pour-over shoreditch banh mi, forage ethnic post-ironic yr viral etsy freegan +1 street art williamsburg Austin. Organic 8-bit master cleanse farm-to-table. Selvage mumblecore pork belly williamsburg gentrify tofu. Mixtape twee VHS biodiesel locavore fixie four loko beard. Butcher organic wayfarers mcsweeney's seitan cosby sweater. You probably haven't heard of them pop-up jean shorts, 3 wolf moon quinoa leggings photo booth mustache cardigan ennui hoodie craft beer DIY beard.
+						</div>
 					</div>
 				</div>
 			<?php } ?>
+			
 			<!-- Members -->
 			<div class="specificGroupBlock">
 				<div class="specificGroupTitle">Members</div>

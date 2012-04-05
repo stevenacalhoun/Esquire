@@ -466,6 +466,42 @@ footer{
 #specificGroupAdd,
 #specificGroupDelete{margin: 20px;}
 
+	/* Notifications */
+	.notificationBlock{
+		margin: 5px 0 10px 20px;
+	}
+	.notificationMember{
+		float: left;
+		cursor: default;
+		background: url('../images/member.png') no-repeat;
+	}
+	.notificationFlag{
+		float: left;
+		cursor: default;
+		margin-right: 5px;
+		background: url('../images/flag.png') no-repeat;
+	}
+	.notificationText{
+		width: 720px;
+		margin-left: 25px;
+		font-size: 0.8em;
+		text-align: justify;
+	}
+	.notificationName{
+		font-weight: bold;
+		padding-top: 3px;
+	}
+	.notificationAccept{
+		margin-right: 10px;
+		background: url('../images/accept.png') no-repeat;
+	}
+		.notificationAccept:hover{background: url('../images/acceptHover.png') no-repeat;}
+	.notificationDecline{
+		margin-right: 10px;
+		background: url('../images/decline.png') no-repeat;
+	}
+		.notificationDecline:hover{background: url('../images/declineHover.png') no-repeat;}
+
 /* Search Groups */
 #emptyResults{margin: 0 0 20px 20px;}
 
