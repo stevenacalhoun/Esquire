@@ -114,6 +114,21 @@ $(document).ready(function() {
             $('.overlay').fadeOut('fast');
         }
     );
+    
+    /** Post stuff **/
+    $(".postButton").click(
+        function(){
+            $("#postBox").fadeIn('fast');
+            $(".overlay").fadeIn('fast');
+        }
+    );
+    $("#postCancel").click(
+        function(){
+            $("#postBox").fadeOut('fast');
+            $(".overlay").fadeOut('fast');
+        }
+    );
+    
 });
 
 
@@ -364,20 +379,22 @@ function inviteMembers(){
 
 // Present the current user's information 
 function showProfile(){
-    $('.dynamicPopover').html('').load("profile.php").fadeIn('fast');
+    $('#profilePopover').html('').load("profile.php").fadeIn('fast');
     $('.overlay').fadeIn('fast');
 }
 
 // Close out the profile popover
 function hideProfile(){
-    $(".dynamicPopover").html('').fadeOut("fast");
+    $("#profilePopover").html('').fadeOut("fast");
+    $("#editProfilePopover").html('');
     $('.overlay').fadeOut('fast');
 }
 
 // Change the popover to be editable
 function showEditProfile(){
-    $(".dynamicPopover").html('').fadeOut("fast");
-    $(".dynamicPopover").html('').load("profileEdit.php").fadeIn('fast');
+    $("#profilePopover").html('').fadeOut('fast');
+    console.log('what the fuck');
+    $("#editProfilePopover").load("profileEdit.php").html('');
 }
 
 function editProfile(event){
@@ -394,7 +411,7 @@ function editProfile(event){
     else{
         $('#blankError').fadeOut('fast');
     }
-        
+    
     // Use AJAX post to prevent refresh of page
     $.post (url, data,
         function(data) {       

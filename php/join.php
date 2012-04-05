@@ -108,14 +108,13 @@
     	$mail = new PHPMailer();
     	$mail->IsSMTP();
     	$mail->Host = "cse.msstate.edu";
-    	$mail->SMTPDebug = 2;
+    	$mail->SMTPDebug = 0;
     	$mail->SetFrom('Esquire@gmail.com', 'Esquire');
     	$mail->Subject = "Welcome to Esquire";
     	$mail->Body = $message;
     	$address = $email;
     	$mail->AddAddress($address, "$firstName $lastName");
     	$mail->Send();
-//    	mail($email, "Welcome to Esquire", $message);
     }
     // Close DB connection
     mysql_close($con);

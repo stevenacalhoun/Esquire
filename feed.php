@@ -59,6 +59,7 @@
 	</div>
 	
 	<!-- Profile popovers -->
-	<div class="dynamicPopover"></div>
+    <div class="dynamicPopover" id="profilePopover"></div>
+    <div class="dynamicPopover" id="editProfilePopover"></div>
 </body>
 </html>
