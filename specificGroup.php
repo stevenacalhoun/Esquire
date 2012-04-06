@@ -18,7 +18,7 @@
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
     mysql_select_db("$db_name", $con);
     
-    // Get current user from the session and get group IDs
+    // Get current user from the session and get group IDs and members
     $user = $_SESSION['user'];
     $groupIDs = $user->getGroups();
     $members = $group->getMembers();
@@ -36,7 +36,10 @@
 	<!-- Popovers -->
 	<div class="overlay" id="specificGroupOverlay"></div>
 	
+	<!-- Main Container -->
 	<div class="container" id="specificGroup<?php echo $group->getGroupID(); ?>">
+	
+		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
 			<nav>
@@ -49,7 +52,7 @@
 			</nav>
 		</header>
 		
-		<!-- Specific Group chucks go here-->
+		<!-- Specific Group Container -->
 		<div id="specificGroupList">
 			
 			<!-- Group Name & Description -->
@@ -115,7 +118,7 @@
 					</div>
 					<?php //} ?>
 					-->
-					
+					<!-- Test flag block till real flags work -->
 					<div class="notificationBlock">
 						<div class="notificationFlag icon"></div>
 						<div class="notificationAccept icon" title="Approve"></div>

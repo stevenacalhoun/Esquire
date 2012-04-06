@@ -7,10 +7,10 @@
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
     }
+    
+    // Get current user from the session
     $user = $_SESSION['user'];
 ?>
-
-<!-- Edit Profile popover -->
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
 <div id="editProfileBox" class="box">
@@ -50,7 +50,7 @@
 			<input type="file" name="profileImage" id="editProfileImage" />
 			<div id="editProfileTitle"></div>
 			<input type="submit" value="Submit" class="button green" id="editProfileSubmit" />
-			<a href="#"><div id="editProfileCancel" class="button">Cancel</div></a>
+			<div id="editProfileCancel" class="button">Cancel</div>
 		</div>
 	</form>
 	<div class="overlayError" id="passMatchError">Passwords do not match.</div>

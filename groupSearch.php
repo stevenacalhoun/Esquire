@@ -7,7 +7,22 @@
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
-    } 
+    }
+    
+    // Connect to database
+    $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
+    mysql_select_db("$db_name", $con);
+    
+    // Get current user from the session and get group IDs
+    $user = $_SESSION['user'];
+    $groupIDs = $user->getGroups();
+    
+    // Get the desired search entry
+    $search = $_GET['search'];
+    $_SESSION['search'] = $search;
+    
+    // Use search function to search for groups 
+    $groupIDs = $user->searchGroups($search);
 ?>
 <html>
 <head>
@@ -22,7 +37,10 @@
 	<!-- Overlay -->
 	<div class="overlay" id="searchGroupOverlay"></div>
 	
+	<!-- Main Container -->
 	<div class="container">
+	
+		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
 			<nav>
@@ -34,44 +52,36 @@
 				</ul>
 			</nav>
 		</header>
-		<input type="text" name="search" placeholder="search groups" id="groupSearch" />
-		<div id="groupList">
 		
-			<!-- Group Search chunks go here -->
+		<!-- Search Bar -->
+		<input type="text" name="search" placeholder="search groups" id="groupSearch" />
+		
+		<!-- Group Container -->
+		<div id="groupList">
             <?php 
-                // Connect to database
-                $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
-                mysql_select_db("$db_name", $con);
-                
-                // Get current user from the session and get group IDs
-                $user = $_SESSION['user'];
-                $groupIDs = $user->getGroups();
-                
-                // Get the desired search entry
-                $search = $_GET['search'];
-                $_SESSION['search'] = $search;
-                
-                // Use search function to search for groups 
-                $groupIDs = $user->searchGroups($search);
-                
+            	// Walk over each ID and add a group block for each one
                 if($groupIDs != null){
-                // Walk over each ID and add a group block for each one
                     foreach($groupIDs as $groupID){
                         $group = new groupClass($groupID);
-                 ?>
+            ?>
                      	<div class="groupBlock">
+                     	
+                     		<!-- Title -->
                      		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
                      			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
                      		</div>
+                     		
+                     		<!-- Description -->
                      		<div class="groupText">
                      			<?php echo $group->getDescription(); ?>
                      		</div>
-                     	<?php if(!in_array($groupID, $user->getGroups()) && !in_array($user->getEmail(), $group->getAcceptedMembers())){ ?>
-                     		<div class="groupAdd icon" id="groupAdd<?php echo $group->getGroupID();?>"></div>
-                     	<?php } ?>
+                     		
+                     		<!-- Add button if member is not in group -->
+	                     	<?php if(!in_array($groupID, $user->getGroups()) && !in_array($user->getEmail(), $group->getAcceptedMembers())){ ?>
+	                     		<div class="groupAdd icon" id="groupAdd<?php echo $group->getGroupID();?>"></div>
+	                     	<?php } ?>
                      	</div>              
-                <?php
-                    }
+ 			<?php   }
                 }
                 else{ ?>
                 	<div id="emptyResults">Your search returned no results.</div>
@@ -83,6 +93,5 @@
 	<!-- Profile popovers -->
     <div class="dynamicPopover" id="profilePopover"></div>
     <div class="dynamicPopover" id="editProfilePopover"></div>
-    
 </body>
 </html>

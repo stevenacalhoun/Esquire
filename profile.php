@@ -7,10 +7,11 @@
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
     }
+    
+    // Get current user from the session and get group IDs
     $user = $_SESSION['user'];
+    $groups = $user->getGroups();
 ?>
-
-<!-- Profile popover -->
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
 <div id="profileBox" class="box">
@@ -39,24 +40,23 @@
 		<div class="profileSubTitle">Member of:&nbsp;</div>
 			<div class="profileContent">
 				<?php 
-				$groups = $user->getGroups();
-    			if ($groups != null){
-    				$i = 0;
-    				foreach($groups as $group){
-    				    $i++;
-    					$groupName = new groupClass($group);
-    					echo $groupName->getName();
-    					if(sizeof($groups)>1 && $i<sizeof($groups)){
-    						echo ", ";
-    					}
-    				}
-    			}
-    			else {
-    			    echo "<i>No groups</i>";
-    			}
+	    			if ($groups != null){
+	    				$i = 0;
+	    				foreach($groups as $group){
+	    				    $i++;
+	    					$groupName = new groupClass($group);
+	    					echo $groupName->getName();
+	    					if(sizeof($groups)>1 && $i<sizeof($groups)){
+	    						echo ", ";
+	    					}
+	    				}
+	    			}
+	    			else {
+	    			    echo "<i>No groups</i>";
+	    			}
 				?>
 			</div>
 	</div>
-	<a href="#"><div id="profileEdit" class="button green">Edit</div></a>
-	<a href="#"><div id="profileCancel" class="button">Cancel</div></a>
+	<div id="profileEdit" class="button green">Edit</div>
+	<div id="profileCancel" class="button">Cancel</div>
 </div>
