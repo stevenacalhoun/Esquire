@@ -2,8 +2,25 @@
 
 <?php 
     // Destroy any session info that may be leftover to ensure login
+    require_once("php/db_setup.php");
     session_start();
     session_destroy();
+    date_default_timezone_set('America/Chicago');
+    
+    $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
+    mysql_select_db("$db_name", $con);
+    
+    $phpDate = date($dateFormat);
+    $mySQLDate = strtotime($phpDate);
+    
+    $sql = "INSERT INTO posts (email, groupID, message, dateTime, flag) VALUES (email, 1, message, $mySQLDate, 0)";
+    mysql_query($sql) or die(mysql_error()); 
+    
+    $result = mysql_query("SELECT dateTime FROM posts WHERE groupID=1") or die(mysql_error());
+    $dateArray = mysql_fetch_array($result);
+    
+    $date = $dateArray['dateTime'];
+    $phpdate = date($dateFormat, $date);    
 ?>
 <html>
 <head>
