@@ -5,9 +5,14 @@
 //    require("php/groupClass.php");
     require_once("php/db_setup.php");
     session_start();
-  
+    if (!array_key_exists('user', $_SESSION)){
+        header('Location:index.php');
+    }
+    
+    // Get current user from the session and get group IDs
+    $user = $_SESSION['user'];
+    $groupIDs = $user->getGroups();
 ?>
-
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -21,8 +26,10 @@
 	<!-- Overlay -->
 	<div class="overlay" id="createGroupOverlay"></div>
 
-	<!-- Group Page -->
+	<!-- Main Container -->
 	<div class="container">
+	
+		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
 			<nav>
@@ -34,24 +41,27 @@
 				</ul>
 			</nav>
 		</header>
-		<input type="text" name="search" placeholder="search groups" id="groupSearch" />
-		<div id="groupList">
 		
+		<!-- Search Bar -->
+		<input type="text" name="search" placeholder="search groups" id="groupSearch" />
+		
+		<!-- Group Container -->
+		<div id="groupList">
             <?php 
-                // Get current user from the session and get group IDs
-                $user = $_SESSION['user'];
-                $groupIDs = $user->getGroups();
-                
                 // Walk over each ID and add a group block for each one
                 if (!empty($groupIDs)){
                     foreach($groupIDs as $groupID){
                         $group = new groupClass($groupID);
                         if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
-                 ?>
+            ?>
                      	<div class="groupBlock">
+                     	
+                     		<!-- Title -->
                      		<div id="group<?php echo $group->getGroupID(); ?>" class="groupTitle">
                      			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
                      		</div>
+                     		
+                     		<!-- Description -->
                      		<div class="groupText">
                      			<?php echo $group->getDescription(); ?>
                      		</div>
@@ -62,24 +72,23 @@
                      	    <?php } ?>
                      	    
                      	    <!-- Accept/decline buttons -->
-                     	    <?php if(!in_array($user->getEmail(), $group->getMembers())){
-                     	    ?>
+                     	    <?php if(!in_array($user->getEmail(), $group->getMembers())){ ?>
                      	    	<div class="decline icon" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
                      	        <div class="accept icon" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
-                     	        
                      		<?php } ?>
                      	</div>   
-                     	<?php } ?>       
-                <?php
+			<?php   	}
                     }
                 }
-             ?>    
+            ?>    
 		</div>
+		
+		<!-- Create Group -->
 		<div class="button green" id="groupCreate">Create</div> 
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>
 	
-	<!-- Create Group Box -->
+	<!-- Create Group Popover -->
 	<div class="box" id="createGroupBox">
 		<div id="createGroupTitle">Create a Group</div>
 		<form action="php/createGroup.php" id="createGroupForm" method="post">
@@ -95,7 +104,6 @@
 	
 	<!-- Profile popovers -->
 	<div class="dynamicPopover" id="profilePopover"></div>
-    <div class="dynamicPopover" id="editProfilePopover"></div>
-    	
+    <div class="dynamicPopover" id="editProfilePopover"></div>	
 </body>
 </html>
