@@ -26,7 +26,7 @@
 	?>
 			     	<div class="feedGroupBlock">
 			     		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
-			     			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><?php echo $group->getName(); ?></a>
+			     			<a href="feed.php"><?php echo $group->getName(); ?></a>
 			     		</div>
 			     		<div class="groupText">
 			     			<?php echo $group->getDescription(); ?>

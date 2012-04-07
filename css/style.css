@@ -256,8 +256,7 @@ footer{
 #createGroupBox,
 #editGroupBox,
 #inviteBox,
-#postBox,
-#feedBox{
+#postBox{
 	display: none;
 	width: 400px;
 	position: absolute;
@@ -371,6 +370,15 @@ footer{
 			float: right;
 		}
 	
+	/* Select Group */
+	#feedBox{
+		width: 400px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -200px 0 0 -200px;
+		z-index: 2;
+	}
 	/* Feed Groups */
 	.feedGroupBlock{
 		width: 100%;
