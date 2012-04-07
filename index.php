@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     // Destroy any session info that may be leftover to ensure login
-    require_once("php/db_setup.php");
+    require_once("php/classFiles/db_setup.php");
     session_start();
     session_destroy();
     date_default_timezone_set('America/Chicago');

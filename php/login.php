@@ -2,8 +2,7 @@
 
     // Start session and bring in DB info
 	session_start();
-	require_once("db_setup.php");
-	require_once("userClass.php");
+	require_once("classFiles/db_setup.php");
     $tbl_name = "users";
 	
 	// Connect to server and database
@@ -25,7 +24,7 @@
 	if ($count == 1)
 	{
 	    // Add user object to the session and return success for login
-        $user = new userClass($email);
+        $user = new User($email);
         $_SESSION['user'] = $user;
         echo "success";
 	}

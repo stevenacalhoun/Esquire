@@ -2,9 +2,7 @@
 
     // Start session and bring in DB info    
     session_start();
-    require_once("db_setup.php");
-    require_once("userClass.php");
-    require_once('./lib/class.phpmailer.php');
+    require_once("classFiles/db_setup.php");
     $tbl_name = "users";
 
 	
@@ -101,7 +99,7 @@
     	
     	
     	// Create user object and add to Session
-    	$user = new userClass($email);
+    	$user = new User($email);
     	$_SESSION['user'] = $user;
     	$message = "Hello $firstName $lastName, welcome to Esquire";    	
     	

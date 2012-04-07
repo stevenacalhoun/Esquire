@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
-    require_once("php/db_setup.php");
+    require_once("php/classFiles/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
@@ -9,7 +9,7 @@
     
     // Get group from GET request
     $requestedGroupID = str_replace("group", "",$_GET['groupID']);
-    $group = new groupClass($requestedGroupID);
+    $group = new Group($requestedGroupID);
     $_SESSION['group'] = $group;
     
     // Connect to database
@@ -72,7 +72,7 @@
 				<div class="specificGroupTitle">Administrator</div>
 				<div class="specificGroupText">
 					<?php 
-						$adminUserObject = new userClass($group->getAdmin());
+						$adminUserObject = new User($group->getAdmin());
 						echo $adminUserObject->getFullName();
 					?>
 				</div>
@@ -88,7 +88,7 @@
 						$acceptedMembers = $group->getAcceptedMembers();
 						foreach($acceptedMembers as $acceptedMember){ 
 							if($acceptedMember != "dummy"){
-								$member = new userClass($acceptedMember);
+								$member = new User($acceptedMember);
 					?>
 					<div class="notificationBlock">
 						<div class="notificationMember icon"></div>
@@ -125,7 +125,7 @@
 				<?php foreach($members as $member){ ?>
 					<div class="specificGroupMember">
 				<?php
-					$userObject = new userClass($member);
+					$userObject = new User($member);
 					echo $userObject->getFullName();
 					if($user->getEmail() == $group->getAdmin() && $userObject->getEmail() != $group->getAdmin()){
 				?>

@@ -328,7 +328,7 @@ function leaveGroup(){
     console.log(id);
     $.ajax({
         type:    "POST",
-        url:     "php/leaveGroup.php",
+        url:     "php/membershipFiles/leaveGroup.php",
         data:    dataToSend,
         success: function(){window.location.replace("groups.php");}
     });
@@ -341,7 +341,7 @@ function removeMember(){
     var dataToSend = {groupID: id, email: email};
     $.ajax({
         type:     "POST",
-        url:      "php/deleteMember",
+        url:      "php/membershipFiles/deleteMember",
         data:     dataToSend,
         success:  function(){window.location.reload();}
     });
@@ -379,7 +379,7 @@ function inviteMembers(){
     
     $.ajax({
         type:       "POST",
-        url:        "php/invite.php",
+        url:        "php/membershipFiles/invite.php",
         data:       dataToSend,
         success:    function(data){
                         console.log(data);
@@ -476,7 +476,7 @@ function groupAdd(){
     var dataToSend = {groupID: groupID};
     $.ajax({
         type:     "POST",
-        url:      "php/requestAdmission",
+        url:      "php/membershipFiles/requestAdmission",
         data:     dataToSend,
         success:  function(data){window.location.replace("groupSearch.php?search=" + data);}  
     });
@@ -489,7 +489,7 @@ function acceptInvitation(){
     var dataToSend = {groupID: groupID};
     $.ajax({
         type:     "POST",
-        url:      "php/acceptInvitation",
+        url:      "php/membershipFiles/acceptInvitation",
         data:     dataToSend,
         success:  function(){window.location.replace("groups.php");}
     });
@@ -502,7 +502,7 @@ function declineInvitation(){
     var dataToSend = {groupID: groupID};
     $.ajax({
         type:     "POST",
-        url:      "php/declineInvitation",
+        url:      "php/membershipFiles/declineInvitation",
         data:     dataToSend,
         success:  function(){window.location.replace("groups.php");}
     });

@@ -1,9 +1,7 @@
 <?php
 
     // Start session and bring in DB info
-    require_once("db_setup.php");
-    require_once("userClass.php");
-    require_once("groupClass.php");
+    require_once("classFiles/db_setup.php");
     require_once("./lib/class.phpmailer.php");
     session_start();
     $tbl_name = "groups";
@@ -83,7 +81,7 @@
         $user->addGroup($groupID);
         
         // Create new group object
-        $group = new groupClass($groupID);
+        $group = new Group($groupID);
         
         // Add each invited member the groups member list
         if($emailString != ""){
@@ -92,7 +90,7 @@
                 $result = mysql_query($sql);
                 if ((mysql_result($result, 0) >= 1)){
                     $group->addMember($email);
-                    $userObject = new userClass($email);
+                    $userObject = new User($email);
                     
                     if ($userObject->getEmails()){
                         $mail = new PHPMailer();

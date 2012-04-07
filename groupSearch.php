@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
-    require_once("php/db_setup.php");
+    require_once("php/classFiles/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
@@ -60,7 +60,7 @@
             	// Walk over each ID and add a group block for each one
                 if($groupIDs != null){
                     foreach($groupIDs as $groupID){
-                        $group = new groupClass($groupID);
+                        $group = new Group($groupID);
             ?>
                      	<div class="groupBlock">
                      	

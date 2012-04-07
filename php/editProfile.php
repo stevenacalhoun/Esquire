@@ -1,8 +1,6 @@
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
-    require_once("userClass.php");
-    require("groupClass.php");
-    require_once("db_setup.php");
+    require_once("classFiles/db_setup.php");
     session_start();
     
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword")or die("Can't connect to Server" . mysql_error());
@@ -79,7 +77,7 @@
     	$sql = "UPDATE users SET firstName='$firstName', lastName='$lastName', password='$password', phoneNum='$phoneNum', phoneEmail='$phoneEmail', textUpdates='$textUpdates', emailUpdates='$emailUpdates' WHERE email='$email'";
     	
     	mysql_query($sql) or die ("Couldn't query" . mysql_error());
-    	$user = new userClass($user->getEmail());
+    	$user = new User($user->getEmail());
     	$_SESSION['user'] = $user;
     }
     

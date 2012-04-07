@@ -1,6 +1,6 @@
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
-    require_once("php/db_setup.php");
+    require_once("php/classFiles/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
@@ -42,7 +42,7 @@
 	    				$i = 0;
 	    				foreach($groups as $group){
 	    				    $i++;
-	    					$groupName = new groupClass($group);
+	    					$groupName = new Group($group);
 	    					echo $groupName->getName();
 	    					if(sizeof($groups)>1 && $i<sizeof($groups)){
 	    						echo ", ";

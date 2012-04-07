@@ -1,6 +1,6 @@
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
-    require_once("php/userClass.php");
+    require_once("php/classFiles/User.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');

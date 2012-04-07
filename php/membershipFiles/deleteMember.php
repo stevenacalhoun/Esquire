@@ -1,6 +1,6 @@
 <?php
     // Pull in necessary files and start session
-    require_once("classFiles/db_setup.php");
+    require_once("../classFiles/db_setup.php");
     session_start();
     
     // Redirect back to log in if no one is logged in
@@ -10,14 +10,14 @@
     
     // Get the current user from session
     $user = $_SESSION['user'];
-    
+
     // Get groupID from get request and strip everything but the number
-    $groupID = str_replace("groupDelete", "", $_POST["groupID"]);
+    $groupID = str_replace("specificGroup", "", $_POST["groupID"]);
     $group = new Group($groupID);
+    
+    // Get email of the member to be removed
+    $email = str_replace("specificGroup", "", $_POST["email"]);
 
-    // Delete group
-    $group->deleteGroup();
-
-    // Remove the group from the logged in user's group list
-    $user->removeGroup($groupID);
+    // Delete member
+    $group->deleteMember($email);
 ?>
