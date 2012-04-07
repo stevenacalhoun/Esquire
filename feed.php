@@ -12,7 +12,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Feed | Esquire <?php echo $groupID; ?></title>
+	<title>Feed | Esquire</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>
