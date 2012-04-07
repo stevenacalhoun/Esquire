@@ -93,5 +93,6 @@
 	<!-- Profile popovers -->
     <div class="dynamicPopover" id="profilePopover"></div>
     <div class="dynamicPopover" id="editProfilePopover"></div>
+    <div class="dynamicPopover" id="groupSeletPopover"></div>
 </body>
 </html>
