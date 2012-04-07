@@ -24,9 +24,9 @@
 		    	$group = new groupClass($groupID);
 		        if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
 	?>
-				     	<div class="feedGroupBlock">
+				     	<div class="feedGroupBlock" id="<?php echo $group->getGroupID(); ?>">
 				     		<a href="feed.php"></a>
-				     		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
+				     		<div class="groupTitle">
 				     			<?php echo $group->getName(); ?>
 				     		</div>
 				     		<div class="groupText">
