@@ -72,6 +72,9 @@ $(document).ready(function() {
     // Sniffer for accept invitation button
     $('.decline').click(declineInvitation);
     
+    // Sniffer for feed click
+    $('.navFeed').click(loadFeedSelection);
+    
     /** Group's admin privileges **/
     
     // Sniffer for remove member click 
@@ -482,3 +485,12 @@ function declineInvitation(){
     });
 }    
 
+function loadFeedSelection(){
+    event.preventDefault();
+//    $('.overlay').fadeIn('fast');
+    
+    $("#profilePopover").html('').load("groupSelect.php").fadeIn('fast');
+    $("#feedBox").show();
+}
+
+    
