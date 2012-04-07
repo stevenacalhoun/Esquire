@@ -29,14 +29,19 @@
             $this->_admin = $groupInfo['admin'];
 
             // Initialize a dummy members so the array is never null
-            $this->_confirmedMembers[] = "dummy";
-            $this->_acceptedMembers[] = "dummy";
-            $this->_permittedMembers[] = "dummy";
+//            $this->_confirmedMembers[] = "dummy";
+//            $this->_acceptedMembers[] = "dummy";
+//            $this->_permittedMembers[] = "dummy";
+
+            $this->_confirmedMembers = array();
+            $this->_acceptedMembers = array();
+            $this->_permittedMembers = array();
+            
             
             // Find the confirmed members of the group
             $memberEmails = mysql_query("SELECT * FROM member_of WHERE groupID = '$groupID'");
             if ($memberEmails != null){
-            	$this->_confirmedMembers = array();
+            	//$this->_confirmedMembers = array();
                 while($email = mysql_fetch_array($memberEmails)){
                     if ($email['accept'] and $email['permission']){
                         $this->_confirmedMembers[] = $email['email'];

@@ -100,31 +100,21 @@
 					</div>
 					<?php }} ?>
 					
-					<!-- Flags
 					<?php 
-						//$flaggedPosts = $group->getFlags();
-						//foreach($flaggedPosts as $flaggedPost){ 
-						//	$post = new Post($flaggedPost);
+						$flaggedPosts = $group->getFlaggedPosts();
+						foreach($flaggedPosts as $flaggedPost){ 
+							$post = new Post($flaggedPost);
 					?>
 					<div class="notificationBlock">
 						<div class="notificationFlag icon"></div>
 						<div class="notificationAccept icon" title="Approve"></div>
 						<div class="notificationDecline icon" title="Remove"></div>
 						<div class="notificationText">
-							<?php //echo $post->getMessage(); ?>
+							<?php echo $post->getMessage(); ?>
 						</div>
 					</div>
-					<?php //} ?>
-					-->
-					<!-- Test flag block till real flags work -->
-					<div class="notificationBlock">
-						<div class="notificationFlag icon"></div>
-						<div class="notificationAccept icon" title="Approve"></div>
-						<div class="notificationDecline icon" title="Remove"></div>
-						<div class="notificationText">
-							Forage tumblr marfa, fanny pack vegan artisan skateboard williamsburg street art occupy photo booth ethnic. Pour-over shoreditch banh mi, forage ethnic post-ironic yr viral etsy freegan +1 street art williamsburg Austin. Organic 8-bit master cleanse farm-to-table. Selvage mumblecore pork belly williamsburg gentrify tofu. Mixtape twee VHS biodiesel locavore fixie four loko beard. Butcher organic wayfarers mcsweeney's seitan cosby sweater. You probably haven't heard of them pop-up jean shorts, 3 wolf moon quinoa leggings photo booth mustache cardigan ennui hoodie craft beer DIY beard.
-						</div>
-					</div>
+					<?php } ?>
+					
 				</div>
 			<?php } ?>
 			

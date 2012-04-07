@@ -29,6 +29,9 @@ class userClass {
             $this->_emailUpdates = $userRow['emailUpdates'];
             $this->_phoneEmail = $userRow['phoneEmail'];
             
+            $this->_groups = array();
+            
+            
             // Query member_of table and so long as there are rows add the groupID to the groups array
             $groupsIDs = mysql_query("SELECT groupID FROM member_of WHERE email = '$email'");
             while($ID = mysql_fetch_array($groupsIDs)){
