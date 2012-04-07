@@ -24,14 +24,15 @@
 		    	$group = new groupClass($groupID);
 		        if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
 	?>
-			     	<div class="feedGroupBlock">
-			     		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
-			     			<a href="feed.php"><?php echo $group->getName(); ?></a>
-			     		</div>
-			     		<div class="groupText">
-			     			<?php echo $group->getDescription(); ?>
-			     		</div>
-			     	</div>
+				     	<div class="feedGroupBlock">
+				     		<a href="feed.php"></a>
+				     		<div id="<?php echo $group->getGroupID(); ?>" class="groupTitle">
+				     			<?php echo $group->getName(); ?>
+				     		</div>
+				     		<div class="groupText">
+				     			<?php echo $group->getDescription(); ?>
+				     		</div>
+				     	</div>
 	<?php       }
 		    }
 		} 

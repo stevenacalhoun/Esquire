@@ -379,6 +379,11 @@ footer{
 		margin: -200px 0 0 -200px;
 		z-index: 2;
 	}
+	.feedGroupBlock:hover{
+		cursor: pointer;
+		box-shadow: inset 0px 3px 10px rgb(170, 170, 170);
+	}
+	
 	/* Feed Groups */
 	.feedGroupBlock{
 		width: 100%;
@@ -408,8 +413,12 @@ footer{
 	margin-left: 20px;
 	font-size: 0.95em;
 	font-weight: bold;
+	color: #0283de;
 }
 .groupTitle a{color: #0283de;}
+.groupTitle a:hover{
+	color: #4fb4fb;
+}
 .groupText{
 	margin: 5px 100px 0 20px;
 	font-size: 0.8em;
