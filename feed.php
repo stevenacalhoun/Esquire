@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <?php
     // Pull in required files and make sure the user is logged in, if not redirect ot log in
-//    require_once("php/userClass.php");
-//    require("php/groupClass.php");
     require_once("php/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
-    } 
+    }
+    $groupID = $_GET['groupID'];
+     
 ?>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Feed | Esquire</title>
+	<title>Feed | Esquire <?php echo $groupID; ?></title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>

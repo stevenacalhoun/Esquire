@@ -11,6 +11,7 @@
     // Get current user from the session and get group IDs
     $user = $_SESSION['user'];
     $groupIDs = $user->getGroups();
+    
 ?>
 
 <!-- Group Selection for Feeds -->

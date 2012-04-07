@@ -8,6 +8,7 @@
         private $_confirmedMembers;
         private $_allowedMembers;
         private $_permittedMembers;
+        private $_posts;
         
         // Constructor function
         public function groupClass($groupID){
@@ -51,6 +52,14 @@
                     }
                 }
             }
+            
+            $sql = "SELECT postID FROM posts WHERE groupID=$groupID ORDER BY dateTime DESC";
+            $result = mysql_query($sql);
+            
+            while($post = mysql_fetch_array($result)){
+                $this->_posts[] = $post['postID'];
+            }
+            
         }
      
         // Getters for all variables because they are private
@@ -80,6 +89,10 @@
         
         public function getAcceptedMembers(){
             return $this->_acceptedMembers;
+        }
+        
+        public function getPosts(){
+            return $this->_posts;
         }
         
         // Other functions

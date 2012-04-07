@@ -40,7 +40,7 @@ $(document).ready(function() {
     /** Group functions **/
     
     // Sniffer for creating a new group and canceling group
-    $('#groupCreate').click(function(){$('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
+    $('#groupCreate').click(function(){event.stopPropagation(); $('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
     $('#createGroupCancel').click(
         function(){
             $('#createGroupOverlay').fadeOut('fast');
@@ -75,6 +75,11 @@ $(document).ready(function() {
     // Sniffer for feed click
     $('.navFeed').click(loadFeedSelection);
     
+    // Sniffer for closing feed select
+    
+    // Sniffer for each group click for feed
+    $(".feedGroupBlock").click(moveToFeedPage);
+    
     /** Group's admin privileges **/
     
     // Sniffer for remove member click 
@@ -83,6 +88,7 @@ $(document).ready(function() {
     // Sniffer for admin edit group button and cancel
     $('.specificGroupEdit').click(
         function(){
+            event.stopPropagation();
             $('#editGroupBox').fadeIn('fast'); 
             $('.overlay').fadeIn('fast');
         }
@@ -102,6 +108,7 @@ $(document).ready(function() {
     // Sniffer for admin invite member button and cancel
     $('#specificGroupAdd').click(
         function(){
+            event.stopPropagation();
             $('#inviteBox').fadeIn('fast');
             $('.overlay').fadeIn('fast');
         }
@@ -121,6 +128,7 @@ $(document).ready(function() {
     /** Post stuff **/
     $(".postButton").click(
         function(){
+            event.stopPropagation();
             $("#postBox").fadeIn('fast');
             $(".overlay").fadeIn('fast');
         }
@@ -132,6 +140,13 @@ $(document).ready(function() {
         }
     );
     
+    $('.overlay').click(
+        function() {
+            //Hide the menus if visible
+            $('.overlay').fadeOut('fast');
+            $('#profilePopover').fadeOut('fast');
+         }
+     );
 });
 
 
@@ -262,7 +277,8 @@ function validatePass2(){
 // Create a group by using a php file
 function createGroup(){
     event.preventDefault();
-    
+    event.stopPropagation();
+
     var data = $("form#createGroupForm").serialize();
     var url = $("form#createGroupForm").attr('action');
     
@@ -331,7 +347,8 @@ function removeMember(){
 
 function editGroup(event){
     event.preventDefault();
-    
+    event.stopPropagation();
+
     var data = $("form#editGroupForm").serialize();
     var url = $("form#editGroupForm").attr('action');
     
@@ -344,6 +361,8 @@ function editGroup(event){
 // Invite new members to a group
 function inviteMembers(){
     event.preventDefault();
+    event.stopPropagation();
+
     var groupID = $('.container').attr('id');
     groupID = groupID.replace("specificGroup", "");
     
@@ -382,6 +401,7 @@ function inviteMembers(){
 
 // Present the current user's information 
 function showProfile(){
+    event.stopPropagation();
     $('#profilePopover').html('').load("profile.php").fadeIn('fast');
     $('.overlay').fadeIn('fast');
 }
@@ -395,6 +415,7 @@ function hideProfile(){
 
 // Change the popover to be editable
 function showEditProfile(){
+    event.stopPropagation();
     $("#profilePopover").html('').fadeOut('fast');
     console.log('what the fuck');
     $("#editProfilePopover").load("profileEdit.php").html('');
@@ -402,7 +423,6 @@ function showEditProfile(){
 
 function editProfile(event){
     event.preventDefault();
-    
     // Create data form form and get action
     var data = $("form#editProfileForm").serialize();
     var url = $("form#editProfileForm").attr('action');
@@ -446,6 +466,7 @@ function editProfile(event){
 /** Miscellaneous group stuff **/
 
 function groupAdd(){
+
     var groupID = this.id;
     groupID = groupID.replace("groupAdd", "");
     
@@ -487,10 +508,16 @@ function declineInvitation(){
 
 function loadFeedSelection(){
     event.preventDefault();
-//    $('.overlay').fadeIn('fast');
-    
+    event.stopPropagation();
+    $('.overlay').fadeIn('fast');    
     $("#profilePopover").html('').load("groupSelect.php").fadeIn('fast');
-    $("#feedBox").show();
+}
+    
+function moveToFeedPage(){
+    var groupID = this.id;
+    
+    window.location.replace("feed.php?groupID=" +groupID);
 }
 
+    
     
