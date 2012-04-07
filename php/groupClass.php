@@ -9,6 +9,7 @@
         private $_allowedMembers;
         private $_permittedMembers;
         private $_posts;
+        private $_flaggedPosts;
         
         // Constructor function
         public function groupClass($groupID){
@@ -27,10 +28,6 @@
             $this->_description = $groupInfo['description'];
             $this->_admin = $groupInfo['admin'];
 
-            //
-//            $memberInfo = mysql_fetch_array(mysql_query("SELECT * FROM member_of WHERE groupID = '$groupID' and email = '$email'");
-//            $this->_acceptance = $memberInfo['accept'];
-            
             // Initialize a dummy members so the array is never null
             $this->_confirmedMembers[] = "dummy";
             $this->_acceptedMembers[] = "dummy";
@@ -53,13 +50,19 @@
                 }
             }
             
-            $sql = "SELECT postID FROM posts WHERE groupID=$groupID ORDER BY dateTime DESC";
+            $sql = "SELECT postID FROM posts WHERE groupID = $groupID and flag = 0 ORDER BY dateTime DESC";
             $result = mysql_query($sql);
             
             while($post = mysql_fetch_array($result)){
                 $this->_posts[] = $post['postID'];
             }
             
+            $sql = "SELECT postID FROM posts WHERE groupID = $groupID and flag = 1 ORDER BY dateTime DESC";
+            $result = mysql_query($sql);
+            
+            while($post = mysql_fetch_array($result)){
+                $this->_flaggedPosts[] = $post['postID'];
+            }            
         }
      
         // Getters for all variables because they are private
@@ -95,17 +98,21 @@
             return $this->_posts;
         }
         
+        public function getFlaggedPosts(){
+            return $this->_flaggedPosts;
+        }
+        
         // Other functions
         public function addMember($email){
             $groupID = $this->getGroupID();
             $sql = "INSERT INTO member_of (email, groupID, accept, permission) VALUES ('$email', '$groupID', 0, 1)";
-            mysql_query($sql) or die("Could not query: " . mysql_error());
+            mysql_query($sql) or die("Could not add member: " . mysql_error());
         }
         
         public function deleteMember($email){
             $groupID = $this->getGroupID();
             $sql = "DELETE FROM member_of WHERE email = '$email' and groupID = '$groupID'";
-            mysql_query($sql) or die("Could not query: " . mysql_error());
+            mysql_query($sql) or die("Could not delete member: " . mysql_error());
         }
         
         public function deleteGroup(){
@@ -113,11 +120,32 @@
             
             // Remove all the members of the group first
             $sql = "DELETE FROM member_of WHERE groupID = '$groupID'";
-            mysql_query($sql) or die("could not delete some member " . msql_error());
+            mysql_query($sql) or die("Could not delete member: " . msql_error());
             
             // Remove the group itself
             $sql = "DELETE FROM groups WHERE groupID = '$groupID'";
-            mysql_query($sql) or die("could not delete group: " . mysql_error());      
+            mysql_query($sql) or die("Could not delete group: " . mysql_error());      
+        }
+        
+        public function permitMember($email){
+            $groupID = $this->getGroupID();
+            $sql = "UPDATE member_of SET permit = 1 WHERE email = $email and groupID = $groupID";
+            mysql_query($sql) or die("Could not permit member: " . mysql_error());
+        }
+        
+        public function denyMember($email){
+            deleteMember($email);
+        }
+        
+        public function ignoreFlaggedPost($postID){
+            $sql = "UPDATE posts SET flag = 0 WHERE postID = $postID";
+            mysql_query($sql) or die("Could not ignore post: " . mysql_error());            
+        }
+        
+        public function deleteFlaggedPost($postID){
+            $sql = "DELETE FROM posts WHERE groupID = $postID";
+            mysql_query($sql) or die("could not delete post: " . msql_error());
+            
         }
     }
 ?>

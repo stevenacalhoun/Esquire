@@ -19,6 +19,23 @@
 </head>
 <body>
 
+<?php 
+//    $group = new groupClass($groupID);
+//    foreach ($group->getPosts() as $post){
+//        $postObject = new Post($post);
+//        echo $postObject->getMessage();
+//    }
+//    
+//    echo "flagged:";
+//    foreach ($group->getFlaggedPosts() as $post){
+//        $postObject = new Post($post);
+//        echo $postObject->getMessage();
+//    }
+    
+
+?>
+
+
 	<!-- Overlay -->
 	<div class="overlay" id="feedOverlay"></div>
 	

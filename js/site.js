@@ -140,6 +140,8 @@ $(document).ready(function() {
         }
     );
     
+    $('#postCreate').click(newPost);
+    
     $('.overlay').click(
         function() {
             //Hide the menus if visible
@@ -519,5 +521,40 @@ function moveToFeedPage(){
     window.location.replace("feed.php?groupID=" +groupID);
 }
 
+/** Post stuff **/
+
+function newPost(){
+    event.preventDefault();
+    // groupID from somewhere?
+    var groupID = 1;
+    var message = $('#postForm :input').val();
+
+    dataToSend = {groupID: groupID, message: message}
+    
+    $.ajax({
+        type:     "POST",
+        url:      "php/newPost.php",
+        data:     dataToSend,
+        success:  function(data){
+                console.log(data);
+                window.location.replace("feed.php?groupID=" + groupID)
+            ;}
+    });       
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
