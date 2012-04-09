@@ -154,9 +154,9 @@ $(document).ready(function() {
          }
      );
      
-     $('html').mousemove(function(event){
-         console.log(event.pageX + " " + event.pageY);
-     });
+//     $('html').mousemove(function(event){
+//         console.log(event.pageX + " " + event.pageY);
+//     });
 });
 
 
@@ -534,10 +534,9 @@ function moveToFeedPage(){
 function newPost(){
     event.preventDefault();
     // groupID from somewhere?
-    var groupID = 1;
     var message = $('#postForm :input').val();
 
-    dataToSend = {groupID: groupID, message: message}
+    dataToSend = {message: message}
     
     $.ajax({
         type:     "POST",
@@ -545,7 +544,7 @@ function newPost(){
         data:     dataToSend,
         success:  function(data){
                 console.log(data);
-                window.location.replace("feed.php?groupID=" + groupID)
+                window.location.replace("feed.php?groupID=" + data)
             ;}
     });       
 }

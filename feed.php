@@ -7,6 +7,15 @@
         header('Location:index.php');
     }
     $groupID = $_GET['groupID']; 
+    $user = $_SESSION['user'];
+    $_SESSION['groupID'] = $groupID;
+    if (!in_array($groupID, $user->getGroups() ) ){
+        header('Location:groups.php');
+    }
+    $con = mysql_connect("$host", "$sqlusername", "$sqlpassword") or die("Could not connect to dataBase:" . mysql_error());
+    mysql_select_db("$db_name", $con);
+    
+    
 ?>
 <html>
 <head>
@@ -39,7 +48,7 @@
 		</header>
 		
 		<!-- Post Container -->
-		<div id="feedList">
+		<div id="feedList<?php echo $groupID ?>">
 			<?php 
 				$group = new Group($groupID);
 				$user = $_SESSION['user'];

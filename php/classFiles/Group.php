@@ -50,16 +50,16 @@
             }
             
             $sql = "SELECT postID FROM posts WHERE groupID = $groupID and flag = 0 ORDER BY dateTime DESC";
-            $result = mysql_query($sql);
+            $result = mysql_query($sql) or die("Could not get postID's: " . mysql_error());
             
             $this->_posts = array();
-            
+                
             while($post = mysql_fetch_array($result)){
                 $this->_posts[] = $post['postID'];
             }
             
             $sql = "SELECT postID FROM posts WHERE groupID = $groupID and flag = 1 ORDER BY dateTime DESC";
-            $result = mysql_query($sql);
+            $result = mysql_query($sql) or die("Could not get flagged postID's: " . mysql_error());
 
             $this->_flaggedPosts = array();
             

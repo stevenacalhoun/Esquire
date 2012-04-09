@@ -1,8 +1,8 @@
 <?php
-    require_once("db_setup.php");
+    require_once("classFiles/db_setup.php");
     session_start();
     
-    $groupID = $_POST['groupID'];
+    $groupID = $_SESSION['groupID'];
     $message = $_POST['message'];
 
     $user = $_SESSION['user'];
@@ -25,9 +25,16 @@
 
     }
     
+    if (sizeof($postNums) >= 1){
+        $largestPostNum = max($postNums);
+        $nextPostNum = $largestPostNum + 1;
+    }
     
-    $largestPostNum = max($postNums);
-    $nextPostNum = $largestPostNum + 1;
+    else {
+        $nextPostNum = 1;
+    }
+    
+    echo $groupID;
     
     
     $newPostID = $groupID . "-" . $nextPostNum;

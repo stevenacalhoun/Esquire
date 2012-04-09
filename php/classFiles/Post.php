@@ -13,7 +13,8 @@
             $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
             mysql_select_db("$db_name", $con);
             
-            $postInfo = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE postID = '$postID'"));
+            $postInfoArray = mysql_query("SELECT * FROM posts WHERE postID = '$postID'")or die("Could not get post info: " . mysql_error());
+            $postInfo = mysql_fetch_array($postInfoArray);
 
             $this->_postID = $postID;
             $this->_message = $postInfo['message'];
