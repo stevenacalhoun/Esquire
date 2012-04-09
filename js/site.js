@@ -147,8 +147,16 @@ $(document).ready(function() {
             //Hide the menus if visible
             $('.overlay').fadeOut('fast');
             $('#profilePopover').fadeOut('fast');
+            $('#editProfilePopover').fadeOut('fast');
+            $('#createGroupBox').fadeOut('fast');
+            $('#inviteBox').fadeOut('fast');
+            $('#editGroupBox').fadeOut('fast');
          }
      );
+     
+     $('html').mousemove(function(event){
+         console.log(event.pageX + " " + event.pageY);
+     });
 });
 
 
