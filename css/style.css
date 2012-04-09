@@ -93,16 +93,6 @@ textarea{
 	margin-bottom: 10px;
 	padding-left: 5px;
 }
-input[type="radio"]{
-	width: 12px;
-	height: 13px;
-	background: url('../images/radioEmpty.png') no-repeat;
-}
-input[type="radio"]:checked{
-	width: 12px;
-	height: 13px;
-	background: url('../images/radioFull.png') no-repeat;
-}
 .error{
 	display: none;
 	width: 430px;
@@ -379,12 +369,6 @@ footer{
 		margin: -200px 0 0 -200px;
 		z-index: 2;
 	}
-	.feedGroupBlock:hover{
-		cursor: pointer;
-		box-shadow: inset 0px 3px 10px rgb(170, 170, 170);
-	}
-	
-	/* Feed Groups */
 	.feedGroupBlock{
 		width: 100%;
 		padding: 15px 0;
@@ -393,6 +377,11 @@ footer{
 	}
 	.feedGroupBlock:first-child{border-radius: 10px 10px 0 0;}
 	.feedGroupBlock:last-child{border-radius: 0 0 10px 10px;}
+	.feedGroupBlock:only-child{border-radius: 10px;}
+	.feedGroupBlock:hover{
+		cursor: pointer;
+		box-shadow: inset 0px 3px 10px rgb(170, 170, 170);
+	}
 	
 /* Groups */
 #groupList{

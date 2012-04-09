@@ -87,8 +87,7 @@
 					<?php 
 						$acceptedMembers = $group->getAcceptedMembers();
 						foreach($acceptedMembers as $acceptedMember){ 
-							if($acceptedMember != "dummy"){
-								$member = new User($acceptedMember);
+							$member = new User($acceptedMember);
 					?>
 					<div class="notificationBlock">
 						<div class="notificationMember icon"></div>
@@ -98,7 +97,7 @@
 							<?php echo $member->getFullName(); ?>
 						</div>
 					</div>
-					<?php }} ?>
+					<?php } ?>
 					
 					<?php 
 						$flaggedPosts = $group->getFlaggedPosts();
