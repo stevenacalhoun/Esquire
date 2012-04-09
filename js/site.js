@@ -40,7 +40,14 @@ $(document).ready(function() {
     /** Group functions **/
     
     // Sniffer for creating a new group and canceling group
-    $('#groupCreate').click(function(){event.stopPropagation(); $('#createGroupOverlay').fadeIn('fast'); $('#createGroupBox').fadeIn('fast');});
+    $('#groupCreate').click(
+    	function(){
+    		event.stopPropagation();
+    		$('#createGroupOverlay').fadeIn('fast');
+    		$('#createGroupBox').fadeIn('fast');
+    		$("#createGroupName").focus();
+    	}
+    );
     $('#createGroupCancel').click(
         function(){
             $('#createGroupOverlay').fadeOut('fast');
@@ -111,6 +118,7 @@ $(document).ready(function() {
             event.stopPropagation();
             $('#inviteBox').fadeIn('fast');
             $('.overlay').fadeIn('fast');
+            $('#inviteEmails').focus();
         }
     );
     
@@ -131,6 +139,7 @@ $(document).ready(function() {
             event.stopPropagation();
             $("#postBox").fadeIn('fast');
             $(".overlay").fadeIn('fast');
+            $("#postContent").focus();
         }
     );
     $("#postCancel").click(
@@ -151,6 +160,7 @@ $(document).ready(function() {
             $('#createGroupBox').fadeOut('fast');
             $('#inviteBox').fadeOut('fast');
             $('#editGroupBox').fadeOut('fast');
+            $('#postBox').fadeOut('fast');
          }
      );
      
@@ -291,6 +301,9 @@ function createGroup(){
 
     var data = $("form#createGroupForm").serialize();
     var url = $("form#createGroupForm").attr('action');
+    $('#createGroupName').val('');
+    $('#createGroupDescription').val('');
+    $('#createGroupEmails').val('');
     
     //if($("#createGroupName".val=="" || $("createGroupDescription").val==""
     
@@ -384,6 +397,8 @@ function inviteMembers(){
     var url = $("form#inviteForm").attr('action');
     
     var dataToSend = {emails: emails, groupID: groupID};
+    
+    $('#inviteEmails').val('');
     
     $.ajax({
         type:       "POST",
@@ -536,6 +551,8 @@ function newPost(){
     // groupID from somewhere?
     var message = $('#postForm :input').val();
 
+	$('#postContent').val("");
+	
     dataToSend = {message: message}
     
     $.ajax({
@@ -546,7 +563,7 @@ function newPost(){
                 console.log(data);
                 window.location.replace("feed.php?groupID=" + data)
             ;}
-    });       
+    });
 }
     
     
