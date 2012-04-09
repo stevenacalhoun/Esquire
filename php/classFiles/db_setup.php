@@ -9,7 +9,7 @@
     date_default_timezone_set('America/Chicago');
     
     $dateFormat = "g:ia M j, Y";
-    require_once("userClass.php");
+    require_once("User.php");
     require_once("Group.php");
     require_once("Post.php");
     

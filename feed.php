@@ -6,8 +6,7 @@
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
     }
-    $groupID = $_GET['groupID'];
-     
+    $groupID = $_GET['groupID']; 
 ?>
 <html>
 <head>
@@ -18,23 +17,6 @@
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
-
-<?php 
-//    $group = new Group($groupID);
-//    foreach ($group->getPosts() as $post){
-//        $postObject = new Post($post);
-//        echo $postObject->getMessage();
-//    }
-//    
-//    echo "flagged:";
-//    foreach ($group->getFlaggedPosts() as $post){
-//        $postObject = new Post($post);
-//        echo $postObject->getMessage();
-//    }
-    
-
-?>
-
 
 	<!-- Overlay -->
 	<div class="overlay" id="feedOverlay"></div>
@@ -58,13 +40,23 @@
 		
 		<!-- Post Container -->
 		<div id="feedList">
-			<div class="feedBlock">
-				<div class="feedName">Matt Smith</div>
-				<div class="feedPost">Bespoke Austin authentic, art party echo park trust fund truffaut selvage mixtape helvetica thundercats forage. Tattooed marfa Austin, tumblr farm-to-table ethnic mustache seitan next level banksy brooklyn skateboard fanny pack. Authentic pop-up typewriter, thundercats godard gastropub sustainable art party freegan pinterest cliche terry richardson kogi. Banh mi wolf pop-up 3 wolf moon tumblr dreamcatcher, swag beard mlkshk fixie godard iphone. Biodiesel fixie hoodie typewriter. Godard raw denim kogi, PBR scenester fap kale chips banksy pickled echo park keffiyeh wolf cray lomo high life. Pitchfork before they sold out single-origin coffee yr artisan, vinyl twee beard jean shorts messenger bag bespoke shoreditch seitan.</div>
-				<div class="feedDate">8:52pm 20 February 2012</div>
-				<div class="feedDelete"></div>
-				<div class="feedFlag icon"></div>
-			</div>
+			<?php 
+				$group = new Group($groupID);
+				$user = $_SESSION['user'];
+				foreach($group->getPosts() as $post){
+					$postObject = new Post($post);
+					$postUser = new User($postObject->getEmail());
+			?>
+				<div class="feedBlock">
+					<div class="feedName"><?php echo $postUser->getFullName(); ?></div>
+					<div class="feedPost"><?php echo $postObject->getMessage(); ?></div>
+					<div class="feedDate"><?php echo $postObject->getDateTime(); ?></div>
+					<?php if($user->getEmail() == $group->getAdmin() || $user->getEmail() == $postUser->getEmail()){ ?>
+						<div class="feedDelete"></div>
+					<?php } ?>
+					<div class="feedFlag icon"></div>
+				</div>
+			<?php } ?> 
 		</div>
 	</div>
 	<footer>&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</footer>

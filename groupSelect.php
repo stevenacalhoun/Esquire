@@ -24,7 +24,6 @@
 		        if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
 	?>
 				     	<div class="feedGroupBlock" id="<?php echo $group->getGroupID(); ?>">
-				     		<a href="feed.php"></a>
 				     		<div class="groupTitle">
 				     			<?php echo $group->getName(); ?>
 				     		</div>
