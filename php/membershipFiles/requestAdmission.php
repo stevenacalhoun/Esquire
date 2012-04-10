@@ -1,7 +1,7 @@
 <?php
 
     // Pull in necessary files and start session
-    require_once("classFiles/db_setup.php");
+    require_once("../classFiles/db_setup.php");
     session_start();
     
     // Redirect back to log in if no one is logged in
@@ -22,5 +22,5 @@
     // User request invite    
     $user->requestAdmission($groupID);  
     
-    echo $_eNVSESSION['search']; 
+    echo $_SESSION['search']; 
 ?>

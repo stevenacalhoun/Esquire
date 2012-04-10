@@ -381,12 +381,23 @@ function editGroup(event){
 
     var data = $("form#editGroupForm").serialize();
     var url = $("form#editGroupForm").attr('action');
+    var groupID = $(".container").attr('id');
+    groupID = groupID.replace("specificGroup", "");
     
     if ($("#editGroupName").val()=="" || $("#editGroupDescription").val()==""){
         $('#createGroupEmptyField').fadeIn('fast');
     }
-    else {$('#createGroupEmptyField').fadeOut('fast');}
-}    
+    else {
+        $('#createGroupEmptyField').fadeOut('fast');
+        $.ajax({
+            type:    "POST",
+            url:     "php/editGroup.php",
+            data:    data,
+            success: function(data){window.location.reload();}
+        });
+    }
+} 
+
 
 // Invite new members to a group
 function inviteMembers(){

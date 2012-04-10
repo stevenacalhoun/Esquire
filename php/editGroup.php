@@ -1,9 +1,10 @@
 <?php
 
     // Start session and bring in DB info    
-    session_start();
     require_once("classFiles/db_setup.php");
     require_once('./lib/class.phpmailer.php');
+    session_start();
+    
     $tbl_name = "users";
 
 	
@@ -17,7 +18,7 @@
     $description = $_POST['editGroupDescription'];
     
     function emptyFieldsTest($name, $description){
-        return ($name.val() == "" || $description.val() =="")
+        return ($name == "" || $description =="");
     }
     
     if (emptyFieldsTest($name, $description)){
