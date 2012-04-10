@@ -97,6 +97,7 @@
     	// Add user to database
     	mysql_query($sql) or die("Could not query: " . mysql_error());
     	
+    	echo "success";
     	
     	// Create user object and add to Session
     	$user = new User($email);

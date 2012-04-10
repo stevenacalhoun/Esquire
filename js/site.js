@@ -142,6 +142,13 @@ $(document).ready(function() {
     
     $('#postCreate').click(newPost);
     
+    $('#postBox').keypress(function(event){
+        if (event.keyCode == 13){
+            newPost();
+        }
+    });
+    
+    
     $('.overlay').click(
         function() {
             //Hide the menus if visible
@@ -151,6 +158,7 @@ $(document).ready(function() {
             $('#createGroupBox').fadeOut('fast');
             $('#inviteBox').fadeOut('fast');
             $('#editGroupBox').fadeOut('fast');
+            $('#postBox').fadeOut('fast');
          }
      );
      
@@ -232,7 +240,7 @@ function newAccount(event){
             
             
             // If there are no errors then move the user to the next page
-            if (data==''){window.location.replace("groups.php");}
+            if (data=='success'){window.location.replace("groups.php");}
         }
     );
 }
