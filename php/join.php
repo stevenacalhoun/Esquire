@@ -20,6 +20,18 @@
 	$carrier = $_POST['carrier'];
 	$textUpdates = $_POST['texts'];
 	$emailUpdates = $_POST['emails']; 
+	$image = $_FILES['profileImage']['name'];
+//	echo "Upload: " . $_FILES["profileImage"]["name"] . "<br />";
+//	  echo "Type: " . $_FILES["profileImage"]["type"] . "<br />";
+//	  echo "Size: " . ($_FILES["profileImage"]["size"] / 1024) . " Kb<br />";
+//	  echo "Stored in: " . $_FILES["profileImage"]["tmp_name"];
+
+	
+	$profileImageFolder = $profileImageFolder . basename( $_FILES['profileImage']['name']);
+	if(move_uploaded_file($_FILES['profileImage']['tmp_name'], "$profileImageFolder")){
+	    echo 'hot damn';
+	}
+	else {echo 'mother';}
 	
 	// Determine boolean values for update options
 	if ($textUpdates == "textYes"){$textUpdates = true;}

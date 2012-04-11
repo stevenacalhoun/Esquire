@@ -13,4 +13,6 @@
     require_once("Group.php");
     require_once("Post.php");
     
+    $profileImageFolder = "profileImages/";
+    
 ?>

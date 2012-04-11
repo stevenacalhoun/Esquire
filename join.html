@@ -11,7 +11,7 @@
 		
 		<!-- Main Box -->
 		<div id="joinBox" class="box">
-			<form id="joinForm" action="php/join.php" method="post">
+			<form id="joinForm" action="php/join.php" method="post" enctype="multipart/form-data">
 			
 				<!-- Left -->
 				<div id="joinLeft">
@@ -45,7 +45,7 @@
 					
 				<!-- Right -->
 				<div id="joinRight">
-					<input type="file" name="profileImage" id="joinProfileImage" />
+					<input type="file" name="profileImage" id="createProfileImage" />
 					<div id="joinTitle"></div>
 					<input type="submit" value="Submit" class="button green" id="joinSubmit" />
 					<a href="index.php"><div id="joinCancel" class="button">Cancel</div></a>

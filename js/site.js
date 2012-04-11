@@ -133,6 +133,12 @@ $(document).ready(function() {
         }
     );
     
+    // Sniffer for click on deny request
+    
+    
+    
+    // Sniffer for click on permit request
+    
     /** Post stuff **/
     $(".postButton").click(
         function(){
@@ -216,6 +222,14 @@ function newAccount(event){
     else{
         $('#blankError').fadeOut('fast');
     }
+    
+    var file = $('#createProfileImage').val();
+    console.log(file);
+    var fileName = file.fileName;
+    var fileSize = file.fileSize;
+    
+    alert("Uploading: "+fileName+" @ "+fileSize+"bytes");
+  
     
     // Use AJAX post to prevent refresh of page
     $.post (url, data,
@@ -440,6 +454,41 @@ function inviteMembers(){
     });
 }
 
+
+// Permit a request from a user
+function permitRequest(){
+    var email = this.id;
+    email = email.replace("permit", "");
+    var id = $('.container').attr('id');
+    var groupID = id.replace("specificGroup", "");
+    
+    var dataToSend = {emailToBePermitted: email, groupID: groupID};
+    $.ajax({
+        type:     "POST",
+        url:      "php/membershipFiles/permitRequest",
+        data:     dataToSend,
+        success:  function(){window.location.reload;}
+    });
+}
+
+// Deny a request from a user
+function denyRequest(){
+    var email = this.id;
+    email = email.replace("deny", "");
+    var id = $('.container').attr('id');
+    var groupID = id.replace("specificGroup", "");
+    
+    
+    var dataToSend = {emailToBeDenied: email, groupID: groupID};
+    $.ajax({
+        type:     "POST",
+        url:      "php/membershipFiles/denyRequest",
+        data:     dataToSend,
+        success:  function(){window.location.reload;}
+    });
+}    
+
+
 /** User profile information **/
 
 // Present the current user's information 
@@ -464,6 +513,7 @@ function showEditProfile(){
     $("#editProfilePopover").load("profileEdit.php").html('');
 }
 
+// Change the information 
 function editProfile(event){
     event.preventDefault();
     // Create data form form and get action
@@ -583,7 +633,8 @@ function newPost(){
             ;}
     });
 }
-    
+
+
     
     
     

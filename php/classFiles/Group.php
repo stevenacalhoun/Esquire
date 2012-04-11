@@ -130,13 +130,13 @@
             mysql_query($sql) or die("Could not delete group: " . mysql_error());      
         }
         
-        public function permitMember($email){
-            $groupID = $this->getGroupID();
+        public function permitRequest($email){
+            $groupID = $this->_groupID;
             $sql = "UPDATE member_of SET permit = 1 WHERE email = $email and groupID = $groupID";
             mysql_query($sql) or die("Could not permit member: " . mysql_error());
         }
         
-        public function denyMember($email){
+        public function denyRequest($email){
             deleteMember($email);
         }
         
