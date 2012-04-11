@@ -66,13 +66,13 @@
                      		
                      		<!-- Admin deleteGroup button -->
                      		<?php if($user->getEmail() == $group->getAdmin()){ ?>
-                     		   	<div class="groupDelete" id="groupDelete<?php echo $group->getGroupID(); ?>"></div>
+                     		   	<div class="groupDelete" title="Delete Group" id="groupDelete<?php echo $group->getGroupID(); ?>"></div>
                      	    <?php } ?>
                      	    
                      	    <!-- Accept/decline buttons -->
                      	    <?php if(!in_array($user->getEmail(), $group->getMembers())){ ?>
-                     	    	<div class="decline icon" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
-                     	        <div class="accept icon" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
+                     	    	<div class="decline icon" title="Decline Invite" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
+                     	        <div class="accept icon" title="Accept Invite" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
                      		<?php } ?>
                      	</div>   
 			<?php   	}

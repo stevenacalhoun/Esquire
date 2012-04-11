@@ -76,7 +76,7 @@
                      		
                      		<!-- Add button if member is not in group -->
 	                     	<?php if(!in_array($groupID, $user->getGroups()) && !in_array($user->getEmail(), $group->getAcceptedMembers())){ ?>
-	                     		<div class="groupAdd icon" id="groupAdd<?php echo $group->getGroupID();?>"></div>
+	                     		<div class="groupAdd icon" title="Add Group" id="groupAdd<?php echo $group->getGroupID();?>"></div>
 	                     	<?php } ?>
                      	</div>              
  			<?php   }
