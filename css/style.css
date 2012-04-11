@@ -510,16 +510,20 @@ footer{
 		font-weight: bold;
 		padding-top: 3px;
 	}
-	.notificationAccept{
+	.notificationAccept,
+	.notificationApprove{
 		margin-right: 10px;
 		background: url('../images/accept.png') no-repeat;
 	}
-		.notificationAccept:hover{background: url('../images/acceptHover.png') no-repeat;}
-	.notificationDecline{
+		.notificationAccept:hover,
+		.notificationApprove:hover{background: url('../images/acceptHover.png') no-repeat;}
+	.notificationDecline,
+	.notificationRemove{
 		margin-right: 10px;
 		background: url('../images/decline.png') no-repeat;
 	}
-		.notificationDecline:hover{background: url('../images/declineHover.png') no-repeat;}
+		.notificationDecline:hover,
+		.notificationRemove:hover{background: url('../images/declineHover.png') no-repeat;}
 
 /* Search Groups */
 #emptyResults{margin: 0 0 20px 20px;}
