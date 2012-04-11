@@ -59,9 +59,10 @@ $(document).ready(function() {
         }
     );
     
-    // Click button 
+    // Click button to create group
     $('#createGroupCreate').click(createGroup);
     
+    // Hit enter to create group
     $('#createGroupCreate').keypress(function(event){
         if (event.keyCode == 13){
             createGroup();
@@ -81,6 +82,7 @@ $(document).ready(function() {
         }
     });
     
+    // Request admission
     $('.groupAdd').click(groupAdd);
     
     // Sniffer for accept invitation button
@@ -110,7 +112,7 @@ $(document).ready(function() {
             $('.overlay').fadeIn('fast');
         }
     );
-    
+        
     // Cancel button for edit group popover
     $('#editGroupCancel').click(
         function(){
@@ -121,6 +123,13 @@ $(document).ready(function() {
     
     // Click for edit group
     $('#editGroupCreate').click(editGroup);
+    
+    // Sniffer for enter hit to edit group
+    $('#editGroupDescription').keypress(function(event){
+        if (event.keyCode == 13){
+            editGroup(event);
+        }
+    });
     
     // Sniffer for admin invite member button and cancel
     $('#specificGroupAdd').click(
@@ -134,6 +143,13 @@ $(document).ready(function() {
     
     // Submit for inviting new members
     $('#inviteSubmit').click(inviteMembers);
+    
+    // Sniffer for enter hit to add memebers
+    $('#inviteSubmit').keypress(function(event){
+        if (event.keyCode == 13){
+            inviteMembers();
+        }
+    });
     
     // Cancel click for invite box
     $('#inviteCancel').click(
