@@ -25,6 +25,10 @@
 
         }
         
+        public function getPostID(){
+            return $this->_postID;
+        }
+        
         public function getMessage(){
             return $this->_message;
         }

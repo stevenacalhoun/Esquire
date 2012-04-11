@@ -467,7 +467,7 @@ function permitRequest(){
         type:     "POST",
         url:      "php/membershipFiles/permitRequest",
         data:     dataToSend,
-        success:  function(){window.location.reload;}
+        success:  function(data){console.log(data);} //window.location.reload;}
     });
 }
 
@@ -484,7 +484,7 @@ function denyRequest(){
         type:     "POST",
         url:      "php/membershipFiles/denyRequest",
         data:     dataToSend,
-        success:  function(){window.location.reload;}
+        success:  function(data){console.log(data);} //window.location.reload;}
     });
 }    
 

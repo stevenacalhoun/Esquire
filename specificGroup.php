@@ -106,7 +106,7 @@
 					?>
 					<div class="notificationBlock">
 						<div class="notificationFlag icon"></div>
-						<div class="notificationAccept icon" title="Approve" id="ignore<?php echo $post->getPostID(): ?>"></div>
+						<div class="notificationAccept icon" title="Approve" id="ignore<?php echo $post->getPostID(); ?>"></div>
 						<div class="notificationDecline icon" title="Remove" id="delete<?php echo $post->getPostID(); ?>"></div>
 						<div class="notificationText">
 							<?php echo $post->getMessage(); ?>
