@@ -106,7 +106,7 @@
 					?>
 					<div class="notificationBlock">
 						<div class="notificationFlag icon"></div>
-						<div class="notificationApprove icon" title="Approve" id="ignore<?php echo $post->getPostID(): ?>"></div>
+						<div class="notificationApprove icon" title="Approve" id="ignore<?php echo $post->getPostID(); ?>"></div>
 						<div class="notificationRemove icon" title="Remove" id="delete<?php echo $post->getPostID(); ?>"></div>
 						<div class="notificationText">
 							<?php echo $post->getMessage(); ?>
@@ -128,7 +128,8 @@
 					echo $userObject->getFullName();
 					if($user->getEmail() == $group->getAdmin() && $userObject->getEmail() != $group->getAdmin()){
 				?>
-						<div class="specificGroupRemove" id="specificGroup<?php echo $userObject->getEmail(); ?>"></div>
+						<div class="specificGroupRemove" id="specificGroup<?php echo $member->getEmail(); ?>"></div>
+						<div class="specificGroupPromote icon" id="specificGroupPromote<?php echo $member->getEmail(); ?>"></div>
 				<?php } ?>
 					</div>
 				<?php } ?>

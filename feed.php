@@ -61,9 +61,9 @@
 					<div class="feedPost"><?php echo $postObject->getMessage(); ?></div>
 					<div class="feedDate"><?php echo $postObject->getDateTime(); ?></div>
 					<?php if($user->getEmail() == $group->getAdmin() || $user->getEmail() == $postUser->getEmail()){ ?>
-						<div class="feedDelete"></div>
+						<div class="feedDelete" id="delete<?php echo $postObject->getPostID(); ?>"></div>
 					<?php } ?>
-					<div class="feedFlag icon"></div>
+					<div class="feedFlag icon" id="flag<?php echo $postObject->getPostID(); ?>"></div>
 				</div>
 			<?php } ?> 
 		</div>
