@@ -132,12 +132,12 @@
         
         public function permitRequest($email){
             $groupID = $this->_groupID;
-            $sql = "UPDATE member_of SET permit = 1 WHERE email = $email and groupID = $groupID";
+            $sql = "UPDATE member_of SET permission = 1 WHERE email = '$email' and groupID = $groupID";
             mysql_query($sql) or die("Could not permit member: " . mysql_error());
         }
         
         public function denyRequest($email){
-            deleteMember($email);
+            $this->deleteMember($email);
         }
         
         public function ignoreFlaggedPost($postID){
@@ -149,6 +149,13 @@
             $sql = "DELETE FROM posts WHERE groupID = $postID";
             mysql_query($sql) or die("could not delete post: " . msql_error());
             
+        }
+        public function changeAdmin($email){
+            $groupID = $this->_groupID;
+            $this->_admin = $email;
+            
+            $sql = "UPDATE  groups SET admin = '$email' WHERE groupID = '$groupID'";
+            mysql_query($sql) or die("Could not change admin: " . mysql_error()); 
         }
     }
 ?>

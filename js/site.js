@@ -48,6 +48,8 @@ $(document).ready(function() {
     		$("#createGroupName").focus();
     	}
     );
+    
+    // Cancel new group create
     $('#createGroupCancel').click(
         function(){
             $('#createGroupOverlay').fadeOut('fast');
@@ -56,7 +58,15 @@ $(document).ready(function() {
             $("#createGroupEmptyField").fadeOut('fast');
         }
     );
+    
+    // Click button 
     $('#createGroupCreate').click(createGroup);
+    
+    $('#createGroupCreate').keypress(function(event){
+        if (event.keyCode == 13){
+            createGroup();
+        }
+    });
     
     // Sniffer for admin's delete group button
     $('.groupDelete').click(deleteGroup);
@@ -133,11 +143,26 @@ $(document).ready(function() {
         }
     );
     
-    // Sniffer for click on deny request
+    // Sniffer for change admin
+//    $('.somebutton').click(changeAdmin);
     
+    // Sniffer for click on request accept
+    $('.notificationAccept').click(permitRequest);
     
+    // Sniffer for click on request deny
+    $('.notificationDecline').click(denyRequest);
     
-    // Sniffer for click on permit request
+    // Sniffer for ignore flag post
+    $('.notificationApprove').click(ignoreFlag);
+    
+    // Sniffer for delete flagged post
+    $('.notificationRemove').click(deletePost);
+    
+    // Sniffer for delete post off of feed
+    $('.feedDelete').click(deletePost);
+    
+    // Sniffer for flag post
+    $('.feedFlag').click(flagPost);
     
     /** Post stuff **/
     $(".postButton").click(
@@ -176,6 +201,9 @@ $(document).ready(function() {
             $('#postBox').fadeOut('fast');
          }
      );
+     
+     // Sniffer
+//     $('.
      
 //     $('html').mousemove(function(event){
 //         console.log(event.pageX + " " + event.pageY);
@@ -412,6 +440,23 @@ function editGroup(event){
     }
 } 
 
+function changeAdmin(){
+    email = this.id;
+    email = email.replace("some prefix", "");
+    
+    id = $('.container').attr('id');
+    groupID = id.replace("some prefix", "");
+
+    dataToSend = {email: email, groupID: groupID};
+    
+    $.ajax({
+        type:    "POST",
+        url:     "?",
+        data:    dataToSend,
+        success: function(data){window.location.reload();}
+    });
+}
+    
 
 // Invite new members to a group
 function inviteMembers(){
@@ -467,7 +512,7 @@ function permitRequest(){
         type:     "POST",
         url:      "php/membershipFiles/permitRequest",
         data:     dataToSend,
-        success:  function(data){console.log(data);} //window.location.reload;}
+        success:  function(data){window.location.reload();}
     });
 }
 
@@ -484,7 +529,7 @@ function denyRequest(){
         type:     "POST",
         url:      "php/membershipFiles/denyRequest",
         data:     dataToSend,
-        success:  function(data){console.log(data);} //window.location.reload;}
+        success:  function(data){window.location.reload();}
     });
 }    
 
@@ -616,7 +661,6 @@ function moveToFeedPage(){
 
 function newPost(){
     event.preventDefault();
-    // groupID from somewhere?
     var message = $('#postForm :input').val();
 
 	$('#postContent').val("");
@@ -631,6 +675,48 @@ function newPost(){
                 console.log(data);
                 window.location.replace("feed.php?groupID=" + data)
             ;}
+    });
+}
+    
+// Permit a request from a user
+function ignoreFlag(){
+    var postID = this.id;
+    postID = postID.replace("delete", "");
+    
+    var dataToSend = {postID: postID};
+    $.ajax({
+        type:     "POST",
+        url:      "?",
+        data:     dataToSend,
+        success:  function(data){window.location.reload();}
+    });
+}
+
+// Delete a post
+function deletePost(){
+    var rawID = this.id;
+    postID = rawID.replace("delete", "");
+    
+    var dataToSend = {postID: postID};
+    $.ajax({
+        type:     "POST",
+        url:      "?",
+        data:     dataToSend,
+        success:  function(data){window.location.reload();}
+    });
+}    
+
+// Flag a post
+function flagPost(){
+    var rawID = this.id;
+    postID = rawID.replace("flag", "");
+    
+    var dataToSend = {postID: postID};
+    $.ajax({
+        type:     "POST",
+        url:      "?",
+        data:     dataToSend,
+        success:  function(data){window.location.reload();}
     });
 }
 
