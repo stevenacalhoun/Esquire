@@ -128,7 +128,8 @@
 					echo $userObject->getFullName();
 					if($user->getEmail() == $group->getAdmin() && $userObject->getEmail() != $group->getAdmin()){
 				?>
-						<div class="specificGroupRemove" id="specificGroup<?php echo $userObject->getEmail(); ?>"></div>
+						<div class="specificGroupRemove" id="specificGroup<?php echo $member->getEmail(); ?>"></div>
+						<div class="specificGroupPromote icon" id="specificGroupPromote<?php echo $member->getEmail(); ?>"></div>
 				<?php } ?>
 					</div>
 				<?php } ?>
