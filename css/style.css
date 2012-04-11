@@ -482,8 +482,13 @@ footer{
 	cursor: pointer;
 }
 .specificGroupPromote{
-	margin-right: 10px;
+	width: 27px;
+	height: 15px;
+	margin-right: 5px;
 	background: url('../images/promote.png') no-repeat;
+	background-size: 27px 15px;
+	float: right;
+	cursor: pointer;
 }
 	.specificGroupPromote:hover{background: url('../images/promoteHover.png') no-repeat;}
 	.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}

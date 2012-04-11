@@ -63,7 +63,7 @@
 				</div>
 				
 				<?php if($user->getEmail() == $group->getAdmin()){ ?>
-					<div class="specificGroupEdit icon"></div>
+					<div class="specificGroupEdit icon" title="Edit Group"></div>
 				<?php } ?>
 			</div>
 			
@@ -91,8 +91,8 @@
 					?>
 					<div class="notificationBlock">
 						<div class="notificationMember icon"></div>
-						<div class="notificationAccept icon" title="Accept" id="permit<?php echo $member->getEmail(); ?>"></div>
-						<div class="notificationDecline icon" title="Decline" id="deny<?php echo $member->getEmail(); ?>"></div>
+						<div class="notificationAccept icon" title="Permit Member" id="permit<?php echo $member->getEmail(); ?>"></div>
+						<div class="notificationDecline icon" title="Deny Member" id="deny<?php echo $member->getEmail(); ?>"></div>
 						<div class="notificationText notificationName">
 							<?php echo $member->getFullName(); ?>
 						</div>
@@ -106,8 +106,8 @@
 					?>
 					<div class="notificationBlock">
 						<div class="notificationFlag icon"></div>
-						<div class="notificationApprove icon" title="Approve" id="ignore<?php echo $post->getPostID(); ?>"></div>
-						<div class="notificationRemove icon" title="Remove" id="delete<?php echo $post->getPostID(); ?>"></div>
+						<div class="notificationApprove icon" title="Approve Post" id="ignore<?php echo $post->getPostID(); ?>"></div>
+						<div class="notificationRemove icon" title="Remove Post" id="delete<?php echo $post->getPostID(); ?>"></div>
 						<div class="notificationText">
 							<?php echo $post->getMessage(); ?>
 						</div>
@@ -128,8 +128,8 @@
 					echo $userObject->getFullName();
 					if($user->getEmail() == $group->getAdmin() && $userObject->getEmail() != $group->getAdmin()){
 				?>
-						<div class="specificGroupRemove" id="specificGroup<?php echo $userObject->getEmail(); ?>"></div>
-						<div class="specificGroupPromote icon" id="specificGroupPromote<?php echo $userObject->getEmail(); ?>"></div>
+						<div class="specificGroupRemove" title="Remove" id="specificGroup<?php echo $userObject->getEmail(); ?>"></div>
+						<div class="specificGroupPromote" title="Promote to Admin" id="specificGroupPromote<?php echo $userObject->getEmail(); ?>"></div>
 				<?php } ?>
 					</div>
 				<?php } ?>
