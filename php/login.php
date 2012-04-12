@@ -13,15 +13,26 @@
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	
+	// 
+	
 	// Construct query from input and query database
-	$sql = "SELECT * FROM $tbl_name WHERE email = '$email' and password = '$password'";
+	$sql = "SELECT * FROM users WHERE email = '$email'";
 	$result = mysql_query($sql);
+	$resultArray = mysql_fetch_array($result);
+	
+	// Get encrytped password and cipher
+	$encryptedPassword = $resultArray['password'];
+	$cipher = $resultArray['cipher'];
+	
+	// Make password object and decrypt
+	$passwordObject = new Password($encryptedPassword);
+	$decryptedPassword = $passwordObject->decrypt($cipher);
 	
 	// Count num of rows that satifies the request
 	$count = mysql_num_rows($result);
 	
 	// If count is 1 then the pair is correct and store them to the seession
-	if ($count == 1)
+	if ($count == 1 && $password == $decryptedPassword)
 	{
 	    // Add user object to the session and return success for login
         $user = new User($email);

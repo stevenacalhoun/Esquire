@@ -49,6 +49,11 @@
             return $this->_flag;
         }
         
+        public function removeFlag(){
+        $postID = $this->_postID;
+        $sql = "UPDATE posts SET flag = 0 WHERE postID = '$postID' ";
+        mysql_query($sql) or die("Could not remove flag: " . mysql_error());
+        }
     }
     
 ?>

@@ -62,8 +62,15 @@ $(document).ready(function() {
     // Click button to create group
     $('#createGroupCreate').click(createGroup);
     
-    // Hit enter to create group
-    $('#createGroupCreate').keypress(function(event){
+    // Hit enter in description field to create group
+    $('#createGroupDescription').keypress(function(event){
+        if (event.keyCode == 13){
+            createGroup();
+        }
+    });
+    
+    // Hit enter in email field to create group
+    $('#createGroupEmails').keypress(function(event){
         if (event.keyCode == 13){
             createGroup();
         }
@@ -145,9 +152,9 @@ $(document).ready(function() {
     $('#inviteSubmit').click(inviteMembers);
     
     // Sniffer for enter hit to add memebers
-    $('#inviteSubmit').keypress(function(event){
+    $('#inviteEmails').keypress(function(event){
         if (event.keyCode == 13){
-            inviteMembers();
+            inviteMembers(event);
         }
     });
     
@@ -160,7 +167,7 @@ $(document).ready(function() {
     );
     
     // Sniffer for change admin
-//    $('.somebutton').click(changeAdmin);
+    $('.specificGroupPromote').click(changeAdmin);
     
     // Sniffer for click on request accept
     $('.notificationAccept').click(permitRequest);
@@ -267,12 +274,12 @@ function newAccount(event){
         $('#blankError').fadeOut('fast');
     }
     
-    var file = $('#createProfileImage').val();
-    console.log(file);
-    var fileName = file.fileName;
-    var fileSize = file.fileSize;
-    
-    alert("Uploading: "+fileName+" @ "+fileSize+"bytes");
+//    var file = $('#createProfileImage').val();
+//    console.log(file);
+//    var fileName = file.fileName;
+//    var fileSize = file.fileSize;
+//    
+//    alert("Uploading: "+fileName+" @ "+fileSize+"bytes");
   
     
     // Use AJAX post to prevent refresh of page
@@ -307,7 +314,10 @@ function newAccount(event){
             
             
             // If there are no errors then move the user to the next page
-            if (data=='success'){window.location.replace("groups.php");}
+            if (data=='success'){
+//                $('#submitting').fadeIn('fast');};
+                window.location.replace("groups.php");
+            }
         }
     );
 }
@@ -457,17 +467,17 @@ function editGroup(event){
 } 
 
 function changeAdmin(){
-    email = this.id;
-    email = email.replace("some prefix", "");
+    var email = this.id;
+    email = email.replace("specificGroupPromote", "");
     
     id = $('.container').attr('id');
-    groupID = id.replace("some prefix", "");
-
+    groupID = id.replace("specificGroup", "");
+    console.log(email);
     dataToSend = {email: email, groupID: groupID};
     
     $.ajax({
         type:    "POST",
-        url:     "?",
+        url:     "php/changeAdmin.php",
         data:    dataToSend,
         success: function(data){window.location.reload();}
     });
@@ -697,12 +707,12 @@ function newPost(){
 // Permit a request from a user
 function ignoreFlag(){
     var postID = this.id;
-    postID = postID.replace("delete", "");
+    postID = postID.replace("ignore", "");
     
     var dataToSend = {postID: postID};
     $.ajax({
         type:     "POST",
-        url:      "?",
+        url:      "php/removeFlag.php",
         data:     dataToSend,
         success:  function(data){window.location.reload();}
     });
@@ -716,7 +726,7 @@ function deletePost(){
     var dataToSend = {postID: postID};
     $.ajax({
         type:     "POST",
-        url:      "?",
+        url:      "php/deletePost.php",
         data:     dataToSend,
         success:  function(data){window.location.reload();}
     });

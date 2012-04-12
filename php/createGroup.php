@@ -105,8 +105,6 @@
                         $mail->AddAddress($address, "$firstName $lastName");
                         $mail->Send();
                         
-//                        $message = "$adminEmail has invited to join the Esquire group $name!";
-//                        mail($email, "Esquire Group Invite", $message);
                     }
                     
                     if ($userObject->getTexts()){
@@ -122,8 +120,6 @@
                         $mail->AddAddress($address, "$firstName $lastName");
                         $mail->Send();
                         
-//                        $message = "$adminEmail has invited to join the Esquire group $name!";
-//                        mail($userObject->getPhoneEmail(), "Esquire Group Invite", $message);
                     }
                 }
                 

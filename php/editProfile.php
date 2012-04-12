@@ -73,8 +73,12 @@
     }
     
     if(validatePassword($password) AND validatePassword2($password, $passwordConfirm) AND !emptyFieldsTest($firstName, $lastName, $phoneNum)){
-    
-    	$sql = "UPDATE users SET firstName='$firstName', lastName='$lastName', password='$password', phoneNum='$phoneNum', phoneEmail='$phoneEmail', textUpdates='$textUpdates', emailUpdates='$emailUpdates' WHERE email='$email'";
+        $passwordObject = new Password($password);
+        $encryptedPassword = $passwordObject->encrypt();
+        
+        $cipher = $passwordObject->getDefaultCipher();
+        
+    	$sql = "UPDATE users SET firstName='$firstName', lastName='$lastName', password='$encryptedPassword', phoneNum='$phoneNum', phoneEmail='$phoneEmail', textUpdates='$textUpdates', emailUpdates='$emailUpdates', cipher='$cipher' WHERE email='$email'";
     	
     	mysql_query($sql) or die ("Couldn't query" . mysql_error());
     	$user = new User($user->getEmail());

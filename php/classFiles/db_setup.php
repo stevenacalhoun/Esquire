@@ -12,6 +12,7 @@
     require_once("User.php");
     require_once("Group.php");
     require_once("Post.php");
+    require_once("Password.php");
     
     $profileImageFolder = "profileImages/";
     

@@ -132,4 +132,9 @@ class User {
         $sql = "DELETE FROM member_of WHERE groupID = '$groupID' AND email = '$email'  ";
         mysql_query($sql) or die("Could not delete member: " . msql_error());	
     }
+    public function deletePost($postID){
+    	$sql = "DELETE FROM posts WHERE postID = '$postID' ";
+        mysql_query($sql) or die("Could not delete post: " . mysql_error());
+    }
+    
 }

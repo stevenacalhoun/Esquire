@@ -3,6 +3,7 @@
     // Start session and bring in DB info    
     session_start();
     require_once("classFiles/db_setup.php");
+    require_once("lib/class.phpmailer.php");
     $tbl_name = "users";
 
 	
@@ -20,18 +21,16 @@
 	$carrier = $_POST['carrier'];
 	$textUpdates = $_POST['texts'];
 	$emailUpdates = $_POST['emails']; 
-	$image = $_FILES['profileImage']['name'];
-//	echo "Upload: " . $_FILES["profileImage"]["name"] . "<br />";
-//	  echo "Type: " . $_FILES["profileImage"]["type"] . "<br />";
-//	  echo "Size: " . ($_FILES["profileImage"]["size"] / 1024) . " Kb<br />";
-//	  echo "Stored in: " . $_FILES["profileImage"]["tmp_name"];
-
 	
-	$profileImageFolder = $profileImageFolder . basename( $_FILES['profileImage']['name']);
-	if(move_uploaded_file($_FILES['profileImage']['tmp_name'], "$profileImageFolder")){
-	    echo 'hot damn';
-	}
-	else {echo 'mother';}
+//	$image = $_FILES['profileImage']['name'];
+//	$profileImageFolder = $profileImageFolder . basename( $_FILES['profileImage']['name']);
+//	$_FILES['profileImage']['name'] = $email;
+//	echo $_FILES['profileImage']['name'];
+//	$path = "../profileImages".$email . ".png";
+//	if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $path)){
+//	    echo 'hot damn';
+//	}
+//	else {echo 'mother';}
 	
 	// Determine boolean values for update options
 	if ($textUpdates == "textYes"){$textUpdates = true;}
@@ -42,7 +41,8 @@
 	    return (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
 	}
 	function validatePassword($password){
-	    return (strlen($password) > 5);
+        $regex  = "/^[a-z0-9]{5,18}$/";
+        return preg_match($regex, $password);
 	}
 	function validatePassword2($password, $password2){
 	    return ($password == $password2);
@@ -102,9 +102,13 @@
 	
 	// If all the inputs are valid then they can be submitted to the DB
     if(validateEmail($email) AND validatePassword($password) AND validatePassword2($password, $passwordConfirm) AND emailExistence($email) AND !emptyFieldsTest($firstName, $lastName, $phoneNum)){
+    	// Encrypt password
+    	$passwordObject = new Password($password);
+    	$encryptedPassword = $passwordObject->encrypt();
+    	$cipher = $passwordObject->getDefaultCipher();
     	
     	// Construct SQL query to add new user
-    	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates) VALUES ('$email', '$firstName', '$lastName', '$password', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates')";
+    	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates, cipher) VALUES ('$email', '$firstName', '$lastName', '$encryptedPassword', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates', '$cipher')";
 
     	// Add user to database
     	mysql_query($sql) or die("Could not query: " . mysql_error());
@@ -114,18 +118,19 @@
     	// Create user object and add to Session
     	$user = new User($email);
     	$_SESSION['user'] = $user;
-    	$message = "Hello $firstName $lastName, welcome to Esquire";    	
-    	
-    	$mail = new PHPMailer();
-    	$mail->IsSMTP();
-    	$mail->Host = "cse.msstate.edu";
-    	$mail->SMTPDebug = 0;
-    	$mail->SetFrom('Esquire@gmail.com', 'Esquire');
-    	$mail->Subject = "Welcome to Esquire";
-    	$mail->Body = $message;
-    	$address = $email;
-    	$mail->AddAddress($address, "$firstName $lastName");
-    	$mail->Send();
+    	if ($emailUpdates){
+        	$message = "Hello $firstName $lastName, welcome to Esquire";    	
+        	$mail = new PHPMailer();
+        	$mail->IsSMTP();
+        	$mail->Host = "cse.msstate.edu";
+        	$mail->SMTPDebug = 2;
+        	$mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+        	$mail->Subject = "Welcome to Esquire";
+        	$mail->Body = $message;
+        	$address = $email;
+        	$mail->AddAddress($address, "$firstName $lastName");
+        	$mail->Send();
+        }
     }
     // Close DB connection
     mysql_close($con);
