@@ -30,6 +30,7 @@
 		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
+			<a href="groups.php"><div class="invite notification">1</div></a>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>
@@ -73,6 +74,12 @@
                      	    <?php if(!in_array($user->getEmail(), $group->getMembers())){ ?>
                      	    	<div class="decline icon" title="Decline Invite" id="groupDecline<?php echo $group->getGroupID(); ?>"></div>
                      	        <div class="accept icon" title="Accept Invite" id="groupAccept<?php echo $group->getGroupID(); ?>"></div>
+                     		<?php } ?>
+                     		<?php
+                     			$count = sizeof($group->getAcceptedMembers()) + sizeof($group->getFlaggedPosts());
+                     			if($count > 0){ 
+                     	 	?>
+                     			<div class="flagmember notification"><?php echo $count; ?></div>
                      		<?php } ?>
                      	</div>   
 			<?php   	}

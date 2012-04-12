@@ -496,6 +496,31 @@ footer{
 #specificGroupDelete{margin: 20px;}
 
 	/* Notifications */
+	.notification{
+		background-color: #dc0000;
+		border: 2px solid #fff;
+		box-shadow: 0 1px 5px #797979;
+		border-radius: 50px;
+		text-align: center;
+		color: #fff;
+		text-shadow: 0 1px 2px #535353;
+	}
+	.flagmember{
+		width: 15px;
+		height: 14px;
+		float: right;
+		margin: -40px -25px 0 0;
+		padding-top: 1px;
+		font-size: 0.7em;
+	}
+	.invite{
+		width: 20px;
+		height: 18px;
+		padding-top: 2px;
+		float: left;
+		font-size: 0.8em;
+		margin: 22px 0 0 20px;
+	}
 	.notificationBlock{
 		margin: 5px 0 10px 20px;
 	}

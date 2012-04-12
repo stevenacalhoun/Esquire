@@ -86,8 +86,10 @@
 					<!-- Member requests -->
 					<?php 
 						$acceptedMembers = $group->getAcceptedMembers();
-						foreach($acceptedMembers as $acceptedMember){ 
-							$member = new User($acceptedMember);
+						$flaggedPosts = $group->getFlaggedPosts();
+						if(sizeof($acceptedMembers) != 0 || sizeof($flaggedPosts) != 0){
+							foreach($acceptedMembers as $acceptedMember){ 
+								$member = new User($acceptedMember);
 					?>
 					<div class="notificationBlock">
 						<div class="notificationMember icon"></div>
@@ -100,9 +102,8 @@
 					<?php } ?>
 					
 					<?php 
-						$flaggedPosts = $group->getFlaggedPosts();
-						foreach($flaggedPosts as $flaggedPost){ 
-							$post = new Post($flaggedPost);
+							foreach($flaggedPosts as $flaggedPost){ 
+								$post = new Post($flaggedPost);
 					?>
 					<div class="notificationBlock">
 						<div class="notificationFlag icon"></div>
@@ -112,8 +113,13 @@
 							<?php echo $post->getMessage(); ?>
 						</div>
 					</div>
-					<?php } ?>
-					
+					<?php
+						      } 
+						  } 
+						  else{
+						  	echo "<div class='specificGroupText'>No notifications.</div>";
+						  }
+					?>
 				</div>
 			<?php } ?>
 			
