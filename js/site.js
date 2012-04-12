@@ -407,6 +407,9 @@ function createGroup(){
 function deleteGroup(){
     var id = this.id;
     var dataToSend = {groupID : id};
+    var confirmation = confirm("Are you sure you want to delete this group?");
+    if (confirmation == false){return}
+    
     $.ajax({
         type:    "POST",
         url:     "php/removeGroup",
@@ -422,6 +425,8 @@ function leaveGroup(){
     var id = $('.container').attr('id');
     var dataToSend = {groupID: id};
     console.log(id);
+    var confirmation = confirm("Are you sure you want to leave this group?");
+    if (confirmation == false){return}
     $.ajax({
         type:    "POST",
         url:     "php/membershipFiles/leaveGroup.php",
@@ -435,6 +440,8 @@ function removeMember(){
     var id = $('.container').attr('id');
     var email = this.id;
     var dataToSend = {groupID: id, email: email};
+    var confirmation = confirm("Are you sure you want to delete this member?");
+    if (confirmation == false){return}
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/deleteMember",
@@ -722,6 +729,9 @@ function ignoreFlag(){
 function deletePost(){
     var rawID = this.id;
     postID = rawID.replace("delete", "");
+    
+    var confirmation = confirm("Are you sure you want to delete this post?");
+    if (confirmation == false){return}
     
     var dataToSend = {postID: postID};
     $.ajax({

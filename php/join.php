@@ -123,7 +123,7 @@
         	$mail = new PHPMailer();
         	$mail->IsSMTP();
         	$mail->Host = "cse.msstate.edu";
-        	$mail->SMTPDebug = 2;
+        	$mail->SMTPDebug = 0;
         	$mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
         	$mail->Subject = "Welcome to Esquire";
         	$mail->Body = $message;
