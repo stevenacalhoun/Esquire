@@ -9,6 +9,8 @@
     
     // Get current user from the session and get group IDs
     $user = $_SESSION['user'];
+    $user = new User($user->getEmail());
+    $_SESSION['user'] = $user;
     $groupIDs = $user->getGroups();
 ?>
 <html>
@@ -30,7 +32,12 @@
 		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
-			<a href="groups.php"><div class="invite notification">1</div></a>
+			<?php 
+				$count = sizeof($user->getGroupInvites());
+				if($count > 0){
+			?>
+				<a href="groups.php"><div class="invite notification"><?php echo $count; ?></div></a>
+			<?php } ?>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>
@@ -77,7 +84,7 @@
                      		<?php } ?>
                      		<?php
                      			$count = sizeof($group->getAcceptedMembers()) + sizeof($group->getFlaggedPosts());
-                     			if($count > 0){ 
+                     			if($count > 0 && $user->getEmail() == $group->getAdmin()){ 
                      	 	?>
                      			<div class="flagmember notification"><?php echo $count; ?></div>
                      		<?php } ?>

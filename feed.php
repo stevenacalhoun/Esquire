@@ -8,6 +8,8 @@
     }
     $groupID = $_GET['groupID']; 
     $user = $_SESSION['user'];
+    $user = new User($user->getEmail());
+    $_SESSION['user'] = $user;
     $_SESSION['groupID'] = $groupID;
     if (!in_array($groupID, $user->getGroups() ) ){
         header('Location:groups.php');
@@ -36,6 +38,12 @@
 		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
+			<?php 
+				$count = sizeof($user->getGroupInvites());
+				if($count > 0){
+			?>
+				<a href="groups.php"><div class="invite notification"><?php echo $count; ?></div></a>
+			<?php } ?>
 			<div class="postButton"></div>
 			<nav>
 				<ul>

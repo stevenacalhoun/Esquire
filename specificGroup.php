@@ -18,6 +18,8 @@
     
     // Get current user from the session and get group IDs and members
     $user = $_SESSION['user'];
+    $user = new User($user->getEmail());
+    $_SESSION['user'] = $user;
     $groupIDs = $user->getGroups();
     $members = $group->getMembers();
 ?>
@@ -40,6 +42,12 @@
 		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
+			<?php 
+				$count = sizeof($user->getGroupInvites());
+				if($count > 0){
+			?>
+				<a href="groups.php"><div class="invite notification"><?php echo $count; ?></div></a>
+			<?php } ?>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>
@@ -146,9 +154,15 @@
 			<?php if($user->getEmail() == $group->getAdmin()){ ?>
 				<div class="button green" id="specificGroupAdd">Add</div>
 			<?php } ?>
+			
 			<!-- Leave Group -->
 			<?php if($user->getEmail() != $group->getAdmin() && (in_array($requestedGroupID, $user->getGroups()) )){ ?>
 				<div class="button red" id="specificGroupDelete">Leave</div>
+			<?php } ?>
+			
+			<!-- Join Group -->
+			<?php if(!(in_array($requestedGroupID, $user->getGroups()))){ ?>
+				<div class="button green" id="specificGroupJoin">Join</div>
 			<?php } ?>
 		</div>
 	</div>

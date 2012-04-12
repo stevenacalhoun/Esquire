@@ -493,7 +493,8 @@ footer{
 	.specificGroupPromote:hover{background: url('../images/promoteHover.png') no-repeat;}
 	.specificGroupRemove:hover{background: url('../images/deleteHover.png') no-repeat;}
 #specificGroupAdd,
-#specificGroupDelete{margin: 20px;}
+#specificGroupDelete,
+#specificGroupJoin{margin: 20px;}
 
 	/* Notifications */
 	.notification{

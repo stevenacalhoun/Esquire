@@ -13,6 +13,8 @@
     
     // Get current user from the session and get group IDs
     $user = $_SESSION['user'];
+    $user = new User($user->getEmail());
+    $_SESSION['user'] = $user;
     $groupIDs = $user->getGroups();
     
     // Get the desired search entry
@@ -41,6 +43,12 @@
 		<!-- Header -->
 		<header>
 			<div class="mainTitle"></div>
+			<?php 
+				$count = sizeof($user->getGroupInvites());
+				if($count > 0){
+			?>
+				<a href="groups.php"><div class="invite notification"><?php echo $count; ?></div></a>
+			<?php } ?>
 			<nav>
 				<ul>
 					<li class="button navFeed"><a href="feed.php">Feed</a></li>

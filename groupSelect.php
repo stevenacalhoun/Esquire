@@ -8,6 +8,8 @@
     
     // Get current user from the session and get group IDs
     $user = $_SESSION['user'];
+    $user = new User($user->getEmail());
+    $_SESSION['user'] = $user;
     $groupIDs = $user->getGroups();
     
 ?>

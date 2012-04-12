@@ -8,6 +8,8 @@
     
     // Get current user from the session
     $user = $_SESSION['user'];
+    $user = new User($user->getEmail());
+    $_SESSION['user'] = $user;
 ?>
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
