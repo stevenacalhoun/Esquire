@@ -96,8 +96,8 @@
                         $mail = new PHPMailer();
                         $mail->IsSMTP();
                         $mail->Host = "cse.msstate.edu";
-                        $mail->SMTPDebug = 2;
-                        $mail->SetFrom('Esquire@gmail.com', 'Esquire');
+                        $mail->SMTPDebug = 0;
+                        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
                         $mail->Subject = "You've been inivted to the Group $name";
                         $message = "Login to join this group!";
                         $mail->Body = $message;
@@ -111,8 +111,8 @@
                         $mail = new PHPMailer();
                         $mail->IsSMTP();
                         $mail->Host = "cse.msstate.edu";
-                        $mail->SMTPDebug = 2;
-                        $mail->SetFrom('Esquire@gmail.com', 'Esquire');
+                        $mail->SMTPDebug = 0;
+                        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
                         $mail->Subject = "You've been inivted to the Group $name";
                         $message = "Login to join this group!";
                         $mail->Body = $message;
@@ -124,8 +124,17 @@
                 }
                 
                 else{
-//                    $message = "$adminEmail has invited to join the Esquire group $name! You have to join Esquire first though!";
-//                    mail($email, "Esquire Group Invite", $message);
+                    $mail = new PHPMailer();
+                    $mail->IsSMTP();
+                    $mail->Host = "cse.msstate.edu";
+                    $mail->SMTPDebug = 0;
+                    $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                    $mail->Subject = "$adminEmail has invited to join the Esquire group $name! You have to join Esquire first though!";
+                    $message = "Join Esquire!";
+                    $mail->Body = $message;
+                    $address = $email();
+                    $mail->AddAddress($address, "$firstName $lastName");
+                    $mail->Send();   
                 }
             }
         }
