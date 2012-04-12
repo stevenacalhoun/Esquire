@@ -8,6 +8,7 @@ class User {
     private $_phoneEmail;
     private $_password;
     private $_groups;
+    private $_groupInvites;
 
     // Constructor function
     public function User($email){
@@ -36,6 +37,13 @@ class User {
             $groupsIDs = mysql_query("SELECT groupID FROM member_of WHERE email = '$email'");
             while($ID = mysql_fetch_array($groupsIDs)){
                 $this->_groups[] = $ID['groupID'];
+            }
+            
+            $this->_groupInvites = array();
+            
+            $result = mysql_query("SELECT groupID FROM member_of WHERE email = '$email' and accept = 0");
+            while($ID = mysql_fetch_array($result)){
+                $this->_groupInvites[] = $ID['groupID'];
             }
     }
     
@@ -88,6 +96,10 @@ class User {
     public function getGroups(){
         return $this->_groups;
     }  
+    
+    public function getGroupInvites(){
+        return $this->_groupInvites;
+    }
     
     public function addGroup($groupID){
         $this->_groups[] = $groupID;
