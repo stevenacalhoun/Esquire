@@ -93,6 +93,19 @@ textarea{
 	margin-bottom: 10px;
 	padding-left: 5px;
 }
+.success{
+	display: none;
+	width: 430px;
+	background-color: #62df66;
+	border: 1px solid #ae0000;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	font-size: 0.8em;
+	position: relative;
+	top: 50%;
+	margin: auto auto 5px auto;
+}
 .error{
 	display: none;
 	width: 430px;
@@ -191,6 +204,7 @@ footer{
 	font-size: 0.7em;
 	color: #787878;
 	margin: -19px 0 0 317px;
+	cursor: pointer;
 }
 	/* Reset Box */
 	#resetBox{
@@ -198,16 +212,16 @@ footer{
 		width: 450px;
 		top: 50%;
 		position: relative;
-		margin: auto;
+		margin: 0 auto 10px auto;
 	}
 	#resetEmail{
-		width: 175px;
+		width: 180px;
 		margin: 10px 0 10px 20px;
-		padding-left: 10px;
+		padding-left: 5px;
 	}
 	#resetCancel{
 		float: right;
-		margin: -35px 25px 0 0;
+		margin: -35px 20px 0 0;
 	}
 
 /* Join */

@@ -56,6 +56,7 @@
 	<!-- Error messages -->
 	<div id="loginError" class="error">Wrong Username/Password Combination.</div>
 	<div id="resetError" class="error">Email not found in Esquire.</div>
+	<div id="resetSuccess" class="success">Success.</div>
 	
 	<div class="secondaryFooter">&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</div>
 </body>

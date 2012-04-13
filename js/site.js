@@ -5,6 +5,19 @@ $(document).ready(function() {
     // Sniffer for login submit
 	$('#loginForm').submit(login);
 	
+	// Sniffer for password reset
+	$('#reset').click(function(){
+		$('#resetBox').fadeIn('fast');
+	});
+	
+	// Sniffer for reset cancel
+	$('#resetCancel').click(function(){
+		$('#resetBox').fadeOut('fast');
+	});
+	
+	// Sniffer for reset submit
+	$('#resetSubmit').click(resetPassword);
+	
 	// Sniffer for join submit
 	$('#joinForm').submit(function() {
 	    newAccount(event);
@@ -255,6 +268,27 @@ function login(event){
                 $('#loginError').fadeIn('fast');
 		    }
 	    }
+	);
+}
+
+// AJAX function for reset password
+function resetPassword(event){
+	event.preventDefault();
+	
+	// Create data from form and get action
+	var data = $('form#resetForm').serialize();
+	var url = $('form#resetForm').attr('action');
+	
+	$.post(url, data,
+		function(data){
+			console.log(data);
+			if(data == "success"){
+				$('#resetSuccess').fadeIn('fast');
+			}
+			else{
+				$('#resetError').fadeIn('fast');
+			}
+		}
 	);
 }
 
