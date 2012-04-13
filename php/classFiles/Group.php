@@ -49,7 +49,7 @@
                 }
             }
             
-            $sql = "SELECT postID FROM posts WHERE groupID = $groupID and flag = 0 ORDER BY dateTime DESC";
+            $sql = "SELECT postID FROM posts WHERE groupID = $groupID ORDER BY dateTime DESC";
             $result = mysql_query($sql) or die("Could not get postID's: " . mysql_error());
             
             $this->_posts = array();

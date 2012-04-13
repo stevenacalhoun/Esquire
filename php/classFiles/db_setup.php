@@ -13,6 +13,8 @@
     require_once("Group.php");
     require_once("Post.php");
     require_once("Password.php");
+    require_once("lib/class.phpmailer.php");
+    
     
     $profileImageFolder = "profileImages/";
     
