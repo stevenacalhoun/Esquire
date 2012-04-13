@@ -751,7 +751,7 @@ function flagPost(){
     var dataToSend = {postID: postID};
     $.ajax({
         type:     "POST",
-        url:      "?",
+        url:      "php/flagPost.php",
         data:     dataToSend,
         success:  function(data){window.location.reload();}
     });

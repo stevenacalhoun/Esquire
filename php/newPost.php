@@ -46,14 +46,15 @@
     
     $group = new Group($groupID);
     
-    foreach ($group->getMembers(), $member){
+    foreach ($group->getMembers() as $member){
         $memberObject = new User($member);
+        
         if ($memberObject->getEmails()){
             // Send Email
             $mail = new PHPMailer();
             $mail->IsSMTP();
             $mail->Host = "cse.msstate.edu";
-            $mail->SMTPDebug = 0;
+            $mail->SMTPDebug = 2;
             $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
             $mail->Subject = "You've been inivted to the Group $name";
             $message = "Login to join this group!";
@@ -62,9 +63,10 @@
             $mail->AddAddress($address, "$firstName $lastName");
             $mail->Send();
         }
-        
-        if ($memberObject->getTexts()){
+    }
+//        
+//        if ($memberObject->getTexts()){
             // Send text
-        }
+//        }
         
 ?>

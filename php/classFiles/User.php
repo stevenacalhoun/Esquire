@@ -148,5 +148,9 @@ class User {
     	$sql = "DELETE FROM posts WHERE postID = '$postID' ";
         mysql_query($sql) or die("Could not delete post: " . mysql_error());
     }
+    public function flagPost($postID){
+        $sql = "UPDATE posts SET flag = 1 WHERE postID = '$postID'";
+        mysql_query($sql);
+    }
     
 }
