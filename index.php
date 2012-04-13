@@ -44,8 +44,18 @@
 		<div id="reset">Forgot password?</div>
 	</div>
 	
+	<!-- Reset Password Box -->
+	<div id="resetBox" class="box">
+		<form action="php/resetPassword.php" method="post" id="resetForm">
+			<input type="text" name="resetEmail" placeholder="email" id="resetEmail" />
+			<input type="submit" value="Reset" id="resetSubmit" class="button green" />
+		</form>
+		<div id="resetCancel" class="button">Cancel</div>
+	</div>
+	
 	<!-- Error messages -->
 	<div id="loginError" class="error">Wrong Username/Password Combination.</div>
+	<div id="resetError" class="error">Email not found in Esquire.</div>
 	
 	<div class="secondaryFooter">&copy; Copyright 2012 Esquire. Imaginary Rights Reserved.</div>
 </body>

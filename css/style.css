@@ -192,6 +192,23 @@ footer{
 	color: #787878;
 	margin: -19px 0 0 317px;
 }
+	/* Reset Box */
+	#resetBox{
+		display: none;
+		width: 450px;
+		top: 50%;
+		position: relative;
+		margin: auto;
+	}
+	#resetEmail{
+		width: 175px;
+		margin: 10px 0 10px 20px;
+		padding-left: 10px;
+	}
+	#resetCancel{
+		float: right;
+		margin: -35px 25px 0 0;
+	}
 
 /* Join */
 #joinBox{

@@ -188,6 +188,7 @@
 			<input type="submit" value="Submit" class="button green" id="inviteSubmit" />
 		</form>
 		<div class="button" id="inviteCancel">Cancel</div>
+		<div class="overlayError" id="specificGroupInvalidEmail">One or more of the emails you entered is invalid.</div>
 	</div>
 	
 	<!-- Profile popovers -->

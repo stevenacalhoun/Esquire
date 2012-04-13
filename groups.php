@@ -87,7 +87,7 @@
                      			$count = sizeof($group->getAcceptedMembers()) + sizeof($group->getFlaggedPosts());
                      			if($count > 0 && $user->getEmail() == $group->getAdmin()){ 
                      	 	?>
-                     			<div class="flagmember notification"><?php echo $count; ?></div>
+                     			<a href="specificGroup.php?groupID=<?php echo $group->getGroupID(); ?>"><div class="flagmember notification"><?php echo $count; ?></div></a>
                      		<?php } ?>
                      	</div>   
 			<?php   	}
