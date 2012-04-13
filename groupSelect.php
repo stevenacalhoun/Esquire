@@ -16,6 +16,7 @@
 
 <!-- Group Selection for Feeds -->
 <script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/spinner.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
 <div class="box" id="feedBox">
 	<?php 
@@ -23,7 +24,7 @@
 		if (!empty($groupIDs)){
 			foreach($groupIDs as $groupID){
 		    	$group = new Group($groupID);
-		        if (in_array($user->getEmail(), $group->getMembers()) or in_array($user->getEmail(), $group->getPermittedMembers())){
+		        if (in_array($user->getEmail(), $group->getMembers())){
 	?>
 				     	<div class="feedGroupBlock" id="<?php echo $group->getGroupID(); ?>">
 				     		<div class="groupTitle">

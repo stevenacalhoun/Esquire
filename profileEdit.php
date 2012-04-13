@@ -12,6 +12,7 @@
     $_SESSION['user'] = $user;
 ?>
 <script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/spinner.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
 <div id="editProfileBox" class="box">
 	<form id="editProfileForm" action="php/editProfile.php" method="post">

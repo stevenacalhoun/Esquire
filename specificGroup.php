@@ -29,6 +29,7 @@
 	<title><?php echo $group->getName(); ?> | Esquire</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/spinner.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>
@@ -193,5 +194,11 @@
     <div class="dynamicPopover" id="profilePopover"></div>
     <div class="dynamicPopover" id="editProfilePopover"></div>
     <div class="dynamicPopover" id="groupSeletPopover"></div>
+    
+    <!-- Success Popover -->
+    <div class="submit">
+    	<div class="submitText">Submitting</div>
+    	<div id="submitSpin"></div>
+    </div>
 </body>
 </html>
