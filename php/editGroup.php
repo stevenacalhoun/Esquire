@@ -2,7 +2,6 @@
 
     // Start session and bring in DB info    
     require_once("classFiles/db_setup.php");
-    require_once('./lib/class.phpmailer.php');
     session_start();
     
     $tbl_name = "users";

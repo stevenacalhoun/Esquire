@@ -8,6 +8,7 @@
         private $_confirmedMembers;
         private $_allowedMembers;
         private $_permittedMembers;
+        private $_allMembers;
         private $_posts;
         private $_flaggedPosts;
         
@@ -66,6 +67,9 @@
             while($post = mysql_fetch_array($result)){
                 $this->_flaggedPosts[] = $post['postID'];
             }            
+            
+            $this->_allMembers = array();
+            $this->_allMembers = array_merge($this->_confirmedMembers, $this->_acceptedMembers, $this->_permittedMembers);
         }
      
         // Getters for all variables because they are private
@@ -95,6 +99,10 @@
         
         public function getAcceptedMembers(){
             return $this->_acceptedMembers;
+        }
+        
+        public function getAllMembers(){
+            return $this->_allMembers;
         }
         
         public function getPosts(){

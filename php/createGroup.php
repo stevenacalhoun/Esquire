@@ -2,7 +2,6 @@
 
     // Start session and bring in DB info
     require_once("classFiles/db_setup.php");
-    require_once("./lib/class.phpmailer.php");
     session_start();
     $tbl_name = "groups";
     
@@ -132,7 +131,7 @@
                     $mail->Subject = "$adminEmail has invited to join the Esquire group $name! You have to join Esquire first though!";
                     $message = "Join Esquire!";
                     $mail->Body = $message;
-                    $address = $email();
+                    $address = $email;
                     $mail->AddAddress($address, "$firstName $lastName");
                     $mail->Send();   
                 }
