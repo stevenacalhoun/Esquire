@@ -706,7 +706,7 @@ function newPost(){
         data:     dataToSend,
         success:  function(data){
                 console.log(data);
-                //window.location.replace("feed.php?groupID=" + data)
+                window.location.replace("feed.php?groupID=" + data)
             ;}
     });
 }
@@ -755,6 +755,7 @@ function flagPost(){
         success:  function(data){window.location.reload();}
     });
 }
+
     
     
     
