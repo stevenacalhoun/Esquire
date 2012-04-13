@@ -62,7 +62,7 @@
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
                 $mail->Host = "cse.msstate.edu";
-                $mail->SMTPDebug = 2;
+                $mail->SMTPDebug = 0;
                 $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
                 $mail->Subject = $mailSubject;
                 $mail->Body = $mailMessage;
@@ -75,7 +75,7 @@
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
                 $mail->Host = "cse.msstate.edu";
-                $mail->SMTPDebug = 2;
+                $mail->SMTPDebug = 0;
                 $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
                 $mail->Subject = $mailSubject;
                 $message = $mailMessage;

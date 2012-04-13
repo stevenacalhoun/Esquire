@@ -51,8 +51,7 @@
                         $mail->Body = $message;
                         $address = $email;
                         $mail->AddAddress($address, "$memberName");
-                        $mail->Send();
-                        
+                        $mail->Send();                        
                     }
                     
                     if ($userObject->getTexts()){

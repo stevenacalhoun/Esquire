@@ -18,4 +18,19 @@
     // Construct the update query and query it
     $sql = "UPDATE users SET password='$encryptedNewPassword' cipher='$cipher' WHERE email='$email'";
     mysql_query($sql);
+    
+    $user = new User($email);
+    $memberName = $user->getFullName();
+    
+    $mail = new PHPMailer();
+    $mail->IsSMTP();
+    $mail->Host = "cse.msstate.edu";
+    $mail->SMTPDebug = 0;
+    $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+    $mail->Subject = "Password Reset";
+    $message = "Hi, you have recently reset your password. Your new password is: '$newPassword'. You'll want to change it immediately.";
+    $mail->Body = $message;
+    $address = $email;
+    $mail->AddAddress($address, "$memberName");
+    $mail->Send();  
 ?>
