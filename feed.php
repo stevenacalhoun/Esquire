@@ -72,7 +72,11 @@
 					<?php if($user->getEmail() == $group->getAdmin() || $user->getEmail() == $postUser->getEmail()){ ?>
 						<div class="feedDelete" title="Delete Post" id="delete<?php echo $postObject->getPostID(); ?>"></div>
 					<?php } ?>
-					<div class="feedFlag icon" title="Flag Post" id="flag<?php echo $postObject->getPostID(); ?>"></div>
+					<?php if($postObject->getFlag()){ ?>
+						<div class="feedFlag icon active" title="Flag Post" id="flag<?php echo $postObject->getPostID(); ?>"></div>
+					<?php } else { ?>
+						<div class="feedFlag icon" title="Flag Post" id="flag<?php echo $postObject->getPostID(); ?>"></div>
+					<?php } ?>
 				</div>
 			<?php } ?> 
 		</div>

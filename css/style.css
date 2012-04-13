@@ -614,7 +614,8 @@ footer{
 	float: right;
 	margin: -15px 10px 0 0;
 }
-	.feedFlag:hover{background: url('../images/flagHover.png') no-repeat;}
+	.feedFlag:hover,
+	.active{background: url('../images/flagHover.png') no-repeat;}
 .feedDelete{
 	width: 27px;
 	height: 15px;

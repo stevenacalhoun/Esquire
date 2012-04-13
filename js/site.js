@@ -746,6 +746,7 @@ function deletePost(){
 function flagPost(){
     var rawID = this.id;
     postID = rawID.replace("flag", "");
+    this.addClass('active');
     
     var dataToSend = {postID: postID};
     $.ajax({
