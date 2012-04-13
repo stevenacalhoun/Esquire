@@ -225,12 +225,12 @@ $(document).ready(function() {
          }
      );
      
-     // Sniffer
-//     $('.
-     
-//     $('html').mousemove(function(event){
-//         console.log(event.pageX + " " + event.pageY);
-//     });
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27){ 
+            $('.overlay').click(); 
+        }
+    });
+    
 });
 
 
@@ -379,9 +379,7 @@ function createGroup(){
     $('#createGroupName').val('');
     $('#createGroupDescription').val('');
     $('#createGroupEmails').val('');
-    
-    //if($("#createGroupName".val=="" || $("createGroupDescription").val==""
-    
+        
     $.post (url, data,
         function(data){
             console.log(data);
@@ -587,7 +585,6 @@ function hideProfile(){
 function showEditProfile(){
     event.stopPropagation();
     $("#profilePopover").html('').fadeOut('fast');
-    console.log('what the fuck');
     $("#editProfilePopover").load("profileEdit.php").html('');
 }
 
@@ -705,9 +702,9 @@ function newPost(){
         url:      "php/newPost.php",
         data:     dataToSend,
         success:  function(data){
-                console.log(data);
-                window.location.replace("feed.php?groupID=" + data)
-            ;}
+                    console.log(data);
+                    window.location.reload();
+                  }
     });
 }
     
@@ -753,7 +750,7 @@ function flagPost(){
         type:     "POST",
         url:      "php/flagPost.php",
         data:     dataToSend,
-        success:  function(data){window.location.reload();}
+        success:  function(data){}
     });
 }
 

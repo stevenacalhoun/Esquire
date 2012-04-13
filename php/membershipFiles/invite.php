@@ -2,7 +2,6 @@
 
     // Start session and bring in DB info
     require_once("../classFiles/db_setup.php");
-    require_once("../lib/class.phpmailer.php");
     session_start();
     $tbl_name = "groups";
     
@@ -32,10 +31,59 @@
             $sql = "SELECT COUNT(*) FROM users WHERE email = '$email'";
             $result = mysql_query($sql);
             $group = new Group($groupID);
+            $groupName = $group->getName();
+
             if ((mysql_result($result, 0) >= 1)){
-                $group->addMember($email);
-                $userObject = new User($email);
-        
+                if(!in_array($email, $group->getAllMembers())){
+                    $group->addMember($email);
+                    $userObject = new User($email);
+                    
+                    $memberName = $userObject->getFullName();
+                    
+                    if ($userObject->getEmails()){
+                        $mail = new PHPMailer();
+                        $mail->IsSMTP();
+                        $mail->Host = "cse.msstate.edu";
+                        $mail->SMTPDebug = 0;
+                        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                        $mail->Subject = "You've been inivted to the Group $groupName";
+                        $message = "Login to join this group!";
+                        $mail->Body = $message;
+                        $address = $email;
+                        $mail->AddAddress($address, "$memberName");
+                        $mail->Send();                        
+                    }
+                    
+                    if ($userObject->getTexts()){
+                        $mail = new PHPMailer();
+                        $mail->IsSMTP();
+                        $mail->Host = "cse.msstate.edu";
+                        $mail->SMTPDebug = 0;
+                        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                        $mail->Subject = "You've been inivted to the Group $groupName";
+                        $message = "Login to join this group!";
+                        $mail->Body = $message;
+                        $address = $userObject->getPhoneEmail();
+                        $mail->AddAddress($address, "$memberName");
+                        $mail->Send();
+                    }
+                }
+            }    
+            else{
+                $adminObject = new User($adminEmail);
+                $adminName = $adminObject->getFullName();
+                
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->Host = "cse.msstate.edu";
+                $mail->SMTPDebug = 0;
+                $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                $mail->Subject = "Join Esquire!";
+                $message = "$adminName has invited to join the Esquire group $groupName! You have to join Esquire first though!";
+                $mail->Body = $message;
+                $address = $email();
+                $mail->AddAddress($address, "New Member");
+                $mail->Send();   
             }
         }
     }

@@ -46,27 +46,44 @@
     
     $group = new Group($groupID);
     
+    $mailSubject = $group->getName();
+    $mailMessage = $message;
+    
+    
     foreach ($group->getMembers() as $member){
         $memberObject = new User($member);
         
-        if ($memberObject->getEmails()){
-            // Send Email
-            $mail = new PHPMailer();
-            $mail->IsSMTP();
-            $mail->Host = "cse.msstate.edu";
-            $mail->SMTPDebug = 2;
-            $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
-            $mail->Subject = "You've been inivted to the Group $name";
-            $message = "Login to join this group!";
-            $mail->Body = $message;
-            $address = $email;
-            $mail->AddAddress($address, "$firstName $lastName");
-            $mail->Send();
+        if($user->getEmail() != $member){
+        
+        $userName = $memberObject->getFullName();
+        
+            if ($memberObject->getEmails()){
+                // Send Email
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->Host = "cse.msstate.edu";
+                $mail->SMTPDebug = 0;
+                $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                $mail->Subject = $mailSubject;
+                $mail->Body = $mailMessage;
+                $address = $memberObject->getEmail();
+                $mail->AddAddress($address, "$userName");
+                $mail->Send();
+            }
+            if ($memberObject->getTexts()){
+                // Send Email
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->Host = "cse.msstate.edu";
+                $mail->SMTPDebug = 0;
+                $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                $mail->Subject = $mailSubject;
+                $message = $mailMessage;
+                $mail->Body = $message;
+                $address = $memberObject->getPhoneEmail();
+                $mail->AddAddress($address, "$userName");
+                $mail->Send();
+            }
         }
     }
-//        
-//        if ($memberObject->getTexts()){
-            // Send text
-//        }
-        
 ?>
