@@ -284,6 +284,7 @@ function resetPassword(event){
 			console.log(data);
 			if(data == "success"){
 				$('#resetSuccess').fadeIn('fast');
+				$('#resetError').fadeOut('fast');
 			}
 			else{
 				$('#resetError').fadeIn('fast');

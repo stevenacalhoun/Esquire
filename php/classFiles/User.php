@@ -12,42 +12,44 @@ class User {
 
     // Constructor function
     public function User($email){
-            // Connect to database
-            require("db_setup.php");
-            $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
-            mysql_select_db("$db_name", $con);
-            
-            // The email is the passed in value
-            $this->_email = $email;
-            
-            // For the rest of the variables query database and assign to class variables
-            $userRow = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE email = '$this->_email'"));
-            $this->_firstName = $userRow['firstName'];
-            $this->_lastName = $userRow['lastName'];
-            $this->_password = $userRow['password'];
-            $this->_phoneNum = $userRow['phoneNum'];
-            $this->_textUpdates = $userRow['textUpdates'];
-            $this->_emailUpdates = $userRow['emailUpdates'];
-            $this->_phoneEmail = $userRow['phoneEmail'];
-            
-            $this->_groups = array();
-            
-            
-            // Query member_of table and so long as there are rows add the groupID to the groups array
-            $groupsIDs = mysql_query("SELECT groupID FROM member_of WHERE email = '$email'");
-            while($ID = mysql_fetch_array($groupsIDs)){
-                $this->_groups[] = $ID['groupID'];
-            }
-            
-            $this->_groupInvites = array();
-            
-            $result = mysql_query("SELECT groupID FROM member_of WHERE email = '$email' and accept = 0");
-            while($ID = mysql_fetch_array($result)){
-                $this->_groupInvites[] = $ID['groupID'];
-            }
+        // Connect to database
+        require("db_setup.php");
+        $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
+        mysql_select_db("$db_name", $con);
+        
+        // The email is the passed in value
+        $this->_email = $email;
+        
+        // For the rest of the variables query database and assign to class variables
+        $userRow = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE email = '$this->_email'"));
+        $this->_firstName = $userRow['firstName'];
+        $this->_lastName = $userRow['lastName'];
+        $this->_password = $userRow['password'];
+        $this->_phoneNum = $userRow['phoneNum'];
+        $this->_textUpdates = $userRow['textUpdates'];
+        $this->_emailUpdates = $userRow['emailUpdates'];
+        $this->_phoneEmail = $userRow['phoneEmail'];
+        
+        // Initialize the groups array
+        $this->_groups = array();
+        
+        // Populate it from the database
+        $groupsIDs = mysql_query("SELECT groupID FROM member_of WHERE email = '$email'");
+        while($ID = mysql_fetch_array($groupsIDs)){
+            $this->_groups[] = $ID['groupID'];
+        }
+        
+        // Intitialize the array for the groups the user has an invite to
+        $this->_groupInvites = array();
+        
+        // Populate it from the database
+        $result = mysql_query("SELECT groupID FROM member_of WHERE email = '$email' and accept = 0");
+        while($ID = mysql_fetch_array($result)){
+            $this->_groupInvites[] = $ID['groupID'];
+        }
     }
     
-    /** Getters for all the private varbles **/
+    /** Getters for all private variables **/
     public function getFirstName(){
         return $this->_firstName;
     }
@@ -101,18 +103,19 @@ class User {
         return $this->_groupInvites;
     }
     
+    /** Other functions **/
+
+    // Add a new groupID to the list of groups for a member    
     public function addGroup($groupID){
         $this->_groups[] = $groupID;
     }
     
+    // Remove a groupID from the list of groups for a member
     public function removeGroup($groupID){
         $this->_groups = array_diff($this->_groups, array($groupID));
         $this->_groups = array_values($this->_groups);
     }
-    
-    
-    /** Other functions **/
-    
+        
     // Search groups
     public function searchGroups($search){
         $groupList = mysql_query("SELECT groupID FROM groups WHERE name LIKE '%$search%'");
@@ -144,13 +147,16 @@ class User {
         $sql = "DELETE FROM member_of WHERE groupID = '$groupID' AND email = '$email'  ";
         mysql_query($sql) or die("Could not delete member: " . msql_error());	
     }
+    
+    // Delete a post by a given postID
     public function deletePost($postID){
     	$sql = "DELETE FROM posts WHERE postID = '$postID' ";
         mysql_query($sql) or die("Could not delete post: " . mysql_error());
     }
+    
+    // Flag a post by a given postID
     public function flagPost($postID){
         $sql = "UPDATE posts SET flag = 1 WHERE postID = '$postID'";
         mysql_query($sql);
     }
-    
 }

@@ -1,17 +1,18 @@
 <?php
-    // Pull in required files and make sure the user is logged in, if not redirect ot log in
+    // Pull in required files and make sure the user is logged in, if not redirect to log in
     require_once("php/classFiles/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
     }
     
-    // Get current user from the session and get group IDs
+    // Get current user from the session
     $user = $_SESSION['user'];
+    
+    // Recreate user object and get groups
     $user = new User($user->getEmail());
     $_SESSION['user'] = $user;
     $groupIDs = $user->getGroups();
-    
 ?>
 
 <!-- Group Selection for Feeds -->

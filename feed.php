@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <?php
-    // Pull in required files and make sure the user is logged in, if not redirect ot log in
+    // Pull in required files and make sure the user is logged in, if not redirect to log in
     require_once("php/classFiles/db_setup.php");
     session_start();
     if (!array_key_exists('user', $_SESSION)){
         header('Location:index.php');
     }
+    
+    // GroupID comes from get request and user from session
     $groupID = $_GET['groupID']; 
     $user = $_SESSION['user'];
+    
+    // Recreate User object and restore it 
     $user = new User($user->getEmail());
     $_SESSION['user'] = $user;
     $_SESSION['groupID'] = $groupID;
+    
+    // If the user is not a member of the group redirect back to groups page
     if (!in_array($groupID, $user->getGroups() ) ){
         header('Location:groups.php');
     }
+    
+    // Connect to database
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword") or die("Could not connect to dataBase:" . mysql_error());
     mysql_select_db("$db_name", $con);
-    
-    
 ?>
 <html>
 <head>

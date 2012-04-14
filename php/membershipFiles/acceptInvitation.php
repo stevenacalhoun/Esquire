@@ -1,21 +1,19 @@
 <?php
-    // Pull in necessary files and start session
+    // Pull in required files and make sure the user is logged in, if not redirect to log in
     require_once("../classFiles/db_setup.php");
     session_start();
+    if (!array_key_exists('user', $_SESSION)){
+        header('Location:index.php');
+    }
     
     // Connect to the database
     $con = mysql_connect("$host", "$sqlusername", "$sqlpassword")or die("Can't connect to Server" . mysql_error());
     mysql_select_db("$db_name", $con) or die("Database does not exist");
     
-    // Redirect back to log in if no one is logged in
-    if (!array_key_exists('user', $_SESSION)){
-        header('Location:index.php');
-    }
-    
-    // Get the current user from session
+    // Get the current user from session and group from POST
     $user = $_SESSION['user'];
-    
-    // Get group from POST and accept invitation
     $groupID = $_POST["groupID"];
+    
+    // Accept the invitation
 	$user->acceptInvitation($groupID);
 ?>

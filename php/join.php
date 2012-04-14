@@ -1,12 +1,9 @@
 <?php
-
     // Start session and bring in DB info    
-    session_start();
     require_once("classFiles/db_setup.php");
-    $tbl_name = "users";
-
+    session_start();
 	
-	// Connect to server and database
+	// Connect to database
 	$con = mysql_connect("$host", "$sqlusername", "$sqlpassword")or die("Can't connect to Server" . mysql_error());
 	mysql_select_db("$db_name", $con) or die("Database does not exist");
 
@@ -35,27 +32,36 @@
 	if ($textUpdates == "textYes"){$textUpdates = true;}
 	if ($emailUpdates == "emailYes"){$emailUpdates = true;}
 	
-	// Functions for validation
+	/** Functions for validation **/
+	
+	// Validate email
 	function validateEmail($email){
 	    return (ereg("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email));
 	}
+	
+	// Validate password
 	function validatePassword($password){
         $regex  = "/^[a-z0-9]{5,18}$/";
         return preg_match($regex, $password);
 	}
+	
+	// Make sure the passwords match
 	function validatePassword2($password, $password2){
 	    return ($password == $password2);
     }
+    
+    // Make sure that email isn't already registered
     function emailExistence($email){
         return (mysql_num_rows(mysql_query("SELECT * FROM users WHERE email = '$email'")) <= 0);
     }
+    
+    // Make sure none of the files are empty
     function emptyFieldsTest($firstName, $lastName, $phoneNum){
         return ($firstName == '' || $lastName == '' || $phoneNum == '');
     }
 
 	
-	// Switch case for different carriers. Phone email is constructed by using the phone
-	// number plus a designated address.
+	// Switch case for different carriers. Phone email is constructed by using the phone number plus a designated address.
 	switch ($carrier)
 	{
 	case "Verizon":
@@ -94,6 +100,7 @@
 	    echo ("exists");
 	}
 	
+	// Check if any fields are empty
 	if (emptyFieldsTest($firstName, $lastName, $phoneNum)){
 	    echo ("blankError");
 	}
@@ -106,17 +113,18 @@
     	$encryptedPassword = $passwordObject->encrypt();
     	$cipher = $passwordObject->getDefaultCipher();
     	
-    	// Construct SQL query to add new user
+    	// Construct SQL query and query the database
     	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates, cipher) VALUES ('$email', '$firstName', '$lastName', '$encryptedPassword', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates', '$cipher')";
-
-    	// Add user to database
     	mysql_query($sql) or die("Could not query: " . mysql_error());
     	
+    	// Echo success
     	echo "success";
     	
     	// Create user object and add to Session
     	$user = new User($email);
     	$_SESSION['user'] = $user;
+    	
+    	// If the new user desires email updates send an email welcoming to Esquire
     	if ($emailUpdates){
         	$message = "Hello $firstName $lastName, welcome to Esquire";    	
         	$mail = new PHPMailer();
@@ -131,6 +139,7 @@
         	$mail->Send();
         }
     }
+    
     // Close DB connection
     mysql_close($con);
 ?>
