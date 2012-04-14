@@ -279,6 +279,10 @@ function resetPassword(event){
 	var data = $('form#resetForm').serialize();
 	var url = $('form#resetForm').attr('action');
 	
+	// Show user that request is being submitted to compensate for wait time
+	$('.submitOverlay').fadeIn('fast');
+	$('.submit').fadeIn('fast');
+	
 	$.post(url, data,
 		function(data){
 			console.log(data);
@@ -315,7 +319,10 @@ function newAccount(event){
 //    var fileSize = file.fileSize;
 //    
 //    alert("Uploading: "+fileName+" @ "+fileSize+"bytes");
-  
+
+	// Show user that request is being submitted to compensate for wait time
+    $('.submitOverlay').fadeIn('fast');
+    $('.submit').fadeIn('fast');
     
     // Use AJAX post to prevent refresh of page
     $.post (url, data,
@@ -415,6 +422,10 @@ function createGroup(){
     $('#createGroupDescription').val('');
     $('#createGroupEmails').val('');
         
+    // Show user that request is being submitted to compensate for wait time
+    $('.submitOverlay').fadeIn('fast');
+    $('.submit').fadeIn('fast');
+    
     $.post (url, data,
         function(data){
             console.log(data);
@@ -542,6 +553,10 @@ function inviteMembers(){
     var dataToSend = {emails: emails, groupID: groupID};
     
     $('#inviteEmails').val('');
+    
+    // Show user that request is being submitted to compensate for wait time
+    $('.submitOverlay').fadeIn('fast');
+    $('.submit').fadeIn('fast');
     
     $.ajax({
         type:       "POST",
@@ -732,6 +747,12 @@ function newPost(){
 	
     dataToSend = {message: message}
     
+    // Show user that request is being submitted to compensate for wait time
+    $('#postBox').fadeOut('fast');
+    $('.overlay').fadeOut('fast');
+    $('.submitOverlay').fadeIn('fast');
+    $('.submit').fadeIn('fast');
+    
     $.ajax({
         type:     "POST",
         url:      "php/newPost.php",
@@ -787,20 +808,4 @@ function flagPost(){
         data:     dataToSend,
         success:  function(data){}
     });
-}
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+} 

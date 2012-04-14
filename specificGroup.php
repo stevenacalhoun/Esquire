@@ -34,8 +34,9 @@
 </head>
 <body>
 
-	<!-- Popovers -->
+	<!-- Overlays -->
 	<div class="overlay" id="specificGroupOverlay"></div>
+	<div class="submitOverlay"></div>
 	
 	<!-- Main Container -->
 	<div class="container" id="specificGroup<?php echo $group->getGroupID(); ?>">
@@ -199,7 +200,6 @@
     <!-- Success Popover -->
     <div class="submit">
     	<div class="submitText">Submitting</div>
-    	<div id="submitSpin"></div>
     </div>
 </body>
 </html>

@@ -26,8 +26,9 @@
 </head>
 <body>
 	
-	<!-- Overlay -->
+	<!-- Overlays -->
 	<div class="overlay" id="createGroupOverlay"></div>
+	<div class="submitOverlay"></div>
 
 	<!-- Main Container -->
 	<div class="container">
@@ -121,5 +122,10 @@
 	<div class="dynamicPopover" id="profilePopover"></div>
     <div class="dynamicPopover" id="editProfilePopover"></div>
     <div class="dynamicPopover" id="groupSeletPopover"></div>
+    
+    <!-- Success Popover -->
+    <div class="submit">
+    	<div class="submitText">Submitting</div>
+    </div>
 </body>
 </html>
