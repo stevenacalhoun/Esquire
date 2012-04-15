@@ -122,9 +122,10 @@
     <div class="dynamicPopover" id="editProfilePopover"></div>
     <div class="dynamicPopover" id="groupSeletPopover"></div>
     
-    <!-- Success Popover -->
+    <!-- Submitting Popover -->
     <div class="submit">
     	<div class="submitText">Submitting</div>
+    	<div class="submitGif"></div>
     </div>
 </body>
 </html>

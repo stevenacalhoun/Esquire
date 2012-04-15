@@ -427,6 +427,7 @@ footer{
 	.submit{
 		display: none;
 		width: 200px;
+		height: 70px;
 		position: absolute;
 		border-radius: 5px;
 		top: 50%;
@@ -442,6 +443,12 @@ footer{
 		font-size: 1.2em;
 		color: #fff;
 		text-shadow: 0px 1px 0px #000;
+	}
+	.submitGif{
+		width: 16px;
+		height: 11px;
+		margin: auto;
+		background: url('../images/loading.gif');
 	}
 	
 /* Groups */

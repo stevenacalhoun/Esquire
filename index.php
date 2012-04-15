@@ -43,9 +43,10 @@
 		<div id="resetSuccess" class="success">Success.</div>
 	</div>
 	
-	<!-- Success popover -->
+	<!-- Submitting Popover -->
 	<div class="submit">
 		<div class="submitText">Submitting</div>
+		<div class="submitGif"></div>
 	</div>
 	<div class="secondaryFooter">&copy; Copyright 2012 Esquire.<br/> Imaginary Rights Reserved.</div>
 </body>
