@@ -18,6 +18,8 @@
     // Get new info for the group
     $name = $_POST['editGroupName'];
     $description = $_POST['editGroupDescription'];
+    $name = mysql_real_escape_string($name);
+    $description = mysql_real_escape_string($description);
     
     // Function to test for empty fields
     function emptyFieldsTest($name, $description){

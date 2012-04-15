@@ -14,6 +14,8 @@
     $name = $_POST['createGroupName'];
     $description = $_POST['createGroupDescription'];
     $emailString = $_POST['createGroupEmails'];
+    $name = mysql_real_escape_string($name);
+    $description = mysql_real_escape_string($description);
 
     // Remove all spaces from email list and seperate it on every ","
     $trimmedEmailString = str_replace(" " , "", $emailString);
