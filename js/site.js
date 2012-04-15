@@ -596,6 +596,9 @@ function inviteMembers(){
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
     
+    $('#inviteBox').fadeOut('fast');
+    $('.overlay').fadeOut('fast');
+    
     // AJAX post to invite php file
     $.ajax({
         type:       "POST",
@@ -604,6 +607,10 @@ function inviteMembers(){
         success:    function(data){
                         if(data.indexOf("emailError") != -1){
                             $("#inviteEmailError").fadeIn('fast');
+                            $('.submit').fadeOut('fast');
+                            $('.submitOverlay').fadeOut('fast');
+                            $('#inviteBox').fadeIn('fast');
+                            $('.overlay').fadeIn('fast');
                         }
                         else{$("#inviteEmailError").fadeOut('fast');}
                         
