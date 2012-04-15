@@ -29,7 +29,6 @@
 	<title><?php echo $group->getName(); ?> | Esquire</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="js/jquery.js" type="text/javascript"></script>
-	<script src="js/spinner.js" type="text/javascript"></script>
 	<script src="js/site.js" type="text/javascript"></script>
 </head>
 <body>

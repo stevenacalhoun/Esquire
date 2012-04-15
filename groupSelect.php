@@ -17,7 +17,6 @@
 
 <!-- Group Selection for Feeds -->
 <script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/spinner.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
 <div class="box" id="feedBox">
 	<?php 
