@@ -15,7 +15,4 @@
     	
     // Delte the post
 	$user->deletePost($postID);
-
-    // Close database connection
-    mysql_close($con);
 ?>

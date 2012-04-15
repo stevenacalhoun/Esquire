@@ -26,6 +26,9 @@
             $this->_dateTime = $postInfo['dateTime'];
             $this->_flag = $postInfo['flag'];
             $this->_email = $postInfo['email'];
+            
+            // Close database connection
+            mysql_close($con);
         }
         
         /** Getters for all private variables **/

@@ -41,6 +41,9 @@
             mysql_select_db("$db_name", $con);
             $sql = "SELECT cipher FROM users WHERE email = '$email'";
             $result = mysql_query($sql);
+            
+            // Close database connection
+            mysql_close($con);
             return $result['cipher'];
         }
             

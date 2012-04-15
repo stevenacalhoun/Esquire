@@ -201,6 +201,8 @@ $(document).ready(function() {
     $('.feedFlag').click(flagPost);
     
     /** Post stuff **/
+    
+    // Sniffer for new post
     $(".postButton").click(
         function(){
             event.stopPropagation();
@@ -209,6 +211,8 @@ $(document).ready(function() {
             $("#postContent").focus();
         }
     );
+    
+    // Sniffer for cancel post
     $("#postCancel").click(
         function(){
             $("#postBox").fadeOut('fast');
@@ -216,6 +220,7 @@ $(document).ready(function() {
         }
     );
     
+    // Sniffer for submit post
     $('#postCreate').click(newPost);
     
     $('#postBox').keypress(function(event){
@@ -224,7 +229,7 @@ $(document).ready(function() {
         }
     });
     
-    
+    // Sniffer for a click on any overlay to fade out any popover
     $('.overlay').click(
         function() {
             //Hide the menus if visible
@@ -238,6 +243,7 @@ $(document).ready(function() {
          }
      );
      
+    // Hitting the escape key is the same as clicking the overlay
     $(document).keyup(function(e) {
         if (e.keyCode == 27){ 
             $('.overlay').click(); 
@@ -251,6 +257,7 @@ $(document).ready(function() {
 
 // AJAX function for login. Checking to see if correct login.
 function login(event){
+    // Stop php file from running
 	event.preventDefault();
 	
 	// Create data form form and get action
@@ -260,7 +267,7 @@ function login(event){
 	// AJAX function to submit data for login.php, if successful move user to next page, otherwise present error
 	$.post(url, data,
 		function(data) {
-	        console.log(data);
+		console.log(data);
             if (data=="success"){
                 window.location.replace("groups.php");
 		    }
@@ -273,6 +280,7 @@ function login(event){
 
 // AJAX function for reset password
 function resetPassword(event){
+    // Stop php file from running
 	event.preventDefault();
 	
 	// Create data from form and get action
@@ -283,9 +291,9 @@ function resetPassword(event){
 	$('.submitOverlay').fadeIn('fast');
 	$('.submit').fadeIn('fast');
 	
+	// AJAX post for reset password, if it works then fade in a success box otherwise an email error
 	$.post(url, data,
 		function(data){
-			console.log(data);
 			if(data == "success"){
 				$('#resetSuccess').fadeIn('fast');
 				$('#resetError').fadeOut('fast');
@@ -300,64 +308,67 @@ function resetPassword(event){
 
 // Function that handles the returns of php validation and moving user to next page upon successful account creation
 function newAccount(event){
+    // Stop php file from running
     event.preventDefault();
     
     // Create data form form and get action
     var data = $("form#joinForm").serialize();
     var url = $("form#joinForm").attr('action');
     
+    // Check for any empty fields
     if($("#joinFirst").val()=="" || $("#joinLast").val()=="" || $("#joinPhone").val()==""){
         $('#blankError').fadeIn('fast');
     }
     else{
         $('#blankError').fadeOut('fast');
     }
-    
-//    var file = $('#createProfileImage').val();
-//    console.log(file);
-//    var fileName = file.fileName;
-//    var fileSize = file.fileSize;
-//    
-//    alert("Uploading: "+fileName+" @ "+fileSize+"bytes");
 
 	// Show user that request is being submitted to compensate for wait time
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
     
-    // Use AJAX post to prevent refresh of page
+    // Use AJAX post for joining
     $.post (url, data,
         function(data) {       
-            console.log(data);     
             // Check for each error in the return data and present error windows accordingly
             if (data.indexOf("exists") != -1){
                 $('#creationError').fadeIn('fast');
+                $('.submitOverlay').fadeOut('fast');
+                $('.submit').fadeOut('fast');
             }
             else {$('#creationError').fadeOut('fast');}
             
             if (data.indexOf("emailError") != -1){
                 $('#emailError').fadeIn('fast');
+                $('.submitOverlay').fadeOut('fast');
+                $('.submit').fadeOut('fast');
             }
             else {$('#emailError').fadeOut('fast');}
             
             if (data.indexOf("passwordError") != -1){
                 $('#invalidPassError').fadeIn('fast');
+                $('.submitOverlay').fadeOut('fast');
+                $('.submit').fadeOut('fast');
             }
             else {$('#invalidPassError').fadeOut('fast');}
             
             if (data.indexOf("passwordMatchError") != -1){
                 $('#passMatchError').fadeIn('fast');
+                $('.submitOverlay').fadeOut('fast');
+                $('.submit').fadeOut('fast');
             }
             else {$('#passMatchError').fadeOut('fast');}
             
             if (data.indexOf("blankError") != -1){
                 $('#blankError').fadeIn('fast');
+                $('.submitOverlay').fadeOut('fast');
+                $('.submit').fadeOut('fast');
             }
             else {$('blankError').fadeOut('fast');}
             
             
             // If there are no errors then move the user to the next page
             if (data=='success'){
-//                $('#submitting').fadeIn('fast');};
                 window.location.replace("groups.php");
             }
         }
@@ -413,9 +424,11 @@ function validatePass2(){
 
 // Create a group by using a php file
 function createGroup(){
+    // Stop php file from running
     event.preventDefault();
     event.stopPropagation();
 
+    // Get data and URL
     var data = $("form#createGroupForm").serialize();
     var url = $("form#createGroupForm").attr('action');
     $('#createGroupName').val('');
@@ -426,9 +439,9 @@ function createGroup(){
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
     
+    // AJAX to create a new gorup
     $.post (url, data,
         function(data){
-            console.log(data);
             // Check for each error
             if (data.indexOf("emailError") != -1){
                 $("#createGroupInvalidEmail").fadeIn('fast');
@@ -442,23 +455,26 @@ function createGroup(){
             else{
                 $("#createGroupEmptyField").fadeOut('fast');
             }
-            if (data==''){window.location.replace("groups.php");}
+            if (data==''){window.location.reload();}
         }
     );
 }
 
 // Delete a group using a php file
 function deleteGroup(){
+    // Get group ID, construct data, and pop up a confirmation
     var id = this.id;
+    id = id.replace("groupDelete", "");
     var dataToSend = {groupID : id};
     var confirmation = confirm("Are you sure you want to delete this group?");
     if (confirmation == false){return}
     
+    // AJAX post to remove the group 
     $.ajax({
         type:    "POST",
         url:     "php/removeGroup",
         data:    dataToSend,
-        success: function(){window.location.replace("groups.php");}
+        success: function(){window.location.reload();}
     });
 }
 
@@ -466,11 +482,16 @@ function deleteGroup(){
 
 // Leave a group using a php file
 function leaveGroup(){
+    // Get ID and construct data to send
     var id = $('.container').attr('id');
+    id = id.replace("specificGroup", "");
     var dataToSend = {groupID: id};
-    console.log(id);
+
+    // Send a confirmation
     var confirmation = confirm("Are you sure you want to leave this group?");
     if (confirmation == false){return}
+    
+    // AJAX post to leave group php file
     $.ajax({
         type:    "POST",
         url:     "php/membershipFiles/leaveGroup.php",
@@ -481,11 +502,18 @@ function leaveGroup(){
 
 // Admin's privilege to remove a member by using a php file
 function removeMember(){
+    // Get ID and email and construct data to send
     var id = $('.container').attr('id');
+    id = id.replace("specificGroup", "");
     var email = this.id;
+    email = email.replace("specificGroup", "");
     var dataToSend = {groupID: id, email: email};
+    
+    // Send a confirmation 
     var confirmation = confirm("Are you sure you want to delete this member?");
     if (confirmation == false){return}
+    
+    // AJAX post to delete member php file
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/deleteMember",
@@ -494,20 +522,27 @@ function removeMember(){
     });
 }
 
+
+// Function to edit group 
 function editGroup(event){
+    // Stop php file from running
     event.preventDefault();
     event.stopPropagation();
 
+    // Get data and URL
     var data = $("form#editGroupForm").serialize();
     var url = $("form#editGroupForm").attr('action');
     var groupID = $(".container").attr('id');
     groupID = groupID.replace("specificGroup", "");
     
+    // Check for empty values
     if ($("#editGroupName").val()=="" || $("#editGroupDescription").val()==""){
         $('#createGroupEmptyField').fadeIn('fast');
     }
     else {
         $('#createGroupEmptyField').fadeOut('fast');
+        
+        // AJAX post to edit group php file
         $.ajax({
             type:    "POST",
             url:     "php/editGroup.php",
@@ -517,15 +552,16 @@ function editGroup(event){
     }
 } 
 
+// Function to change admin
 function changeAdmin(){
+    // Get email and group ID and construct data to send
     var email = this.id;
     email = email.replace("specificGroupPromote", "");
-    
     id = $('.container').attr('id');
     groupID = id.replace("specificGroup", "");
-    console.log(email);
     dataToSend = {email: email, groupID: groupID};
     
+    // AJAX post to change admin php file
     $.ajax({
         type:    "POST",
         url:     "php/changeAdmin.php",
@@ -537,33 +573,30 @@ function changeAdmin(){
 
 // Invite new members to a group
 function inviteMembers(){
+    // Stop php file from running
     event.preventDefault();
     event.stopPropagation();
 
+    // Get ID, emails, and url
     var groupID = $('.container').attr('id');
     groupID = groupID.replace("specificGroup", "");
-    
     var emails = $('#inviteForm :input').val();
-    
-    var groupID = $('.container').attr('id');
-    groupID = groupID.replace("specificGroup", "");
-    
     var url = $("form#inviteForm").attr('action');
     
+    // Construct data to send
     var dataToSend = {emails: emails, groupID: groupID};
-    
     $('#inviteEmails').val('');
     
     // Show user that request is being submitted to compensate for wait time
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
     
+    // AJAX post to invite php file
     $.ajax({
         type:       "POST",
         url:        "php/membershipFiles/invite.php",
         data:       dataToSend,
         success:    function(data){
-                        console.log(data);
                         if(data.indexOf("emailError") != -1){
                             $("#inviteEmailError").fadeIn('fast');
                         }
@@ -573,22 +606,25 @@ function inviteMembers(){
                             $('#inviteBox').fadeOut('fast');
                             $('.overlay').fadeOut('fast');
                             $(':input','#inviteForm')
-                            .removeAttr('inviteEmails');
-                            
+                            .removeAttr('inviteEmails');  
                         }                
-        }
+                    }
     });
 }
 
 
 // Permit a request from a user
 function permitRequest(){
+    // Get email and groupID
     var email = this.id;
     email = email.replace("permit", "");
     var id = $('.container').attr('id');
     var groupID = id.replace("specificGroup", "");
     
+    // Construct data to send
     var dataToSend = {emailToBePermitted: email, groupID: groupID};
+    
+    // AJAX post to permit request php file
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/permitRequest",
@@ -599,13 +635,16 @@ function permitRequest(){
 
 // Deny a request from a user
 function denyRequest(){
+    // Get email and groupID
     var email = this.id;
     email = email.replace("deny", "");
     var id = $('.container').attr('id');
     var groupID = id.replace("specificGroup", "");
     
-    
+    // Construct data to send
     var dataToSend = {emailToBeDenied: email, groupID: groupID};
+    
+    // AJAX post to deny request php file
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/denyRequest",
@@ -640,6 +679,7 @@ function showEditProfile(){
 
 // Change the information 
 function editProfile(event){
+    // Stop php file from running
     event.preventDefault();
     // Create data form form and get action
     var data = $("form#editProfileForm").serialize();
@@ -655,9 +695,7 @@ function editProfile(event){
     
     // Use AJAX post to prevent refresh of page
     $.post (url, data,
-        function(data) {       
-            console.log(data);     
-            
+        function(data) {                   
             // Check for each error in the return data and present error windows accordingly
             if (data.indexOf("passwordError") != -1){
                 $('#invalidPassError').fadeIn('fast');
@@ -676,54 +714,61 @@ function editProfile(event){
             
             
             // If there are no errors then move the user to the next page
-            if (data==''){window.location.replace("groups.php");}
+            if (data==''){window.location.reload();}
         }
     );
 }
   
 /** Miscellaneous group stuff **/
 
+// Add group function
 function groupAdd(){
-
+    // Get group ID and construct data to send
     var groupID = this.id;
     groupID = groupID.replace("groupAdd", "");
-    
-    console.log(groupID);
     var dataToSend = {groupID: groupID};
+    
+    // AJAX post to request admission php file
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/requestAdmission",
         data:     dataToSend,
-        success:  function(data){window.location.replace("groupSearch.php?search=" + data);}  
+        success:  function(data){window.location.reload();}  
     });
 }
     
+// Function to accept invitation
 function acceptInvitation(){
+    // Get group ID and construct data to send
     var groupID = this.id;
     groupID = groupID.replace("groupAccept", "");
-    
     var dataToSend = {groupID: groupID};
+    // AJAX post to accept invitation php file
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/acceptInvitation",
         data:     dataToSend,
-        success:  function(){window.location.replace("groups.php");}
+        success:  function(){window.location.reload();}
     });
 }    
     
+// Function to decline invitation
 function declineInvitation(){
+    // Get group ID and construct data to send
     var groupID = this.id;
     groupID = groupID.replace("groupDecline", "");
-    
     var dataToSend = {groupID: groupID};
+    
+    // AJAX post to decline invitation php file
     $.ajax({
         type:     "POST",
         url:      "php/membershipFiles/declineInvitation",
         data:     dataToSend,
-        success:  function(){window.location.replace("groups.php");}
+        success:  function(){window.location.reload();}
     });
 }    
 
+// Load feed selection popover
 function loadFeedSelection(){
     event.preventDefault();
     event.stopPropagation();
@@ -731,20 +776,22 @@ function loadFeedSelection(){
     $("#profilePopover").html('').load("groupSelect.php").fadeIn('fast');
 }
     
+// Move to a certain feed page
 function moveToFeedPage(){
-    var groupID = this.id;
-    
+    var groupID = this.id;    
     window.location.replace("feed.php?groupID=" +groupID);
 }
 
 /** Post stuff **/
 
+// Function for new post
 function newPost(){
+    // Stop php file from running
     event.preventDefault();
+    
+    // Get message and construct data to send
     var message = $('#postForm :input').val();
-
 	$('#postContent').val("");
-	
     dataToSend = {message: message}
     
     // Show user that request is being submitted to compensate for wait time
@@ -753,23 +800,23 @@ function newPost(){
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
     
+    // AJAX post to new post php file
     $.ajax({
         type:     "POST",
         url:      "php/newPost.php",
         data:     dataToSend,
-        success:  function(data){
-                    console.log(data);
-                    window.location.reload();
-                  }
+        success:  function(data){window.location.reload();}
     });
 }
-    
-// Permit a request from a user
+
+// Function to ignore flage    
 function ignoreFlag(){
+    // Get post ID and construct data to send
     var postID = this.id;
     postID = postID.replace("ignore", "");
-    
     var dataToSend = {postID: postID};
+    
+    // AJAX post to remove flag php file
     $.ajax({
         type:     "POST",
         url:      "php/removeFlag.php",
@@ -780,13 +827,16 @@ function ignoreFlag(){
 
 // Delete a post
 function deletePost(){
+    // Get postID and construct data
     var rawID = this.id;
     postID = rawID.replace("delete", "");
+    var dataToSend = {postID: postID};
     
+    // Make user confirm delete
     var confirmation = confirm("Are you sure you want to delete this post?");
     if (confirmation == false){return}
     
-    var dataToSend = {postID: postID};
+    // AJAX post to delete post php file
     $.ajax({
         type:     "POST",
         url:      "php/deletePost.php",
@@ -797,11 +847,13 @@ function deletePost(){
 
 // Flag a post
 function flagPost(){
+    // Get post ID and construct data to send
     var rawID = this.id;
     postID = rawID.replace("flag", "");
     $(this).addClass('active');
-    
     var dataToSend = {postID: postID};
+    
+    // AJAX post to flag post php file
     $.ajax({
         type:     "POST",
         url:      "php/flagPost.php",

@@ -139,7 +139,4 @@
         	$mail->Send();
         }
     }
-    
-    // Close DB connection
-    mysql_close($con);
 ?>

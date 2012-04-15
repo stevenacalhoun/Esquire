@@ -9,12 +9,12 @@
     // Get the current user from session
     $user = $_SESSION['user'];
 
-    // Get groupID from get request and strip everything but the number
-    $groupID = str_replace("specificGroup", "", $_POST["groupID"]);
+    // Get groupID and create group object
+    $groupID = $_POST["groupID"];
     $group = new Group($groupID);
     
     // Get email of the member to be removed
-    $email = str_replace("specificGroup", "", $_POST["email"]);
+    $email = $_POST["email"];
 
     // Delete the member
     $group->deleteMember($email);

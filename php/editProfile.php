@@ -84,5 +84,4 @@
     	$user = new User($user->getEmail());
     	$_SESSION['user'] = $user;
     }
-    
 ?>

@@ -110,7 +110,7 @@
 		<form action="php/createGroup.php" id="createGroupForm" method="post">
 			<input type="text" name="createGroupName" placeholder="name" id="createGroupName" />
 			<textarea name="createGroupDescription" placeholder="description" id="createGroupDescription"></textarea>
-			<textarea name="createGroupEmails" placeholder="emails to invite" id="createGroupEmails"></textarea>
+			<textarea name="createGroupEmails" placeholder="emails to invite seperated by a comma" id="createGroupEmails"></textarea>
 			<input type="submit" value="Create" class="button green" id="createGroupCreate" />
 		</form>
 		<div class="button" id="createGroupCancel">Cancel</div>

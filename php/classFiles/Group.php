@@ -52,7 +52,7 @@
                     else if ($email['permission']){
                         $this->_permittedMembers[] = $email['email'];
                     }
-                }
+                }                
             }
             
             // All member is just a combonation of all three arrays

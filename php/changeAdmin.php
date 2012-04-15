@@ -15,5 +15,4 @@
     
     // Change admin
     $group->changeAdmin($email);
-        
 ?>
