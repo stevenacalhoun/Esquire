@@ -41,7 +41,7 @@
 	
 	// Validate password
 	function validatePassword($password){
-        $regex  = "/^[a-z0-9]{5,18}$/";
+        $regex  = "/^[A-Za-z0-9]{5,}$/";
         return preg_match($regex, $password);
 	}
 	
