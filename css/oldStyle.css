@@ -8,7 +8,7 @@ body{
 }
 .box{
 	background: url('../images/boxBG.png');
-	border-radius: 5px;
+	border-radius: 10px;
 	box-shadow: 0px 0px 10px #000;
 }
 .container{
@@ -22,7 +22,7 @@ header{
 	width: 850px;
 	height: 65px;
 	background: url('../images/boxBG.png');
-	box-shadow: 0 1px 0 rgb(204, 204, 204);
+	box-shadow: 0px 1px 0px rgb(170, 170, 170);
 }
 .mainTitle{
 	width: 145px;
@@ -37,13 +37,13 @@ header{
 	height: 40px;
 	background: url('../images/postButton.png') no-repeat;
 	background-size: 40px 40px;
-	margin: 14px 0 0 70px;
+	margin: 14px 0 0 62px;
 	float: left;
 	cursor: pointer;
 }
 	.postButton:hover{background: url('../images/postButtonHover.png') no-repeat;}
 nav{
-	margin-top: 15px;
+	margin-top: 21px;
 	float: right;
 }
 	nav ul{list-style: none;}
@@ -61,14 +61,13 @@ nav{
 		color: #fff;
 	}
 .button{
-	width: 100px;
-	height: 34px;
+	width: 108px;
+	height: 27px;
 	background: url('../images/button.png') no-repeat;
-	background-size: 100px 34px;
 	color: #fff;
 	text-shadow: 0 1px 3px rgb(0,66,112);
 	text-align: center;
-	line-height: 34px;
+	line-height: 27px;
 	font-size: 0.8em;
 	cursor: pointer;
 }
@@ -90,6 +89,7 @@ textarea{
 	height: 20px;
 	border-radius: 5px;
 	border: 1px solid rgb(140,140,140);
+	box-shadow: 0px 1px 0px rgb(226,226,226);
 	margin-bottom: 10px;
 	padding-left: 5px;
 }
@@ -98,7 +98,7 @@ textarea{
 	width: 430px;
 	background-color: #62df66;
 	border: 1px solid #00b32a;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 10px;
 	text-align: center;
 	font-size: 0.8em;
@@ -111,7 +111,7 @@ textarea{
 	width: 430px;
 	background-color: #d22424;
 	border: 1px solid #9d0000;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 10px;
 	text-align: center;
 	font-size: 0.8em;
@@ -145,12 +145,12 @@ textarea{
 	position: absolute;
 	opacity: 0.5;
 	background-color: #000;
-	z-index: 2;
+	z-index: 3;
 }
 .icon{
-	width: 15px;
-	height: 15px;
-	background-size: 15px 15px;
+	width: 20px;
+	height: 20px;
+	background-size: 20px 20px;
 	float: right;
 	cursor: pointer;
 }
@@ -161,11 +161,11 @@ footer{
 	position: relative;
 	padding-top: 25px;
 	background: url('../images/boxBG.png');
-	box-shadow: 0 -1px 0 rgb(204,204,204);
+	box-shadow: 0px -1px 0px rgb(170, 170, 170);
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	color: #a4a4a4;
-	font-size: 0.75em;
+	color: #7c7c7c;
+	font-size: 0.85em;
 	text-align: center;
 	text-shadow: 0px 1px 0px rgb(241, 241, 241);
 }
@@ -181,14 +181,14 @@ footer{
 /* Login */
 #loginBox{
 	width: 450px;
-	height: 235px;
+	height: 225px;
 	margin: -120px auto 10px auto;
 	top: 50%;
 	position: relative;
 }
 #loginTitle{
-	width: 194px;
-	height: 67px;
+	width: 192px;
+	height: 66px;
 	background: url('../images/title.png') no-repeat;
 	margin: 15px 0 0 133px;
 	position: absolute;
@@ -196,25 +196,24 @@ footer{
 #loginEmail{
 	width: 355px;
 	height: 30px;
-	margin: 100px 0 0 42px;
+	margin: 100px 0 0 40px;
 	padding-left: 10px;
 }
 #loginPassword{
 	width: 355px;
 	height: 30px;
-	margin: 5px 0 0 42px;
+	margin: 5px 0 0 40px;
 	padding-left: 10px;
 }
-#loginButton{margin: 15px 0 0 42px;}
+#loginButton{margin: 15px 0 0 40px;}
 #joinButton{
-	margin: -34px 170px 0 0;
+	margin: -26px 170px 0 0;
 	float: right;
 }
 #reset{
 	font-size: 0.7em;
-	color: #a4a4a4;
-	text-shadow: 0px 1px 0px rgb(241, 241, 241);
-	margin: -22px 0 0 317px;
+	color: #787878;
+	margin: -19px 0 0 317px;
 	cursor: pointer;
 }
 	/* Reset Box */
@@ -226,14 +225,13 @@ footer{
 		margin: 0 auto 10px auto;
 	}
 	#resetEmail{
-		width: 150px;
-		height: 30px;
-		margin: 10px 0 10px 42px;
+		width: 180px;
+		margin: 10px 0 10px 20px;
 		padding-left: 5px;
 	}
 	#resetCancel{
 		float: right;
-		margin: -44px 42px 0 0;
+		margin: -35px 20px 0 0;
 	}
 
 /* Join */
@@ -273,15 +271,15 @@ footer{
 	float: right;
 	margin: 30px -10px 0 0;
 }
-	#createProfileImage{padding-bottom: 25px;}
+	#joinProfileImage{padding-bottom: 25px;}
 	#joinTitle{
-		width: 194px;
+		width: 192px;
 		height: 106px;
 		background: url('../images/joinTitle.png') no-repeat;
 	}
-	#joinSubmit{margin: 10px 0 0 44px;}
+	#joinSubmit{margin: 10px 0 0 40px;}
 	#joinCancel{
-		margin: 5px 81px 0 0;
+		margin: 5px 77px 0 0;
 		float: right;
 	}
 
@@ -364,7 +362,7 @@ footer{
 	}
 	#profileEdit{
 		float: right;
-		margin: 0 10px 10px 10px;
+		margin: 0 23px 10px 10px;
 	}
 	#profileCancel{float: right;}
 	
@@ -397,9 +395,9 @@ footer{
 			height: 66px;
 			background: url('../images/title.png') no-repeat;
 		}
-		#editProfileSubmit{margin: 10px 0 0 44px;}
+		#editProfileSubmit{margin: 10px 0 0 40px;}
 		#editProfileCancel{
-			margin: 5px 81px 0 0;
+			margin: 5px 77px 0 0;
 			float: right;
 		}
 	
@@ -416,11 +414,11 @@ footer{
 		width: 100%;
 		padding: 15px 0;
 		background: url('../images/boxBG.png');
-		box-shadow: 0px 1px 0px rgb(204,204,204), 0px -1px 0px rgb(204,204,204);
+		box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
 	}
-	.feedGroupBlock:first-child{border-radius: 5px 5px 0 0;}
-	.feedGroupBlock:last-child{border-radius: 0 0 5px 5px;}
-	.feedGroupBlock:only-child{border-radius: 5px;}
+	.feedGroupBlock:first-child{border-radius: 10px 10px 0 0;}
+	.feedGroupBlock:last-child{border-radius: 0 0 10px 10px;}
+	.feedGroupBlock:only-child{border-radius: 10px;}
 	.feedGroupBlock:hover{
 		cursor: pointer;
 		box-shadow: inset 0px 3px 10px rgb(170, 170, 170);
@@ -431,11 +429,11 @@ footer{
 		display: none;
 		width: 200px;
 		position: absolute;
-		border-radius: 5px;
+		border-radius: 10px;
 		top: 50%;
 		left: 50%;
 		margin: -100px 0 0 -100px;
-		z-index: 2;
+		z-index: 3;
 		background-color: #00b32a;
 		border: 1px solid #006c19;
 	}
@@ -460,7 +458,7 @@ footer{
 	width: 100%;
 	padding: 15px 0;
 	background: url('../images/boxBG.png');
-	box-shadow: 0px 1px 0px rgb(204,204,204), 0px -1px 0px rgb(204,204,204);
+	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
 }
 .groupTitle{
 	margin-left: 20px;
@@ -477,12 +475,12 @@ footer{
 	font-size: 0.8em;
 }
 .groupDelete{
-	width: 22px;
-	height: 12px;
+	width: 27px;
+	height: 15px;
 	background: url('../images/delete.png') no-repeat;
-	background-size: 22px 12px;
+	background-size: 27px 15px;
 	float: right;
-	margin: -7px 10px 0 0;
+	margin: -10px 10px 0 0;
 	cursor: pointer;
 }
 	.groupDelete:hover{background: url('../images/deleteHover.png') no-repeat;}
@@ -515,7 +513,7 @@ footer{
 	width: 100%;
 	padding: 15px 0;
 	background: url('../images/boxBG.png');
-	box-shadow: 0px 1px 0px rgb(204,204,204), 0px -1px 0px rgb(204,204,204);
+	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
 }
 .specificGroupTitle{
 	margin-left: 20px;
@@ -528,9 +526,6 @@ footer{
 	font-size: 0.8em;
 }
 .specificGroupEdit{
-	width: 20px;
-	height: 20px;
-	background-size: 20px 20px;
 	background: url('../images/edit.png') no-repeat;
 	float: right;
 	margin: -15px 10px 0 0;
@@ -540,20 +535,20 @@ footer{
 	margin-bottom: 5px;
 }
 .specificGroupRemove{
-	width: 22px;
-	height: 12px;
+	width: 27px;
+	height: 15px;
 	background: url('../images/delete.png') no-repeat;
-	background-size: 22px 12px;
+	background-size: 27px 15px;
 	float: right;
 	margin-right: 500px;
 	cursor: pointer;
 }
 .specificGroupPromote{
-	width: 22px;
-	height: 12px;
+	width: 27px;
+	height: 15px;
 	margin-right: 5px;
 	background: url('../images/promote.png') no-repeat;
-	background-size: 22px 12px;
+	background-size: 27px 15px;
 	float: right;
 	cursor: pointer;
 }
@@ -571,13 +566,13 @@ footer{
 		border-radius: 50px;
 		text-align: center;
 		color: #fff;
-		text-shadow: 0 1px 1px #535353;
+		text-shadow: 0 1px 2px #535353;
 	}
 	.flagmember{
 		width: 15px;
 		height: 14px;
 		float: right;
-		margin: -40px -22px 0 0;
+		margin: -40px -25px 0 0;
 		padding-top: 1px;
 		font-size: 0.7em;
 	}
@@ -594,13 +589,13 @@ footer{
 	}
 	.notificationMember{
 		float: left;
-		margin-top: 3px;
 		cursor: default;
 		background: url('../images/member.png') no-repeat;
 	}
 	.notificationFlag{
 		float: left;
 		cursor: default;
+		margin-right: 5px;
 		background: url('../images/flag.png') no-repeat;
 	}
 	.notificationText{
@@ -636,7 +631,7 @@ footer{
 	width: 100%;
 	padding: 15px 0;
 	background: url('../images/boxBG.png');
-	box-shadow: 0px 1px 0px rgb(204,204,204), 0px -1px 0px rgb(204,204,204);
+	box-shadow: 0px 1px 0px rgb(170, 170, 170), 0px -1px 0px rgb(170,170,170);
 }
 .feedName{
 	margin-left: 20px;
@@ -651,22 +646,22 @@ footer{
 .feedDate{
 	margin: 5px 100px 0 20px;
 	font-size: 0.6em;
-	color: #a4a4a4;
+	color: #757575;
 }
 .feedFlag{
 	background: url('../images/flag.png') no-repeat;
 	float: right;
-	margin: -10px 10px 0 0;
+	margin: -15px 10px 0 0;
 }
 	.feedFlag:hover,
 	.active{background: url('../images/flagHover.png') no-repeat;}
 .feedDelete{
-	width: 22px;
-	height: 12px;
+	width: 27px;
+	height: 15px;
 	background: url('../images/delete.png') no-repeat;
-	background-size: 22px 12px;
+	background-size: 27px 15px;
 	float: right;
-	margin: -7px 10px 0 0;
+	margin: -10px 10px 0 0;
 	cursor: pointer;
 }
 	.feedDelete:hover{background: url('../images/deleteHover.png') no-repeat;}
