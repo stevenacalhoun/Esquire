@@ -491,14 +491,12 @@ footer{
 	.groupAdd:hover{background: url('../images/addHover.png') no-repeat;}
 .accept{
 	background: url('../images/accept.png') no-repeat;
-	float: right;
-	margin: -15px 10px 0 0;
+	margin: -10px 10px 0 0;
 }
 	.accept:hover{background: url('../images/acceptHover.png') no-repeat;}
 .decline{
 	background: url('../images/decline.png') no-repeat;
-	float: right;
-	margin: -15px 10px 0 0;
+	margin: -10px 10px 0 0;
 }
 	.decline:hover{background: url('../images/declineHover.png') no-repeat;}
 #groupCreate{margin: 20px;}
