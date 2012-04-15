@@ -144,7 +144,4 @@
             }
         }
     }
-  
-    // Close database connection
-    mysql_close($con);
 ?>

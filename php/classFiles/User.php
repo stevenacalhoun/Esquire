@@ -47,6 +47,9 @@ class User {
         while($ID = mysql_fetch_array($result)){
             $this->_groupInvites[] = $ID['groupID'];
         }
+        
+        // Close database connection
+        mysql_close($con);
     }
     
     /** Getters for all private variables **/

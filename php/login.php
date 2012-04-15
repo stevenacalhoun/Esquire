@@ -41,7 +41,4 @@
 	{
 		echo "Wrong username or password";
 	}
-	
-	// Close DB connection
-	mysql_close($con);
 ?>

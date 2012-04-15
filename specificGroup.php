@@ -185,7 +185,7 @@
 	<div class="box" id="inviteBox">
 		<div id="inviteTitle">Invite Members</div>
 		<form action="php/invite.php" id="inviteForm" method="post">
-			<textarea name="inviteEmails" placeholder="emails to invite" id="inviteEmails"></textarea>
+			<textarea name="inviteEmails" placeholder="emails to invite seperated by a comma" id="inviteEmails"></textarea>
 			<input type="submit" value="Submit" class="button green" id="inviteSubmit" />
 		</form>
 		<div class="button" id="inviteCancel">Cancel</div>
