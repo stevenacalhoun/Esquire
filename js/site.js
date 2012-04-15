@@ -329,7 +329,8 @@ function newAccount(event){
     
     // Use AJAX post for joining
     $.post (url, data,
-        function(data) {       
+        function(data) {   
+            console.log(data);    
             // Check for each error in the return data and present error windows accordingly
             if (data.indexOf("exists") != -1){
                 $('#creationError').fadeIn('fast');
@@ -607,6 +608,7 @@ function inviteMembers(){
                             $('.overlay').fadeOut('fast');
                             $(':input','#inviteForm')
                             .removeAttr('inviteEmails');  
+                            window.location.reload();
                         }                
                     }
     });
