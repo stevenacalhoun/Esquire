@@ -297,9 +297,13 @@ function resetPassword(event){
 			if(data == "success"){
 				$('#resetSuccess').fadeIn('fast');
 				$('#resetError').fadeOut('fast');
+				$('.submitOverlay').fadeOut('fast');
+				$('.submit').fadeOut('fast');
 			}
 			else{
 				$('#resetError').fadeIn('fast');
+				$('.submitOverlay').fadeOut('fast');
+				$('.submit').fadeOut('fast');
 			}
 		}
 	);

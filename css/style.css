@@ -93,18 +93,19 @@ textarea{
 	margin-bottom: 10px;
 	padding-left: 5px;
 }
+.loginError{
+	display: none;
+	color: #d22424;
+	font-size: 0.8em;
+	text-align: center;
+	padding: 0 23px 15px 23px;
+}
 .success{
 	display: none;
-	width: 430px;
-	background-color: #62df66;
-	border: 1px solid #00b32a;
-	border-radius: 5px;
-	padding: 10px;
-	text-align: center;
+	color: #00b32a;
 	font-size: 0.8em;
-	position: relative;
-	top: 50%;
-	margin: auto auto 5px auto;
+	text-align: center;
+	padding: 0 23px 15px 23px;
 }
 .error{
 	display: none;
@@ -123,26 +124,20 @@ textarea{
 .overlayError{
 	display: none;
 	width: 100%;
-	color: #9d0000;
+	color: #d22424;
 	font-size: 0.8em;
 	position: relative;
 	float: left;
 	margin: 0 0 10px 20px;
 }
-.overlay{
-	display: none;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	opacity: 0.5;
-	background-color: #000;
-	z-index: 2;
-}
+.overlay,
 .submitOverlay{
 	display: none;
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	top: 0;
+	left: 0;
+	position: fixed;
 	opacity: 0.5;
 	background-color: #000;
 	z-index: 2;
@@ -180,9 +175,8 @@ footer{
 
 /* Login */
 #loginBox{
-	width: 450px;
-	height: 235px;
-	margin: -120px auto 10px auto;
+	width: 250px;
+	margin: -200px auto 10px auto;
 	top: 50%;
 	position: relative;
 }
@@ -190,50 +184,51 @@ footer{
 	width: 194px;
 	height: 67px;
 	background: url('../images/title.png') no-repeat;
-	margin: 15px 0 0 133px;
+	margin: 15px 0 0 28px;
 	position: absolute;
 }
 #loginEmail{
-	width: 355px;
+	width: 194px;
 	height: 30px;
-	margin: 100px 0 0 42px;
+	margin: 100px 0 0 23px;
 	padding-left: 10px;
 }
 #loginPassword{
-	width: 355px;
+	width: 194px;
 	height: 30px;
-	margin: 5px 0 0 42px;
+	margin: 15px 0 0 23px;
 	padding-left: 10px;
 }
-#loginButton{margin: 15px 0 0 42px;}
+#loginButton{margin: 15px 0 0 23px;}
 #joinButton{
-	margin: -34px 170px 0 0;
+	margin: -34px 23px 0 0;
 	float: right;
 }
 #reset{
 	font-size: 0.7em;
 	color: #a4a4a4;
 	text-shadow: 0px 1px 0px rgb(241, 241, 241);
-	margin: -22px 0 0 317px;
+	margin-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
 	cursor: pointer;
 }
 	/* Reset Box */
-	#resetBox{
-		display: none;
-		width: 450px;
-		top: 50%;
-		position: relative;
-		margin: 0 auto 10px auto;
-	}
+	#resetBox{display: none;}
 	#resetEmail{
-		width: 150px;
+		width: 194px;
 		height: 30px;
-		margin: 10px 0 10px 42px;
-		padding-left: 5px;
+		margin: 0 0 15px 23px;
+		padding-left: 10px;
+	}
+	#resetSubmit{
+		float: right;
+		margin-right: 23px;
+		padding-bottom: 15px;
 	}
 	#resetCancel{
-		float: right;
-		margin: -44px 42px 0 0;
+		margin-left: 23px;
+		padding-bottom: 15px;
 	}
 
 /* Join */
