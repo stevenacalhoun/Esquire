@@ -268,7 +268,6 @@ footer{
 	float: right;
 	margin: 30px -10px 0 0;
 }
-	#createProfileImage{padding-bottom: 25px;}
 	#joinTitle{
 		width: 194px;
 		height: 106px;
@@ -387,7 +386,6 @@ footer{
 		float: right;
 		margin: 30px -10px 0 0;
 	}
-		#editProfileImage{padding-bottom: 35px;}
 		#editProfileTitle{
 			width: 194px;
 			height: 67px;
