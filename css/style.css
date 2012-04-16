@@ -22,7 +22,7 @@ header{
 	width: 850px;
 	height: 65px;
 	background: url('../images/boxBG.png');
-	box-shadow: 0 1px 0 rgb(204, 204, 204);
+	box-shadow: 0px 1px 0px rgb(204, 204, 204);
 }
 .mainTitle{
 	width: 145px;
@@ -156,7 +156,7 @@ footer{
 	position: relative;
 	padding-top: 25px;
 	background: url('../images/boxBG.png');
-	box-shadow: 0 -1px 0 rgb(204,204,204);
+	box-shadow: 0px -1px 0px rgb(204,204,204);
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: #a4a4a4;
@@ -256,11 +256,11 @@ footer{
 		padding-left: 5px;
 	}
 	#joinTexts{margin-bottom: 10px;}
-	label[name="texts"]{
+	#textsLabel{
 		font-weight: bold;
 		padding-right: 9px;
 	}
-	label[name="emails"]{font-weight: bold;}
+	#emailsLabel{font-weight: bold;}
 	label{font-size: 0.75em;}
 #joinRight{
 	width: 225px;
@@ -569,7 +569,7 @@ footer{
 	.notification{
 		background-color: #dc0000;
 		border: 2px solid #fff;
-		box-shadow: 0 1px 5px #797979;
+		box-shadow: 0px 1px 5px #797979;
 		border-radius: 50px;
 		text-align: center;
 		color: #fff;
