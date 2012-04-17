@@ -42,9 +42,9 @@
         // Mail the user with the new password
         $mail = new PHPMailer();
         $mail->IsSMTP();
-        $mail->Host = "cse.msstate.edu";
+        $mail->Host = $smtpHost;
         $mail->SMTPDebug = 0;
-        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+        $mail->SetFrom($mailUser, 'Esquire');
         $mail->Subject = "Password Reset";
         $message = "Hi, you have recently reset your password. Your new password is: '$newPassword'. You'll want to change it immediately.";
         $mail->Body = $message;

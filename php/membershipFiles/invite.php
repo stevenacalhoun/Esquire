@@ -56,9 +56,9 @@
                     if ($userObject->getEmails()){
                         $mail = new PHPMailer();
                         $mail->IsSMTP();
-                        $mail->Host = "cse.msstate.edu";
+                        $mail->Host = $smtpHost;
                         $mail->SMTPDebug = 0;
-                        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                        $mail->SetFrom($mailUser, 'Esquire');
                         $mail->Subject = "You've been inivted to the Group $groupName";
                         $message = "Login to join this group!";
                         $mail->Body = $message;
@@ -71,9 +71,9 @@
                     if ($userObject->getTexts()){
                         $mail = new PHPMailer();
                         $mail->IsSMTP();
-                        $mail->Host = "cse.msstate.edu";
+                        $mail->Host = $smtpHost;
                         $mail->SMTPDebug = 0;
-                        $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                        $mail->SetFrom($mailUser, 'Esquire');
                         $mail->Subject = "You've been inivted to the Group $groupName";
                         $message = "Login to join this group!";
                         $mail->Body = $message;
@@ -90,9 +90,9 @@
                 $adminName = $adminObject->getFullName();
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
-                $mail->Host = "cse.msstate.edu";
+                $mail->Host = $smtpHost;
                 $mail->SMTPDebug = 0;
-                $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                $mail->SetFrom($mailUser, 'Esquire');
                 $mail->Subject = "Join Esquire!";
                 $message = "$adminName has invited to join the Esquire group $groupName! You have to join Esquire first though!";
                 $mail->Body = $message;

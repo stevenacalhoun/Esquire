@@ -60,7 +60,8 @@
             
             // Query database for postIDs that are pertaining to this group
             $sql = "SELECT postID FROM posts WHERE groupID = $groupID ORDER BY dateTime DESC";
-            $result = mysql_query($sql) or die("Could not get postID's: " . mysql_error());
+            $result = mysql_query($sql) or die("Could not get postID's: ");
+            echo mysql_error();
             
             // Populate the post array from the database
             $this->_posts = array();
@@ -143,6 +144,10 @@
             // Remove all the members of the group first
             $sql = "DELETE FROM member_of WHERE groupID = '$groupID'";
             mysql_query($sql) or die("Could not delete member: " . msql_error());
+            
+            // Remove all posts
+            $sql = "DELETE FROM posts WHERE groupID = '$groupID'";
+            mysql_query($sql);
             
             // Remove the group itself
             $sql = "DELETE FROM groups WHERE groupID = '$groupID'";

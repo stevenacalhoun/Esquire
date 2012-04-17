@@ -9,6 +9,9 @@
     // Get the current user from session
     $user = $_SESSION['user'];
     
+    // Get groupID from post
+    $groupID = $_POST['groupID'];
+    
     // Create group object
     $group = new Group($groupID);
 

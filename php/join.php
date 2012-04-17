@@ -129,9 +129,9 @@
         	$message = "Hello $firstName $lastName, welcome to Esquire";    	
         	$mail = new PHPMailer();
         	$mail->IsSMTP();
-        	$mail->Host = "cse.msstate.edu";
+        	$mail->Host = $smtpHost;
         	$mail->SMTPDebug = 0;
-        	$mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+        	$mail->SetFrom($mailUser, 'Esquire');
         	$mail->Subject = "Welcome to Esquire";
         	$mail->Body = $message;
         	$address = $email;
