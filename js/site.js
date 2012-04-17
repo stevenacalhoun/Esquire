@@ -104,6 +104,8 @@ $(document).ready(function() {
     
     // Request admission
     $('.groupAdd').click(groupAdd);
+    $('#specificGroupJoin').click(groupAdd);
+    
     
     // Sniffer for accept invitation button
     $('.accept').click(acceptInvitation);

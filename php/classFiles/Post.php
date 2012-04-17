@@ -60,6 +60,9 @@
         
         // Remove the flag from the post object
         public function removeFlag(){
+        require("db_setup.php");
+        $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
+        mysql_select_db("$db_name", $con);
         $postID = $this->_postID;
         $sql = "UPDATE posts SET flag = 0 WHERE postID = '$postID' ";
         mysql_query($sql) or die("Could not remove flag: " . mysql_error());

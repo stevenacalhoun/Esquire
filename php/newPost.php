@@ -76,9 +76,9 @@
                 // Send Email
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
-                $mail->Host = "cse.msstate.edu";
+                $mail->Host = $smtpHost;
                 $mail->SMTPDebug = 0;
-                $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                $mail->SetFrom($mailUser, 'Esquire');
                 $mail->Subject = $mailSubject;
                 $mail->Body = $mailMessage;
                 $address = $memberObject->getEmail();
@@ -91,9 +91,9 @@
                 // Send Text
                 $mail = new PHPMailer();
                 $mail->IsSMTP();
-                $mail->Host = "cse.msstate.edu";
+                $mail->Host = $smtpHost;
                 $mail->SMTPDebug = 0;
-                $mail->SetFrom('dcspg33@pluto.cse.msstate.edu', 'Esquire');
+                $mail->SetFrom($mailUser, 'Esquire');
                 $mail->Subject = $mailSubject;
                 $message = $mailMessage;
                 $mail->Body = $message;

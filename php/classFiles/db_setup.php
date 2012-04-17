@@ -5,6 +5,9 @@
     $sqlusername = "root";
     $sqlpassword = "root";
     $db_name = "Esquire";
+    
+    $smtpHost = "cse.msstate.edu";
+    $mailUser = "dcspg33@gmail.com";
 
     // Set timezone and date format for post times
     date_default_timezone_set('America/Chicago');
