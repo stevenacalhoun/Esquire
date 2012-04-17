@@ -163,7 +163,7 @@
 			
 			<!-- Join Group -->
 			<?php if(!(in_array($requestedGroupID, $user->getGroups()))){ ?>
-				<div class="button green" id="groupAdd<?php echo $group->getGroupID(); ?>">Join</div>
+				<div class="button green groupAdd<?php echo $group->getGroupID(); ?>">Join</div>
 			<?php } ?>
 		</div>
 	</div>
