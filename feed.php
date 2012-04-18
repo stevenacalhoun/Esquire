@@ -72,6 +72,11 @@
 					$postUser = new User($postObject->getEmail());
 			?>
 				<div class="feedBlock">
+					<?php if($postUser->getCustomImage()){ ?>
+						<img src="profileImages/<?php echo $postUser->getEmail(); ?>.png" title="<?php echo $postUser->getFullName(); ?>" />
+					<?php } else { ?>
+						<img src="profileImages/default.png" title="<?php echo $postUser->getFullName(); ?>" />
+					<?php } ?>
 					<div class="feedName"><?php echo $postUser->getFullName(); ?></div>
 					<div class="feedPost"><?php echo $postObject->getMessage(); ?></div>
 					<div class="feedDate"><?php echo $postObject->getDateTime(); ?></div>
