@@ -375,7 +375,7 @@ footer{
 	}
 	.profileEntry{
 		width: 100%;
-		margin: 0 10px 10px 10px;
+		margin: 0 0 10px 10px;
 		font-size: 0.85em;
 	}
 	.profileSubTitle{
@@ -385,6 +385,9 @@ footer{
 	#profileEdit{
 		float: right;
 		margin: 0 10px 10px 10px;
+	}
+	.profileContent{
+		margin-right: 10px;
 	}
 	#profileCancel{float: right;}
 	
