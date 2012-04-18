@@ -1,3 +1,13 @@
+<?php
+    // Pull in required files and make sure the user is logged in, if not redirect to log in
+    require_once("php/classFiles/db_setup.php");
+    session_start();
+    if (!array_key_exists('user', $_SESSION)){
+        header('Location:index.php');
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +25,7 @@
 		<!-- Main Box -->
 		<div id="profileImageBox" class="box">
 			<div id="profileImageTitle">Add a Profile Image</div>
-			<form method="post" action="php/joinPicture.php">
+			<form method="post" action="php/joinPicture.php" enctype="multipart/form-data">
 				<input type="file" name="profileImage" id="profileImage" />
 				<input type="submit" value="Submit" class="button green" id="profileImageSubmit" />
 			</form>

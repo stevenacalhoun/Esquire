@@ -376,7 +376,7 @@ function newAccount(event){
             
             // If there are no errors then move the user to the next page
             if (data=='success'){
-                window.location.replace("groups.php");
+                window.location.replace("profileImage.php");
             }
         }
     );
