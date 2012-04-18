@@ -607,10 +607,10 @@ function inviteMembers(){
     $('#inviteEmails').val('');
     
     // Show user that request is being submitted to compensate for wait time
-    $('.submitOverlay').fadeIn('fast');
-    $('.submit').fadeIn('fast');
     $('#inviteBox').fadeOut('fast');
     $('.overlay').fadeOut('fast');
+    $('.submitOverlay').fadeIn('fast');
+    $('.submit').fadeIn('fast');
     
     // AJAX post to invite php file
     $.ajax({
@@ -619,11 +619,11 @@ function inviteMembers(){
         data:       dataToSend,
         success:    function(data){
                         if(data.indexOf("emailError") != -1){
-                            $("#inviteEmailError").fadeIn('fast');
                             $('.submit').fadeOut('fast');
                             $('.submitOverlay').fadeOut('fast');
                             $('#inviteBox').fadeIn('fast');
                             $('.overlay').fadeIn('fast');
+                            $("#inviteEmailError").fadeIn('fast');
                         }
                         else{$("#inviteEmailError").fadeOut('fast');}
                         
