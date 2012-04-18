@@ -21,6 +21,8 @@
 	$path = "../profileImages/".$user->getEmail() . ".png";
 	
 	if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $path)){
+	    // Set the existence of a custom image and direct to groups page
+	    $user->setCustomImage();
 	    header('Location:../groups.php');
 	}
 	

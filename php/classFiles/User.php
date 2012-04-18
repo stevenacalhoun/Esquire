@@ -9,6 +9,7 @@ class User {
     private $_password;
     private $_groups;
     private $_groupInvites;
+    private $_customImage;
 
     // Constructor function
     public function User($email){
@@ -29,6 +30,7 @@ class User {
         $this->_textUpdates = $userRow['textUpdates'];
         $this->_emailUpdates = $userRow['emailUpdates'];
         $this->_phoneEmail = $userRow['phoneEmail'];
+        $this->_customImage = $userRow['customImage'];
         
         // Initialize the groups array
         $this->_groups = array();
@@ -106,6 +108,10 @@ class User {
         return $this->_groupInvites;
     }
     
+    public function getCustomImage(){
+        return $this->_customImage;
+    }
+    
     /** Other functions **/
 
     // Add a new groupID to the list of groups for a member    
@@ -165,5 +171,17 @@ class User {
     public function flagPost($postID){
         $sql = "UPDATE posts SET flag = 1 WHERE postID = '$postID'";
         mysql_query($sql);
+    }
+    
+    // Set the existence of a custom image
+    public function setCustomImage(){
+       require("db_setup.php");
+       $con = mysql_connect("$host", "$sqlusername", "$sqlpassword");
+       mysql_select_db("$db_name", $con);
+       
+       $email = $this->getEmail();
+       $this->_customImage = 1;
+       $sql = "UPDATE users SET customImage = 1 WHERE email = '$email'";
+       mysql_query($sql);
     }
 }

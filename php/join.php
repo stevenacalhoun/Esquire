@@ -114,7 +114,7 @@
     	$cipher = $passwordObject->getDefaultCipher();
     	
     	// Construct SQL query and query the database
-    	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates, cipher) VALUES ('$email', '$firstName', '$lastName', '$encryptedPassword', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates', '$cipher')";
+    	$sql = "INSERT INTO users (email, firstName, lastName, password, phoneNum, phoneEmail, textUpdates, emailUpdates, cipher, customImage) VALUES ('$email', '$firstName', '$lastName', '$encryptedPassword', '$phoneNum', '$phoneEmail', '$textUpdates', '$emailUpdates', '$cipher', 0)";
     	mysql_query($sql) or die("Could not query: " . mysql_error());
     	
     	// Echo success
