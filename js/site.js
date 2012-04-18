@@ -443,16 +443,20 @@ function createGroup(){
     $('#createGroupEmails').val('');
         
     // Show user that request is being submitted to compensate for wait time
-    $('.submitOverlay').fadeIn('fast');
-    $('.submit').fadeIn('fast');
     $('#createGroupBox').fadeOut('fast');
     $('.overlay').fadeOut('fast');
+    $('.submitOverlay').fadeIn('fast');
+    $('.submit').fadeIn('fast');
+    
     
     // AJAX to create a new group
     $.post (url, data,
         function(data){
+        	
             // Check for each error
             if (data.indexOf("emailError") != -1){
+            	$('.submitOverlay').fadeOut('fast');
+            	$('.submit').fadeOut('fast');
             	$('#createGroupBox').fadeIn('fast');
             	$('.overlay').fadeIn('fast');
                 $("#createGroupInvalidEmail").fadeIn('fast');
@@ -461,6 +465,8 @@ function createGroup(){
                 $("#createGroupInvalidEmail").fadeOut('fast');
             }                
             if (data.indexOf("blankError") != -1){
+            	$('.submitOverlay').fadeOut('fast');
+            	$('.submit').fadeOut('fast');
             	$('#createGroupBox').fadeIn('fast');
             	$('.overlay').fadeIn('fast');
                 $("#createGroupEmptyField").fadeIn('fast');
