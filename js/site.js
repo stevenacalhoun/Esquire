@@ -104,7 +104,7 @@ $(document).ready(function() {
     
     // Request admission
     $('.groupAdd').click(groupAdd);
-    $('#specificGroupJoin').click(groupAdd);
+    $('#specificGroupJoin').click(specificGroupAdd);
     
     
     // Sniffer for accept invitation button
@@ -751,6 +751,22 @@ function groupAdd(){
         success:  function(data){window.location.reload();}  
     });
 }
+
+function specificGroupAdd(){
+    // Get group ID and construct data to send
+    var groupID = $('.container').attr('id');
+    groupID = groupID.replace("specificGroup", "");
+    var dataToSend = {groupID: groupID};
+    
+    // AJAX post to request admission php file
+    $.ajax({
+        type:     "POST",
+        url:      "php/membershipFiles/requestAdmission",
+        data:     dataToSend,
+        success:  function(data){window.location.reload();}  
+    });
+}
+
     
 // Function to accept invitation
 function acceptInvitation(){

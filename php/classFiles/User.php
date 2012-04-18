@@ -9,6 +9,7 @@ class User {
     private $_password;
     private $_groups;
     private $_groupInvites;
+    private $_pictureDirectory;
 
     // Constructor function
     public function User($email){
@@ -29,6 +30,7 @@ class User {
         $this->_textUpdates = $userRow['textUpdates'];
         $this->_emailUpdates = $userRow['emailUpdates'];
         $this->_phoneEmail = $userRow['phoneEmail'];
+        $this->_pictureDirectory = $userRow['pictureDirectory'];
         
         // Initialize the groups array
         $this->_groups = array();
