@@ -445,18 +445,24 @@ function createGroup(){
     // Show user that request is being submitted to compensate for wait time
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
+    $('#createGroupBox').fadeOut('fast');
+    $('.overlay').fadeOut('fast');
     
-    // AJAX to create a new gorup
+    // AJAX to create a new group
     $.post (url, data,
         function(data){
             // Check for each error
             if (data.indexOf("emailError") != -1){
+            	$('#createGroupBox').fadeIn('fast');
+            	$('.overlay').fadeIn('fast');
                 $("#createGroupInvalidEmail").fadeIn('fast');
             }
             else{
                 $("#createGroupInvalidEmail").fadeOut('fast');
             }                
             if (data.indexOf("blankError") != -1){
+            	$('#createGroupBox').fadeIn('fast');
+            	$('.overlay').fadeIn('fast');
                 $("#createGroupEmptyField").fadeIn('fast');
             }
             else{
@@ -597,7 +603,6 @@ function inviteMembers(){
     // Show user that request is being submitted to compensate for wait time
     $('.submitOverlay').fadeIn('fast');
     $('.submit').fadeIn('fast');
-    
     $('#inviteBox').fadeOut('fast');
     $('.overlay').fadeOut('fast');
     
