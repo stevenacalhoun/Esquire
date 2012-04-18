@@ -27,6 +27,7 @@
 			<div id="profileImageTitle">Add a Profile Image</div>
 			<form method="post" action="php/joinPicture.php" enctype="multipart/form-data">
 				<input type="file" name="profileImage" id="profileImage" />
+				<div id="profileImageText">For best results, upload a square image.</div>
 				<input type="submit" value="Submit" class="button green" id="profileImageSubmit" />
 			</form>
 			<a href="groups.php"><div class="button" id="profileImageSkip">Skip</div></a>

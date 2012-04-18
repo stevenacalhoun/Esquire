@@ -283,7 +283,7 @@ footer{
 	/* Profile Image */
 	#profileImageBox{
 		width: 400px;
-		height: 125px;
+		height: 155px;
 		top: 50%;
 		margin: -200px auto 0 auto;
 		position: relative;
@@ -293,16 +293,21 @@ footer{
 		font-weight: bold;
 		font-size: 0.95em;
 	}
+	#profileImageText{
+		font-style: italic;
+		font-size: 0.7em;
+		margin: 15px 25px;
+	}
 	#profileImage{
 		margin-left: 25px;
 	}
 	#profileImageSubmit{
 		float: right;
-		margin: 30px 15px 0 0;
+		margin-right: 15px;
 	}
 	#profileImageSkip{
 		float: right;
-		margin: 11px 15px 0 0;
+		margin-right: 15px;
 	}
 
 /* Popovers */
