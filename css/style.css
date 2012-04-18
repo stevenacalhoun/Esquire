@@ -279,6 +279,31 @@ footer{
 		margin: 5px 81px 0 0;
 		float: right;
 	}
+	
+	/* Profile Image */
+	#profileImageBox{
+		width: 400px;
+		height: 125px;
+		top: 50%;
+		margin: -200px auto 0 auto;
+		position: relative;
+	}
+	#profileImageTitle{
+		padding: 15px;
+		font-weight: bold;
+		font-size: 0.95em;
+	}
+	#profileImage{
+		margin-left: 25px;
+	}
+	#profileImageSubmit{
+		float: right;
+		margin: 30px 15px 0 0;
+	}
+	#profileImageSkip{
+		float: right;
+		margin: 11px 15px 0 0;
+	}
 
 /* Popovers */
 #createGroupBox,
