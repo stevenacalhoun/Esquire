@@ -685,21 +685,21 @@ footer{
 	width: 50px;
 	height: 50px;
 	border-radius: 5px;
-	float: left;
+	position: absolute;
 	margin: 0 10px;
 }
 .feedName{
-	margin-left: 20px;
+	margin-left: 70px;
 	font-size: 0.95em;
 	font-weight: bold;
 	color: #0283de;
 }
 .feedPost{
-	margin: 5px 100px 0 20px;
+	margin: 5px 100px 0 70px;
 	font-size: 0.8em;
 }
 .feedDate{
-	margin: 5px 100px 0 20px;
+	margin: 5px 100px 0 70px;
 	font-size: 0.6em;
 	color: #a4a4a4;
 }
