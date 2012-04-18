@@ -15,6 +15,11 @@
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/site.js" type="text/javascript"></script>
 <div id="profileBox" class="box">
+	<?php if($user->getCustomImage()){ ?>
+		<img src="profileImages/<?php echo $user->getEmail(); ?>.png" title="<?php echo $user->getFullName(); ?>" />
+	<?php } else { ?>
+		<img src="profileImages/default.png" title="<?php echo $user->getFullName(); ?>" />
+	<?php } ?>
 	<div class="profileTitle"><?php echo $user->getFullName(); ?></div>
 	<div class="profileEntry">
 		<div class="profileSubTitle">Email:&nbsp;</div>

@@ -49,6 +49,7 @@
 		<div id="editProfileRight">
 			<div id="editProfileTitle"></div>
 			<input type="submit" value="Submit" class="button green" id="editProfileSubmit" />
+			<a href="profileImage.php"><div id="editProfileImage" class="button">Edit Image</div></a>
 			<div id="editProfileCancel" class="button">Cancel</div>
 		</div>
 	</form>
